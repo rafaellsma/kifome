@@ -1,0 +1,94 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pitang.Kifome.Domain.Entities", "Pitang.Kifome.Domain.Entities\Pitang.Kifome.Domain.Entities.csproj", "{EC121A18-FFCA-435E-85DC-00C2FFB9D8ED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{827D5F6C-5A94-461A-9438-BB6742A6366B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{369B9304-26AC-4A3E-ABDA-A7364D0E7B8F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Crosscuting", "Crosscuting", "{E7186D45-C853-480A-B243-C70BFC001007}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Distribution", "Distribution", "{0880125C-B608-466B-83A7-E23FA9A6DC9F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{79F2AABF-9AA6-4BBF-84ED-DA0D23844442}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pitang.Kifome.Domain.Contracts", "Pitang.Kifome.Domain.Contracts\Pitang.Kifome.Domain.Contracts.csproj", "{48865435-4775-462E-B1E2-A4F028B0E2DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pitang.Kifome.Domain.Services", "Pitang.Kifome.Domain.Services\Pitang.Kifome.Domain.Services.csproj", "{32CC437F-1296-476D-B15A-FB4BB6D0B49F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pitang.Kifome.Application.Contracts", "Pitang.Kifome.Application.Contracts\Pitang.Kifome.Application.Contracts.csproj", "{77611166-6611-4470-A8E8-95CEFF3665CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pitang.Kifome.Application.Entities", "Pitang.Kifome.Application.Entities\Pitang.Kifome.Application.Entities.csproj", "{4E545930-3EE5-47AC-8BB7-34D0902D07FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pitang.Kifome.Application.Services", "Pitang.Kifome.Application.Services\Pitang.Kifome.Application.Services.csproj", "{4D47A016-AE59-4551-B286-D7C62231C563}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pitang.Kifome.Distribution.WebApi", "Pitang.Kifome.Distribution.WebApi\Pitang.Kifome.Distribution.WebApi.csproj", "{E31A23B6-140A-4743-96A3-739105E5151C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pitangueiros.Kifome.Infra.Repositories", "Pitangueiros.Kifome.Infra.Repositories\Pitangueiros.Kifome.Infra.Repositories.csproj", "{76CA5D59-E522-4A0F-BEF8-2AE0E8AFD26C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pitangueiros.Kifome.Crosscuting.IoC", "Pitangueiros.Kifome.Crosscuting.IoC\Pitangueiros.Kifome.Crosscuting.IoC.csproj", "{254F1376-9676-4447-8BB1-65ECC3BACF89}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC121A18-FFCA-435E-85DC-00C2FFB9D8ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC121A18-FFCA-435E-85DC-00C2FFB9D8ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC121A18-FFCA-435E-85DC-00C2FFB9D8ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC121A18-FFCA-435E-85DC-00C2FFB9D8ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48865435-4775-462E-B1E2-A4F028B0E2DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48865435-4775-462E-B1E2-A4F028B0E2DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48865435-4775-462E-B1E2-A4F028B0E2DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48865435-4775-462E-B1E2-A4F028B0E2DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32CC437F-1296-476D-B15A-FB4BB6D0B49F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32CC437F-1296-476D-B15A-FB4BB6D0B49F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32CC437F-1296-476D-B15A-FB4BB6D0B49F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32CC437F-1296-476D-B15A-FB4BB6D0B49F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77611166-6611-4470-A8E8-95CEFF3665CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77611166-6611-4470-A8E8-95CEFF3665CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77611166-6611-4470-A8E8-95CEFF3665CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77611166-6611-4470-A8E8-95CEFF3665CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E545930-3EE5-47AC-8BB7-34D0902D07FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E545930-3EE5-47AC-8BB7-34D0902D07FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E545930-3EE5-47AC-8BB7-34D0902D07FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E545930-3EE5-47AC-8BB7-34D0902D07FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D47A016-AE59-4551-B286-D7C62231C563}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D47A016-AE59-4551-B286-D7C62231C563}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D47A016-AE59-4551-B286-D7C62231C563}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D47A016-AE59-4551-B286-D7C62231C563}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E31A23B6-140A-4743-96A3-739105E5151C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E31A23B6-140A-4743-96A3-739105E5151C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E31A23B6-140A-4743-96A3-739105E5151C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E31A23B6-140A-4743-96A3-739105E5151C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76CA5D59-E522-4A0F-BEF8-2AE0E8AFD26C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76CA5D59-E522-4A0F-BEF8-2AE0E8AFD26C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76CA5D59-E522-4A0F-BEF8-2AE0E8AFD26C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76CA5D59-E522-4A0F-BEF8-2AE0E8AFD26C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{254F1376-9676-4447-8BB1-65ECC3BACF89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{254F1376-9676-4447-8BB1-65ECC3BACF89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{254F1376-9676-4447-8BB1-65ECC3BACF89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{254F1376-9676-4447-8BB1-65ECC3BACF89}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EC121A18-FFCA-435E-85DC-00C2FFB9D8ED} = {827D5F6C-5A94-461A-9438-BB6742A6366B}
+		{48865435-4775-462E-B1E2-A4F028B0E2DE} = {827D5F6C-5A94-461A-9438-BB6742A6366B}
+		{32CC437F-1296-476D-B15A-FB4BB6D0B49F} = {827D5F6C-5A94-461A-9438-BB6742A6366B}
+		{77611166-6611-4470-A8E8-95CEFF3665CD} = {369B9304-26AC-4A3E-ABDA-A7364D0E7B8F}
+		{4E545930-3EE5-47AC-8BB7-34D0902D07FB} = {369B9304-26AC-4A3E-ABDA-A7364D0E7B8F}
+		{4D47A016-AE59-4551-B286-D7C62231C563} = {369B9304-26AC-4A3E-ABDA-A7364D0E7B8F}
+		{E31A23B6-140A-4743-96A3-739105E5151C} = {0880125C-B608-466B-83A7-E23FA9A6DC9F}
+		{76CA5D59-E522-4A0F-BEF8-2AE0E8AFD26C} = {79F2AABF-9AA6-4BBF-84ED-DA0D23844442}
+		{254F1376-9676-4447-8BB1-65ECC3BACF89} = {E7186D45-C853-480A-B243-C70BFC001007}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F87BEB4D-5687-4B4F-91EB-486A47F70BF9}
+	EndGlobalSection
+EndGlobal
