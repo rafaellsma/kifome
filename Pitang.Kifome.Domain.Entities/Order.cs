@@ -10,6 +10,7 @@ namespace Pitang.Kifome.Domain.Entities
         public Seller Seller { get; set; }
         public Customer Customer { get; set; }
         public Delivery Delivery { get; set; }
-        public OrderStatus Status { get; set; }
+        public List<Meal> Meal { get; set; }
+        public OrderStatusEnum Status { get; set; }
     }
 }

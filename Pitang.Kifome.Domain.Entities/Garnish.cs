@@ -7,10 +7,7 @@ namespace Pitang.Kifome.Domain.Entities
 {
     public class Garnish
     {
-        public Meal Meal { get; set; }
-
-        public String Name { get; set; }
-
-        public String Description { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
     }
 }

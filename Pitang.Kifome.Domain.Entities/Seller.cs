@@ -8,8 +8,8 @@ namespace Pitang.Kifome.Domain.Entities
     public class Seller : Person
     {
         public int Rate { get; set; }
+        public Menu Menu { get; set; }
         public List<Order> Orders { get; set; }
-
         public List<Delivery> Deliveries { get; set; }
     }
 }

@@ -7,6 +7,6 @@ namespace Pitang.Kifome.Domain.Entities
 {
     public class Customer : Person
     {
-        public List<Order> Orders { get; set; }
+        public List<Order> OrdersHistory { get; set; }
     }
 }

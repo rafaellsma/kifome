@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Pitang.Kifome.Domain.Entities
 {
-    public enum OrderStatus
+    public enum OrderStatusEnum
     {
-
+        Waiting,
+        Accepted,
+        Canceled
     }
 }

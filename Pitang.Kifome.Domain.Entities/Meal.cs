@@ -7,17 +7,10 @@ namespace Pitang.Kifome.Domain.Entities
 {
     public class Meal
     {
-        public Order Order { get; set; }
-
-        public Menu Menu { get; set; }
-
-        public String Name { get; set; }
-
-        public String Description { get; set; }
-
-        public int Price { get; set; }
-
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public float Price { get; set; }
+        public List<Garnish> Garnishies { get; set; }
         public DayOfWeek Day { get; set; }
-
     }
 }
