@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Pitang.Kifome.Domain.Entities
 {
-    public class Conversation
+    public class Conversation : BaseEntity<int>
     {
         public Order Order { get; set; }
         public List<Comment> Comments { get; set; }

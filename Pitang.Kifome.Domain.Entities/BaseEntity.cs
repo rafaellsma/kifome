@@ -5,14 +5,9 @@ using System.Text;
 
 namespace Pitang.Kifome.Domain.Entities
 {
-    public class BaseEntity
+    public abstract class BaseEntity<TId> : IBaseEntity<TId>
+        where TId : IComparable<TId>, IEquatable<TId>
     {
-        public int Id
-        {
-            get => default(int);
-            set
-            {
-            }
-        }
+        public TId Id { get; set; }
     }
 }

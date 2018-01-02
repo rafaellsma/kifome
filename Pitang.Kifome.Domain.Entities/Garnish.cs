@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Pitang.Kifome.Domain.Entities
 {
-    public class Garnish
+    public class Garnish : BaseEntity<int>
     {
         public string Name { get; set; }
         public string Description { get; set; }

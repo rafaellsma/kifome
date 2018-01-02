@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Pitang.Kifome.Domain.Entities
 {
-    public class Menu
+    public class Menu : BaseEntity<int>
     {
         public List<Meal> Meals { get; set; }
         public DateTime InitialHour { get; set; }
