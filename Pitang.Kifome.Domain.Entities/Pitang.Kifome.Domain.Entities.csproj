@@ -51,6 +51,7 @@
     <Compile Include="DayOfWeekEnum.cs" />
     <Compile Include="Delivery.cs" />
     <Compile Include="Garnish.cs" />
+    <Compile Include="IBaseEntity.cs" />
     <Compile Include="Meal.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Order.cs" />
