@@ -1,6 +1,7 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
+using Pitang.Kifome.Domain.Contracts.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace Pitang.Kifome.Domain.Services.IoC
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            throw new NotImplementedException();
+            container.Register(Component.For<IUserService, UserService>());
         }
     }
 }
