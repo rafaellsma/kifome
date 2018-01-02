@@ -7,8 +7,13 @@ namespace Pitang.Kifome.Domain.Entities
 {
     public class Comment : BaseEntity<int>
     {
-        public Conversation Conversation { get; set; }
         public Person Person { get; set; }
         public string Message { get; set; }
+
+        public Comment(Person person, string message)
+        {
+            this.Person = person;
+            this.Message = message;
+        }
     }
 }

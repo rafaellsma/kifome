@@ -11,7 +11,7 @@ namespace Pitang.Kifome.Domain.Contracts.Services
     {
         bool Authenticate(string email, string password);
         void CreateUser(Person person);
-        void MakeComment(Person person, Conversation conversation, string mensage);
+        void MakeComment(Person person, Order order, string mensage);
         List<Order> OrdersFromUser(Person person);
     }
 }

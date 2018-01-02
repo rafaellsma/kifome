@@ -12,10 +12,12 @@ namespace Pitang.Kifome.Domain.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository userRepository;
+        private readonly IOrderRepository orderRepository;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository, IOrderRepository orderRepository)
         {
             this.userRepository = userRepository;
+            this.orderRepository = orderRepository;
         }
 
         public bool Authenticate(string email, string password)
@@ -34,14 +36,15 @@ namespace Pitang.Kifome.Domain.Services
             userRepository.Insert(person);
         }
 
-        public void MakeComment(Person person, Conversation conversation, string mensage)
+        public void MakeComment(Person person, Order order, string mensage)
         {
-            throw new NotImplementedException();
+            Comment comment = new Comment(person, mensage);
+            order.Conversation.Comments.Add(comment);
         }
 
         public List<Order> OrdersFromUser(Person person)
         {
-            throw new NotImplementedException();
+            return orderRepository.SelectAllByPerson(person);
         }
     }
 }
