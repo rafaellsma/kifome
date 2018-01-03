@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Pitang.Kifome.Domain.Contracts.Repositories
 {
     public interface IRepository<T, TId>
-        where T : IBaseEntity<TId>
+        where T : class, IBaseEntity<TId>, new()
         where TId : IComparable<TId>, IEquatable<TId>
     {
         void Insert(T entity);
