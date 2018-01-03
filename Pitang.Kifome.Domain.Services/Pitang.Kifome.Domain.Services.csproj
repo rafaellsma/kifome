@@ -53,6 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementation\CustomerService.cs" />
+    <Compile Include="Implementation\SellerService.cs" />
+    <Compile Include="Implementation\UserService.cs" />
     <Compile Include="IoC\DomainServicesInstaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
