@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Pitang.Kifome.Domain.Contracts.Repositories
 {
-    interface IMenuRepository : IRepository<Delivery, int>
+    public interface IMenuRepository : IRepository<Menu, int>
     {
     }
 }

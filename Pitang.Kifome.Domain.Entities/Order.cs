@@ -12,5 +12,6 @@ namespace Pitang.Kifome.Domain.Entities
         public Delivery Delivery { get; set; }
         public List<Meal> Meal { get; set; }
         public OrderStatusEnum Status { get; set; }
+        public Conversation Conversation { get; set; }
     }
 }
