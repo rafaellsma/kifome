@@ -10,7 +10,18 @@ namespace Pitang.Kifome.Domain.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public float Price { get; set; }
+        public Menu Menu { get; set; }
         public List<Garnish> Garnishies { get; set; }
-        public DayOfWeek Day { get; set; }
+        public List<DayOfWeek> Days { get; set; }
+
+        public Meal(string name, string description, float price, Menu menu, List<Garnish> garnishes, List<DayOfWeek> days)
+        {
+            this.Name = name;
+            this.Description = description;
+            this.Price = price;
+            this.Menu = menu;
+            this.Garnishies = garnishes;
+            this.Days = days;
+        }
     }
 }

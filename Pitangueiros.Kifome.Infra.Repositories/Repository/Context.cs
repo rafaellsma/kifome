@@ -10,7 +10,7 @@ namespace Pitangueiros.Kifome.Infra.Repositories.Repository
 {
     public class Context : DbContext
     {
-        public Context() : base("Server=(local);Database=;User Id=;Password=") { }
+        public Context() : base("Server=localhost;Database=Kifome;Trusted_Connection=True;") { }
 
         public DbSet<Seller> Sellers { get; set; }
         public DbSet<Customer> Customers { get; set; }
