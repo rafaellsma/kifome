@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Pitang.Kifome.Domain.Entities
 {
-    public class Customer : Person
+    public class Customer : User
     {
         public List<Order> OrdersHistory { get; set; }
     }

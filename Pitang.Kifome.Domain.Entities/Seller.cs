@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Pitang.Kifome.Domain.Entities
 {
-    public class Seller : Person
+    public class Seller : User
     {
         public int Rate { get; set; }
         public Menu Menu { get; set; }

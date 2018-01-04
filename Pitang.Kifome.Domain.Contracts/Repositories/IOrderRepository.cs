@@ -9,6 +9,6 @@ namespace Pitang.Kifome.Domain.Contracts.Repositories
 {
     public interface IOrderRepository : IRepository<Order, int>
     {
-        List<Order> SelectAllByPerson(Person person);
+        List<Order> SelectAllByUser(User user);
     }
 }

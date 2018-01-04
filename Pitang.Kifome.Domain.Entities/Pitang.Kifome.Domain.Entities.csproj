@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Comment.cs" />
-    <Compile Include="Conversation.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="DayOfWeekEnum.cs" />
     <Compile Include="Delivery.cs" />
@@ -56,7 +55,7 @@
     <Compile Include="Menu.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderStatusEnum.cs" />
-    <Compile Include="Person.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seller.cs" />
   </ItemGroup>

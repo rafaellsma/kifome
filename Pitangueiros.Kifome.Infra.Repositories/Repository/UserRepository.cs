@@ -15,22 +15,31 @@ namespace Pitangueiros.Kifome.Infra.Repositories.Repository
             throw new NotImplementedException();
         }
 
-        public void Insert(Person entity)
+        public void Insert(User entity)
         {
             throw new NotImplementedException();
         }
 
-        public Person Select(int id)
+        public User Select(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<Person> SelectAll()
+        public List<User> SelectAll()
         {
             throw new NotImplementedException();
         }
 
+<<<<<<< Updated upstream
         public void Update(Person entity)
+=======
+        public User SelectByEmail(string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(User entity)
+>>>>>>> Stashed changes
         {
             throw new NotImplementedException();
         }

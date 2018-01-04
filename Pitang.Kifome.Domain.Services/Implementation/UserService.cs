@@ -22,7 +22,7 @@ namespace Pitang.Kifome.Domain.Services.Implementation
 
         public bool Authenticate(string email, string password)
         {
-            Person user = this.userRepository.SelectByEmail(email);
+            User user = this.userRepository.SelectByEmail(email);
             bool authenticate = false;
             if (user != null)
             {
@@ -31,20 +31,26 @@ namespace Pitang.Kifome.Domain.Services.Implementation
             return authenticate;
         }
 
-        public void CreateUser(Person person)
+        public void CreateUser(User user)
         {
-            userRepository.Insert(person);
+            userRepository.Insert(user);
         }
 
-        public void MakeComment(Person person, Order order, string mensage)
+        public void MakeComment(User user, Order order, string mensage)
         {
+<<<<<<< Updated upstream
             Comment comment = new Comment(person, mensage);
             order.Conversation.Comments.Add(comment);
+=======
+            Comment comment = new Comment(user, mensage);
+            order.Comments.Add(comment);
+            orderRepository.Update(order);
+>>>>>>> Stashed changes
         }
 
-        public List<Order> OrdersFromUser(Person person)
+        public List<Order> OrdersFromUser(User user)
         {
-            return orderRepository.SelectAllByPerson(person);
+            return orderRepository.SelectAllByUser(user);
         }
     }
 }

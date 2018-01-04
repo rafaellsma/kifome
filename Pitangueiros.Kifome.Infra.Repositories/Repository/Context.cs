@@ -15,12 +15,11 @@ namespace Pitangueiros.Kifome.Infra.Repositories.Repository
         public DbSet<Seller> Sellers { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        public DbSet<Conversation> Conversations { get; set; }
         public DbSet<Delivery> Deliveries { get; set; }
         public DbSet<Menu> Menus { get; set; }
         public DbSet<Meal> Meals { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<Person> Persons { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Garnish> Garnishies { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -28,7 +27,6 @@ namespace Pitangueiros.Kifome.Infra.Repositories.Repository
             //Map Customer
             modelBuilder.Entity<Customer>()
                 .HasKey(c => c.Id);
-
 
             //Map Seller
             modelBuilder.Entity<Seller>()
@@ -38,8 +36,8 @@ namespace Pitangueiros.Kifome.Infra.Repositories.Repository
             modelBuilder.Entity<Garnish>()
                 .HasKey(g => g.Id);
 
-            //Map Person
-            modelBuilder.Entity<Person>()
+            //Map User
+            modelBuilder.Entity<User>()
                 .HasKey(p => p.Id);
 
             //Map Order
@@ -62,10 +60,6 @@ namespace Pitangueiros.Kifome.Infra.Repositories.Repository
             modelBuilder.Entity<Comment>()
                 .HasKey(c => c.Id);
             
-            //Map Conversation
-            modelBuilder.Entity<Conversation>()
-                .HasKey(c => c.Id);
-s
             base.OnModelCreating(modelBuilder);
         }
     }
