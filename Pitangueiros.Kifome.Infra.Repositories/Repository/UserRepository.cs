@@ -8,7 +8,7 @@ using Pitang.Kifome.Domain.Entities;
 
 namespace Pitangueiros.Kifome.Infra.Repositories.Repository
 {
-    class UserRepository : IUserRepository
+    public class UserRepository : IUserRepository
     {
         public void Delete(int id)
         {
@@ -29,17 +29,12 @@ namespace Pitangueiros.Kifome.Infra.Repositories.Repository
         {
             throw new NotImplementedException();
         }
-
-<<<<<<< Updated upstream
-        public void Update(Person entity)
-=======
         public User SelectByEmail(string email)
         {
             throw new NotImplementedException();
         }
 
         public void Update(User entity)
->>>>>>> Stashed changes
         {
             throw new NotImplementedException();
         }

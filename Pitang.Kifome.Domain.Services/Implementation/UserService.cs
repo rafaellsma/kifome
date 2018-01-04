@@ -38,14 +38,9 @@ namespace Pitang.Kifome.Domain.Services.Implementation
 
         public void MakeComment(User user, Order order, string mensage)
         {
-<<<<<<< Updated upstream
-            Comment comment = new Comment(person, mensage);
-            order.Conversation.Comments.Add(comment);
-=======
             Comment comment = new Comment(user, mensage);
             order.Comments.Add(comment);
             orderRepository.Update(order);
->>>>>>> Stashed changes
         }
 
         public List<Order> OrdersFromUser(User user)
