@@ -122,9 +122,17 @@
       <Project>{53342d01-d88b-465d-aa2d-6a5893fbc494}</Project>
       <Name>Pitang.Kifome.Application.Services.IoC</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Pitang.Kifome.Crosscuting.IoC\Pitang.Kifome.Crosscuting.IoC.csproj">
+      <Project>{254f1376-9676-4447-8bb1-65ecc3bacf89}</Project>
+      <Name>Pitang.Kifome.Crosscuting.IoC</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pitang.Kifome.Domain.Services.IoC\Pitang.Kifome.Domain.Services.IoC.csproj">
       <Project>{344106d9-ec13-4bb9-a736-1d282e8919a7}</Project>
       <Name>Pitang.Kifome.Domain.Services.IoC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pitang.Kifome.Infra.Repositories.IoC\Pitang.Kifome.Infra.Repositories.IoC.csproj">
+      <Project>{feace6cf-9efc-4632-b00a-96e4c588c9b3}</Project>
+      <Name>Pitang.Kifome.Infra.Repositories.IoC</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
