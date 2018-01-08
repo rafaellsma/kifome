@@ -4,10 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Routing;
-using Pitangueiros.Kifome.Crosscuting.IoC;
 using Pitang.Kifome.Domain.Services.IoC;
-using Pitangueiros.Kifome.Infra.Repositories.IoC;
 using Pitang.Kifome.Application.Services.IoC;
+using Pitang.Kifome.Crosscuting.IoC;
+using Pitang.Kifome.Infra.Repositories.IoC;
 
 namespace Pitang.Kifome.Distribution.WebApi
 {

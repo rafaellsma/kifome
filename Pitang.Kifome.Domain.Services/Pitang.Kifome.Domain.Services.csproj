@@ -67,10 +67,6 @@
       <Project>{ec121a18-ffca-435e-85dc-00c2ffb9d8ed}</Project>
       <Name>Pitang.Kifome.Domain.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pitangueiros.Kifome.Crosscuting.IoC\Pitangueiros.Kifome.Crosscuting.IoC.csproj">
-      <Project>{254f1376-9676-4447-8bb1-65ecc3bacf89}</Project>
-      <Name>Pitangueiros.Kifome.Crosscuting.IoC</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

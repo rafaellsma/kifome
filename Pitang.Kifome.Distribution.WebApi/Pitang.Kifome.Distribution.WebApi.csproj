@@ -126,14 +126,6 @@
       <Project>{344106d9-ec13-4bb9-a736-1d282e8919a7}</Project>
       <Name>Pitang.Kifome.Domain.Services.IoC</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pitangueiros.Kifome.Crosscuting.IoC\Pitangueiros.Kifome.Crosscuting.IoC.csproj">
-      <Project>{254f1376-9676-4447-8bb1-65ecc3bacf89}</Project>
-      <Name>Pitangueiros.Kifome.Crosscuting.IoC</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pitangueiros.Kifome.Infra.Repositories.IoC\Pitangueiros.Kifome.Infra.Repositories.IoC.csproj">
-      <Project>{feace6cf-9efc-4632-b00a-96e4c588c9b3}</Project>
-      <Name>Pitangueiros.Kifome.Infra.Repositories.IoC</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

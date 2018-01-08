@@ -7,8 +7,8 @@
     <ProjectGuid>{FEACE6CF-9EFC-4632-B00A-96E4C588C9B3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pitangueiros.Kifome.Infra.Repositories.IoC</RootNamespace>
-    <AssemblyName>Pitangueiros.Kifome.Infra.Repositories.IoC</AssemblyName>
+    <RootNamespace>Pitang.Kifome.Infra.Repositories.IoC</RootNamespace>
+    <AssemblyName>Pitang.Kifome.Infra.Repositories.IoC</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -64,13 +64,9 @@
       <Project>{ec121a18-ffca-435e-85dc-00c2ffb9d8ed}</Project>
       <Name>Pitang.Kifome.Domain.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pitangueiros.Kifome.Crosscuting.IoC\Pitangueiros.Kifome.Crosscuting.IoC.csproj">
-      <Project>{254f1376-9676-4447-8bb1-65ecc3bacf89}</Project>
-      <Name>Pitangueiros.Kifome.Crosscuting.IoC</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pitangueiros.Kifome.Infra.Repositories\Pitangueiros.Kifome.Infra.Repositories.csproj">
+    <ProjectReference Include="..\Pitang.Kifome.Infra.Repositories\Pitang.Kifome.Infra.Repositories.csproj">
       <Project>{76ca5d59-e522-4a0f-bef8-2ae0e8afd26c}</Project>
-      <Name>Pitangueiros.Kifome.Infra.Repositories</Name>
+      <Name>Pitang.Kifome.Infra.Repositories</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

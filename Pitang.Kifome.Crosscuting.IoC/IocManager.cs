@@ -1,11 +1,4 @@
-﻿using Castle.Windsor;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Pitangueiros.Kifome.Crosscuting.IoC
+﻿namespace Pitang.Kifome.Crosscuting.IoC
 {
     public class IocManager
     {
