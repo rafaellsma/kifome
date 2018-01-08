@@ -8,7 +8,7 @@ using Pitang.Kifome.Domain.Entities;
 
 namespace Pitang.Kifome.Domain.Services.Implementation
 {
-    class CustomerService : ICustomerService
+    public class CustomerService : ICustomerService
     {
         public void CancelOrder(Order order)
         {

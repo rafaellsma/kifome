@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{32CC437F-1296-476D-B15A-FB4BB6D0B49F}</ProjectGuid>
+    <ProjectGuid>{344106D9-EC13-4BB9-A736-1D282E8919A7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Pitang.Kifome.Domain.Services</RootNamespace>
-    <AssemblyName>Pitang.Kifome.Domain.Services</AssemblyName>
+    <RootNamespace>Pitang.Kifome.Domain.Services.IoC</RootNamespace>
+    <AssemblyName>Pitang.Kifome.Domain.Services.IoC</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,9 +28,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'joao|AnyCPU'">
-    <OutputPath>bin\joao\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
@@ -53,10 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implementation\CustomerService.cs" />
-    <Compile Include="Implementation\SellerService.cs" />
+    <Compile Include="DomainServicesInstaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Implementation\UserService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Pitang.Kifome.Domain.Contracts\Pitang.Kifome.Domain.Contracts.csproj">
@@ -67,13 +64,14 @@
       <Project>{ec121a18-ffca-435e-85dc-00c2ffb9d8ed}</Project>
       <Name>Pitang.Kifome.Domain.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Pitang.Kifome.Domain.Services\Pitang.Kifome.Domain.Services.csproj">
+      <Project>{32cc437f-1296-476d-b15a-fb4bb6d0b49f}</Project>
+      <Name>Pitang.Kifome.Domain.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pitangueiros.Kifome.Crosscuting.IoC\Pitangueiros.Kifome.Crosscuting.IoC.csproj">
       <Project>{254f1376-9676-4447-8bb1-65ecc3bacf89}</Project>
       <Name>Pitangueiros.Kifome.Crosscuting.IoC</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

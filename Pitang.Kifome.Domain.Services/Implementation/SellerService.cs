@@ -8,7 +8,7 @@ using Pitang.Kifome.Domain.Entities;
 
 namespace Pitang.Kifome.Domain.Services.Implementation
 {
-    class SellerService : ISellerService
+    public class SellerService : ISellerService
     {
         public void AcceptRequest(Order order)
         {

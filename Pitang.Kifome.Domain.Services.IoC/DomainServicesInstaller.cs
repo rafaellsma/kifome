@@ -1,12 +1,11 @@
-﻿using Castle.MicroKernel.Registration;
-using Castle.MicroKernel.SubSystems.Configuration;
-using Castle.Windsor;
-using Pitang.Kifome.Domain.Contracts.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Castle.MicroKernel.Registration;
+using Castle.MicroKernel.SubSystems.Configuration;
+using Castle.Windsor;
 using Pitang.Kifome.Domain.Contracts.Services;
 using Pitang.Kifome.Domain.Services.Implementation;
 
