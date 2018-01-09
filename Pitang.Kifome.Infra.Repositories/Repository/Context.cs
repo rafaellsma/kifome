@@ -1,4 +1,5 @@
 ﻿using Pitang.Kifome.Domain.Entities;
+using System.Data.Entity;
 
 namespace Pitang.Kifome.Infra.Repositories.Repository
 {

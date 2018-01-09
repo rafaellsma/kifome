@@ -38,7 +38,7 @@ namespace Pitang.Kifome.Domain.Services.Implementation
 
         public void MakeComment(User user, Order order, string mensage)
         {
-            Comment comment = new Comment(user, mensage);
+            Comment comment = new Comment(user, order, mensage);
             order.Comments.Add(comment);
             orderRepository.Update(order);
         }
