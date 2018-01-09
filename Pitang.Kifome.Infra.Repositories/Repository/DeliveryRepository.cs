@@ -27,6 +27,11 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
             throw new NotImplementedException();
         }
 
+        public Delivery SelectBySellerId(int sellerId)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(Delivery entity)
         {
             throw new NotImplementedException();
