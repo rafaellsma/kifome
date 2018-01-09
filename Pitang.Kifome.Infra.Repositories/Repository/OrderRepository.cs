@@ -1,40 +1,38 @@
-﻿using Pitang.Kifome.Domain.Contracts.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Pitang.Kifome.Domain.Contracts.Repositories;
 using Pitang.Kifome.Domain.Entities;
 
-namespace Pitangueiros.Kifome.Infra.Repositories.Repository
+namespace Pitang.Kifome.Infra.Repositories.Repository
 {
-    public class UserRepository : IUserRepository
+    public class OrderRepository : IOrderRepository
     {
         public void Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Insert(User entity)
+        public void Insert(Order entity)
         {
             throw new NotImplementedException();
         }
 
-        public User Select(int id)
+        public Order Select(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<User> SelectAll()
-        {
-            throw new NotImplementedException();
-        }
-        public User SelectByEmail(string email)
+        public List<Order> SelectAll()
         {
             throw new NotImplementedException();
         }
 
-        public void Update(User entity)
+        public List<Order> SelectAllByUser(User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Order entity)
         {
             throw new NotImplementedException();
         }

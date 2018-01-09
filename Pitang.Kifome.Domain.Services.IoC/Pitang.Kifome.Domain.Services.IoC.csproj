@@ -56,6 +56,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Pitang.Kifome.Crosscuting.IoC\Pitang.Kifome.Crosscuting.IoC.csproj">
+      <Project>{254f1376-9676-4447-8bb1-65ecc3bacf89}</Project>
+      <Name>Pitang.Kifome.Crosscuting.IoC</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pitang.Kifome.Domain.Contracts\Pitang.Kifome.Domain.Contracts.csproj">
       <Project>{48865435-4775-462e-b1e2-a4f028b0e2de}</Project>
       <Name>Pitang.Kifome.Domain.Contracts</Name>
@@ -67,10 +71,6 @@
     <ProjectReference Include="..\Pitang.Kifome.Domain.Services\Pitang.Kifome.Domain.Services.csproj">
       <Project>{32cc437f-1296-476d-b15a-fb4bb6d0b49f}</Project>
       <Name>Pitang.Kifome.Domain.Services</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pitangueiros.Kifome.Crosscuting.IoC\Pitangueiros.Kifome.Crosscuting.IoC.csproj">
-      <Project>{254f1376-9676-4447-8bb1-65ecc3bacf89}</Project>
-      <Name>Pitangueiros.Kifome.Crosscuting.IoC</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

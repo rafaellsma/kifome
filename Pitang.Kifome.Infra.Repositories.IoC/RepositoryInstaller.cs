@@ -1,15 +1,7 @@
-﻿using Castle.MicroKernel.Registration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Castle.Windsor;
-using Castle.MicroKernel.SubSystems.Configuration;
-using Pitang.Kifome.Domain.Contracts.Repositories;
-using Pitangueiros.Kifome.Infra.Repositories.Repository;
+﻿using Pitang.Kifome.Domain.Contracts.Repositories;
+using Pitang.Kifome.Infra.Repositories.Repository;
 
-namespace Pitangueiros.Kifome.Infra.Repositories.IoC
+namespace Pitang.Kifome.Infra.Repositories.IoC
 {
     public class RepositoryInstaller : IWindsorInstaller
     {

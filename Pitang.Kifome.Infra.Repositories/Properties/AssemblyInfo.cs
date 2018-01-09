@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // As informações gerais sobre um assembly são controladas por
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associada a um assembly.
-[assembly: AssemblyTitle("Pitangueiros.Kifome.Infra.Repositories.IoC")]
+[assembly: AssemblyTitle("Pitang.Kifome.Infra.Repositories")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Pitangueiros.Kifome.Infra.Repositories.IoC")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyProduct("Pitang.Kifome.Infra.Repositories")]
+[assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // O GUID a seguir será destinado à ID de typelib se este projeto for exposto para COM
-[assembly: Guid("feace6cf-9efc-4632-b00a-96e4c588c9b3")]
+[assembly: Guid("76ca5d59-e522-4a0f-bef8-2ae0e8afd26c")]
 
 // As informações da versão de um assembly consistem nos quatro valores a seguir:
 //
