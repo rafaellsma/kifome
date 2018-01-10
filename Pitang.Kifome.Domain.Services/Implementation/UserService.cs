@@ -20,15 +20,14 @@ namespace Pitang.Kifome.Domain.Services.Implementation
             this.orderRepository = orderRepository;
         }
 
-        public bool Authenticate(string email, string password)
+        public User Authenticate(string email, string password)
         {
             User user = this.userRepository.SelectByEmail(email);
-            bool authenticate = false;
             if (user != null)
             {
-                authenticate = user.Password == password;
+                return user;
             }
-            return authenticate;
+            return null;
         }
 
         public void CreateUser(User user)
@@ -47,5 +46,6 @@ namespace Pitang.Kifome.Domain.Services.Implementation
         {
             return orderRepository.SelectAllByUser(user);
         }
+
     }
 }
