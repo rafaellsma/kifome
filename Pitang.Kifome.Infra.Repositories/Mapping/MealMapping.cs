@@ -18,11 +18,10 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             this.Property(m => m.Name).HasColumnName("name").IsRequired();
             this.Property(m => m.Description).HasColumnName("description");
+            this.Property(m => m.Days).HasColumnName("day").IsRequired();
             this.Property(m => m.Price).HasColumnName("price").IsRequired();
             this.HasRequired(m => m.Menu)
                 .WithMany(me => me.Meals);
-            //this.HasMany(m => m.Days)
-            //    .
         }
     }
 }

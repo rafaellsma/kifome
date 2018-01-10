@@ -13,9 +13,9 @@ namespace Pitang.Kifome.Domain.Entities
         public Menu Menu { get; set; }
         public List<Garnish> Garnishies { get; set; }
         public List<Order> Orders { get; set; }
-        public List<DayOfWeek> Days { get; set; }
+        public DayOfWeek Days { get; set; }
 
-        public Meal(string name, string description, float price, Menu menu, List<Garnish> garnishes, List<DayOfWeek> days)
+        public Meal(string name, string description, float price, Menu menu, List<Garnish> garnishes, DayOfWeek days)
         {
             this.Name = name;
             this.Description = description;
