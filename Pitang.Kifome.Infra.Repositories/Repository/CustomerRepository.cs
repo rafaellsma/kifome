@@ -1,35 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using Pitang.Kifome.Domain.Contracts.Repositories;
 using Pitang.Kifome.Domain.Entities;
 
 namespace Pitang.Kifome.Infra.Repositories.Repository
 {
-    public class CustomerRepository : ICustomerRepository
+    public class CustomerRepository : EfRepository<Customer, int>, ICustomerRepository
     {
-        public void Delete(int id)
+        public CustomerRepository(DbContext context) : base(context)
         {
-            throw new NotImplementedException();
         }
 
-        public void Insert(Customer entity)
+        public Customer SelectByEmail(string email)
         {
-            throw new NotImplementedException();
-        }
-
-        public Customer Select(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Customer> SelectAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Customer entity)
-        {
-            throw new NotImplementedException();
+            var result = from customer in this.Table
+                         where customer.Email == email
+                         select customer;
+            return result.SingleOrDefault();
         }
     }
 }

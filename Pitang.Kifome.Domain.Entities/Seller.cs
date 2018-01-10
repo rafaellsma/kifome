@@ -12,11 +12,11 @@ namespace Pitang.Kifome.Domain.Entities
         public List<Order> Orders { get; set; }
         public List<Delivery> Deliveries { get; set; }
 
-        public Seller(string name, string email, string password)
-        {
-            this.Name = name;
-            this.Email = email;
-            this.Password = password;
-        }
+        //public Seller(string name, string email, string password)
+        //{
+        //    this.Name = name;
+        //    this.Email = email;
+        //    this.Password = password;
+        //}
     }
 }

@@ -1,40 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data.Entity;
+using System.Linq;
 using Pitang.Kifome.Domain.Contracts.Repositories;
 using Pitang.Kifome.Domain.Entities;
 
 namespace Pitang.Kifome.Infra.Repositories.Repository
 {
-    public class SellerRepository : ISellerRepository
+    public class SellerRepository : EfRepository<Seller, int>,ISellerRepository
     {
-        public void Delete(int id)
+        public SellerRepository(DbContext context) : base(context)
         {
-            throw new NotImplementedException();
         }
 
-        public void Insert(Seller entity)
+        public Seller SelectByEmail(string email)
         {
-            throw new NotImplementedException();
+            var result = from seller in this.Table
+                         where seller.Email == email
+                         select seller;
+            return result.SingleOrDefault();
         }
 
-        public void InsertMenu(List<Meal> meals, DateTime initialHour, DateTime finalHour, int limitOfMeals)
+        public List<Seller> SelectByRate(int rate)
         {
-            throw new NotImplementedException();
-        }
-
-        public Seller Select(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Seller> SelectAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Seller entity)
-        {
-            throw new NotImplementedException();
+            var result = from seller in this.Table
+                         where seller.Rate == rate
+                         select seller;
+            return result.ToList();
         }
     }
 }

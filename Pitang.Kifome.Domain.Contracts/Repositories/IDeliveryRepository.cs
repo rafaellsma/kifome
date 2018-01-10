@@ -9,6 +9,6 @@ namespace Pitang.Kifome.Domain.Contracts.Repositories
 {
     public interface IDeliveryRepository : IRepository<Delivery, int>
     {
-        Delivery SelectBySellerId(int sellerId);
+        List<Delivery> SelectBySellerId(int sellerId);
     }
 }
