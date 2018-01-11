@@ -1,4 +1,7 @@
-﻿namespace Pitang.Kifome.Crosscuting.IoC
+﻿using Castle.Windsor;
+
+
+namespace Pitang.Kifome.Crosscuting.IoC
 {
     public class IocManager
     {

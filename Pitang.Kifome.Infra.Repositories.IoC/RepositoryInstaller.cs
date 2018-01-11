@@ -1,5 +1,8 @@
 ﻿using Pitang.Kifome.Domain.Contracts.Repositories;
 using Pitang.Kifome.Infra.Repositories.Repository;
+using Castle.Windsor;
+using Castle.MicroKernel.Registration;
+using Castle.MicroKernel.SubSystems.Configuration;
 
 namespace Pitang.Kifome.Infra.Repositories.IoC
 {

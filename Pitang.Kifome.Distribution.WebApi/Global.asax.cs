@@ -18,8 +18,7 @@ namespace Pitang.Kifome.Distribution.WebApi
             IocManager.Instance.IocContainer
                 .Install(new DomainServicesInstaller())
                 .Install(new RepositoryInstaller());
-                //.Install(new ApplicationServiceInstaller());
-
+            //.Install(new ApplicationServiceInstaller());
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }

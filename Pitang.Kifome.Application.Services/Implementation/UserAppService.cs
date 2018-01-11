@@ -21,7 +21,14 @@ namespace Pitang.Kifome.Application.Services.Implementation
         
         public UserOutputDTO Authentication(LoginAuthenticationDTO login)
         {
-            return this.userService.Authenticate(login.Email, login.Password).MapTo<UserOutputDTO>();
+            User user = this.userService.Authenticate(login.Email, login.Password);
+            UserOutputDTO userOutput = new UserOutputDTO() {
+                Name = user.Name,
+                Email = user.Email,
+                Id = user.Id
+            };
+
+            return userOutput;
         }
 
         public string RegisterUser(UserInputDTO user)
