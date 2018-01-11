@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace Pitang.Kifome.Domain.Contracts.Repositories
 {
-    public interface ICustomerRepository : IRepository<Customer, int>
+    public interface ICustomerRepository : IUserRepository<Customer, int>
     {
-        Customer SelectByEmail(string email);
     }
 }

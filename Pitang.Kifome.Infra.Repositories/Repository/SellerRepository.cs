@@ -8,13 +8,13 @@ using Pitang.Kifome.Domain.Entities;
 
 namespace Pitang.Kifome.Infra.Repositories.Repository
 {
-    public class SellerRepository : EfRepository<Seller, int>,ISellerRepository
+    public class SellerRepository : EfRepository<Seller, int>, ISellerRepository
     {
         public SellerRepository(DbContext context) : base(context)
         {
         }
 
-        public Seller SelectByEmail(string email)
+        public User SelectByEmail(string email)
         {
             var result = from seller in this.Table
                          where seller.Email == email

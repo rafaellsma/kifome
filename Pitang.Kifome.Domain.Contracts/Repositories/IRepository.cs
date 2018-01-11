@@ -12,7 +12,7 @@ namespace Pitang.Kifome.Domain.Contracts.Repositories
         where TId : IComparable<TId>, IEquatable<TId>
     {
         void Insert(T entity);
-        void Update();
+        void Update(T entity);
         T SelectById(TId id);
         List<T> SelectAll();
         void Delete(T entity);

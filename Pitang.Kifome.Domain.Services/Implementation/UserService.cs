@@ -11,10 +11,10 @@ namespace Pitang.Kifome.Domain.Services.Implementation
 {
     public class UserService : IUserService
     {
-        private readonly IUserRepository userRepository;
+        private readonly IUserRepository<User, int> userRepository;
         private readonly IOrderRepository orderRepository;
 
-        public UserService(IUserRepository userRepository, IOrderRepository orderRepository)
+        public UserService(IUserRepository<User, int> userRepository, IOrderRepository orderRepository)
         {
             this.userRepository = userRepository;
             this.orderRepository = orderRepository;
@@ -37,14 +37,16 @@ namespace Pitang.Kifome.Domain.Services.Implementation
 
         public void MakeComment(User user, Order order, string mensage)
         {
-            Comment comment = new Comment(user, order, mensage);
-            order.Comments.Add(comment);
-            orderRepository.Update(order);
+            //Comment comment = new Comment(user, order, mensage);
+            //order.Comments.Add(comment);
+            //orderRepository.Update(order);
+            throw new NotImplementedException();
         }
 
         public List<Order> OrdersFromUser(User user)
         {
-            return orderRepository.SelectAllByUser(user);
+            //return orderRepository.SelectAllByUser(user);
+            throw new NotImplementedException();
         }
 
     }

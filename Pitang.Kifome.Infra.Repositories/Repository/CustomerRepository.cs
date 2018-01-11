@@ -13,7 +13,7 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
         {
         }
 
-        public Customer SelectByEmail(string email)
+        public User SelectByEmail(string email)
         {
             var result = from customer in this.Table
                          where customer.Email == email
