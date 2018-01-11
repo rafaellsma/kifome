@@ -5,11 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Pitang.Kifome.Domain.Entities;
+using Pitang.Kifome.Domain.Contracts.Repositories;
 
 namespace Pitang.Kifome.Domain.Services.Implementation
 {
     public class SellerService : ISellerService
     {
+        private readonly IGarnishRepository garnishRepository;
+        public SellerService(IGarnishRepository garnishRepository)
+        {
+            this.garnishRepository = garnishRepository;
+        }
         public void AcceptRequest(Order order)
         {
             throw new NotImplementedException();
@@ -22,7 +28,12 @@ namespace Pitang.Kifome.Domain.Services.Implementation
 
         public void RegisterGarnish(string name, string description)
         {
-            throw new NotImplementedException();
+            Garnish garnish = new Garnish()
+            {
+                Name = name,
+                Description = description
+            };
+            garnishRepository.Insert(garnish);
         }
 
         public void RegisterMeal(string name, string description, float price, List<DayOfWeek> days, List<Garnish> garnishies)

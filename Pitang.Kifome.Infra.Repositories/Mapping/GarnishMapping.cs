@@ -13,6 +13,7 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
     {
         public GarnishMapping()
         {
+            this.ToTable("Garnish");
             this.HasKey(g => g.Id);
             this.Property(g => g.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
