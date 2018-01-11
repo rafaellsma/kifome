@@ -1,40 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using Pitang.Kifome.Domain.Contracts.Repositories;
 using Pitang.Kifome.Domain.Entities;
 
 namespace Pitang.Kifome.Infra.Repositories.Repository
 {
-    public class DeliveryRepository : IDeliveryRepository
+    public class DeliveryRepository : EfRepository<Delivery, int>, IDeliveryRepository
     {
-        public void Delete(int id)
+        public DeliveryRepository(DbContext context) : base(context)
         {
-            throw new NotImplementedException();
         }
 
-        public void Insert(Delivery entity)
+        public List<Delivery> SelectBySellerId(int sellerId)
         {
-            throw new NotImplementedException();
-        }
-
-        public Delivery Select(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Delivery> SelectAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Delivery SelectBySellerId(int sellerId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Delivery entity)
-        {
-            throw new NotImplementedException();
+            var result = from delivery in this.Table
+                         where delivery.Seller.Id == sellerId
+                         select delivery;
+            return result.ToList();
         }
     }
 }

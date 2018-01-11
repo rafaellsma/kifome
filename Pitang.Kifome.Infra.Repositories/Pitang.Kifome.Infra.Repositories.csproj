@@ -68,12 +68,12 @@
     <Compile Include="Mapping\Context.cs" />
     <Compile Include="Repository\CustomerRepository.cs" />
     <Compile Include="Repository\DeliveryRepository.cs" />
+    <Compile Include="Repository\EfRepository.cs" />
     <Compile Include="Repository\GarnishRepository.cs" />
     <Compile Include="Repository\MealRepository.cs" />
     <Compile Include="Repository\MenuRepository.cs" />
     <Compile Include="Repository\OrderRepository.cs" />
     <Compile Include="Repository\SellerRepository.cs" />
-    <Compile Include="Repository\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -1,40 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using Pitang.Kifome.Domain.Contracts.Repositories;
 using Pitang.Kifome.Domain.Entities;
 
 namespace Pitang.Kifome.Infra.Repositories.Repository
 {
-    public class OrderRepository : IOrderRepository
+    public class OrderRepository : EfRepository<Order, int>,IOrderRepository
     {
-        public void Delete(int id)
+        public OrderRepository(DbContext context) : base(context)
         {
-            throw new NotImplementedException();
         }
 
-        public void Insert(Order entity)
+        public List<Order> SelectAllBySellerId(int id)
         {
-            throw new NotImplementedException();
+            var result = from order in this.Table
+                         where order.Seller.Id == id
+                         select order;
+            return result.ToList();
         }
 
-        public Order Select(int id)
+        public List<Order> SelectAllByCustomerId(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public List<Order> SelectAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Order> SelectAllByUser(User user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Order entity)
-        {
-            throw new NotImplementedException();
+            var result = from order in this.Table
+                         where order.Customer.Id == id
+                         select order;
+            return result.ToList();
         }
     }
 }

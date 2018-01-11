@@ -14,12 +14,12 @@ namespace Pitang.Kifome.Domain.Entities
         public OrderStatusEnum Status { get; set; }
         public List<Comment> Comments { get; set; }
 
-        public Order(Seller seller, Customer customer, Delivery delivery, List<Meal> meals)
-        {
-            this.Seller = seller;
-            this.Customer = customer;
-            this.Delivery = delivery;
-            this.Meals = meals;
-        }
+        //public Order(Seller seller, Customer customer, Delivery delivery, List<Meal> meals)
+        //{
+        //    this.Seller = seller;
+        //    this.Customer = customer;
+        //    this.Delivery = delivery;
+        //    this.Meals = meals;
+        //}
     }
 }

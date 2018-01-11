@@ -9,5 +9,6 @@ namespace Pitang.Kifome.Domain.Contracts.Repositories
 {
     public interface ICustomerRepository : IRepository<Customer, int>
     {
+        Customer SelectByEmail(string email);
     }
 }

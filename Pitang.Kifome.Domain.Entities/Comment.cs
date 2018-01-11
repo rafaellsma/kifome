@@ -11,11 +11,11 @@ namespace Pitang.Kifome.Domain.Entities
         public Order Order { get; set; }
         public string Message { get; set; }
 
-        public Comment(User user, Order order, string message)
-        {
-            this.User = user;
-            this.Order = order;
-            this.Message = message;
-        }
+        //public Comment(User user, Order order, string message)
+        //{
+        //    this.User = user;
+        //    this.Order = order;
+        //    this.Message = message;
+        //}
     }
 }

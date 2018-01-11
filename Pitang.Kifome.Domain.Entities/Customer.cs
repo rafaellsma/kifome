@@ -9,11 +9,11 @@ namespace Pitang.Kifome.Domain.Entities
     {
         public List<Order> OrdersHistory { get; set; }
 
-        public Customer(string name, string email, string password)
-        {
-            this.Name = name;
-            this.Email = email;
-            this.Password = password;
-        }
+        //public Customer(string name, string email, string password)
+        //{
+        //    this.Name = name;
+        //    this.Email = email;
+        //    this.Password = password;
+        //}
     }
 }
