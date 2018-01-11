@@ -8,12 +8,13 @@ namespace Pitang.Kifome.Domain.Entities
 {
     public enum DayOfWeekEnum
     {
-        Sunday,
-        Monday,
-        Tuesday,
-        Wednesday,
-        Thursday,
-        Friday,
-        Saturday
+        None = 0,
+        Sunday = 1,
+        Monday = 2,
+        Tuersday = 4,
+        Wednesday = 8,
+        Thursday = 16,
+        Friday = 32,
+        Saturday = 64
     }
 }
