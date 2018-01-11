@@ -11,10 +11,10 @@ namespace Pitang.Kifome.Domain.Services.Implementation
 {
     public class SellerService : ISellerService
     {
-        private readonly IGarnishRepository garnishRepository;
-        public SellerService(IGarnishRepository garnishRepository)
+        private readonly IUnitOfWork unitOfWork;
+        public SellerService(IUnitOfWork unitOfWork)
         {
-            this.garnishRepository = garnishRepository;
+            this.unitOfWork = unitOfWork;
         }
         public void AcceptRequest(Order order)
         {
@@ -33,7 +33,7 @@ namespace Pitang.Kifome.Domain.Services.Implementation
                 Name = name,
                 Description = description
             };
-            garnishRepository.Insert(garnish);
+            unitOfWork.GarnishRepository.Insert(garnish);
         }
 
         public void RegisterMeal(string name, string description, float price, List<DayOfWeek> days, List<Garnish> garnishies)

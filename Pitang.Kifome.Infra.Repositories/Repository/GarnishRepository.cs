@@ -7,9 +7,9 @@ using Pitang.Kifome.Infra.Repositories.Mapping;
 
 namespace Pitang.Kifome.Infra.Repositories.Repository
 {
-    public class GarnishRepository : EfRepository<Garnish, int>,IGarnishRepository
+    public class GarnishRepository : EfRepository<Garnish, int>, IGarnishRepository
     {
-        public GarnishRepository() : base(new Context())
+        public GarnishRepository(DbContext context) : base(context)
         {
         }
     }

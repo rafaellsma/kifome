@@ -54,6 +54,7 @@
     <Compile Include="Repositories\IOrderRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\ISellerRepository.cs" />
+    <Compile Include="Repositories\IUnitOfWork.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Services\ICustomerService.cs" />
     <Compile Include="Services\ISellerService.cs" />
