@@ -1,22 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
+using System.Web.Http;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using Pitang.Kifome.Application.Contracts.Services;
-using Pitang.Kifome.Application.Services.Implementation;
 
-namespace Pitang.Kifome.Application.Services.IoC
+namespace Pitang.Kifome.Distribution.WebApi.IoC
 {
-    public class ApplicationServiceInstaller : IWindsorInstaller
+    public class ApiInstaller : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(
-                Component.For<IUserAppService, UserAppService>()
+              Classes.
+                FromThisAssembly().
+                BasedOn<ApiController>(). //Web API
+                If(c => c.Name.EndsWith("Controller")).
+                LifestyleTransient()
             );
         }
     }

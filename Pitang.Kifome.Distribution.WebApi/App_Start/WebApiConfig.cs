@@ -1,4 +1,5 @@
 ﻿using Pitang.Kifome.Crosscuting.IoC;
+using Pitang.Kifome.Distribution.WebApi.IoC;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,10 @@ namespace Pitang.Kifome.Distribution.WebApi
 
             // Rotas da API da Web
             config.MapHttpAttributeRoutes();
+
+            config.Services.Replace(typeof(IHttpControllerActivator), new ApiControllerActivator());
+
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

@@ -14,13 +14,13 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
     public class UserController : ApiController
     {
         public readonly IUserAppService userAppService;
-        public UserController()
+
+        public UserController(IUserAppService userAppServiceInstance)
         {
-            this.userAppService = IocManager.Instance.IocContainer.Resolve<UserAppService>();
-            //this.userAppService = IocManager.Instance.IocContainer.Resolve<IUserAppService>();
+            this.userAppService = userAppServiceInstance;
         }
 
-        [HttpPost]
+        [HttpGet]
         public UserOutputDTO LoginAuthentication(LoginAuthenticationDTO login)
         {
             return this.userAppService.Authentication(login);

@@ -8,6 +8,7 @@ using Pitang.Kifome.Domain.Services.IoC;
 using Pitang.Kifome.Application.Services.IoC;
 using Pitang.Kifome.Crosscuting.IoC;
 using Pitang.Kifome.Infra.Repositories.IoC;
+using Pitang.Kifome.Distribution.WebApi.IoC;
 
 namespace Pitang.Kifome.Distribution.WebApi
 {
@@ -17,8 +18,9 @@ namespace Pitang.Kifome.Distribution.WebApi
         {
             IocManager.Instance.IocContainer
                 .Install(new DomainServicesInstaller())
-                .Install(new RepositoryInstaller());
-            //.Install(new ApplicationServiceInstaller());
+                .Install(new RepositoryInstaller())
+                .Install(new ApplicationServiceInstaller())
+                .Install(new ApiInstaller());
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
