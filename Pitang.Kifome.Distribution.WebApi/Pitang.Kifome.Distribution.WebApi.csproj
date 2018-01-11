@@ -90,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -106,7 +107,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +121,10 @@
     <ProjectReference Include="..\Pitang.Kifome.Application.Services.IoC\Pitang.Kifome.Application.Services.IoC.csproj">
       <Project>{53342d01-d88b-465d-aa2d-6a5893fbc494}</Project>
       <Name>Pitang.Kifome.Application.Services.IoC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pitang.Kifome.Application.Services\Pitang.Kifome.Application.Services.csproj">
+      <Project>{4d47a016-ae59-4551-b286-d7c62231c563}</Project>
+      <Name>Pitang.Kifome.Application.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\Pitang.Kifome.Crosscuting.IoC\Pitang.Kifome.Crosscuting.IoC.csproj">
       <Project>{254f1376-9676-4447-8bb1-65ecc3bacf89}</Project>

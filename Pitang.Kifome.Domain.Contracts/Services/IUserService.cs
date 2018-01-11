@@ -9,7 +9,7 @@ namespace Pitang.Kifome.Domain.Contracts.Services
 {
     public interface IUserService
     {
-        bool Authenticate(string email, string password);
+        User Authenticate(string email, string password);
         void CreateUser(User user);
         void MakeComment(User user, Order order, string mensage);
         List<Order> OrdersFromUser(User user);

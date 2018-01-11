@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementation\UserAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +63,10 @@
     <ProjectReference Include="..\Pitang.Kifome.Domain.Contracts\Pitang.Kifome.Domain.Contracts.csproj">
       <Project>{48865435-4775-462e-b1e2-a4f028b0e2de}</Project>
       <Name>Pitang.Kifome.Domain.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pitang.Kifome.Domain.Entities\Pitang.Kifome.Domain.Entities.csproj">
+      <Project>{ec121a18-ffca-435e-85dc-00c2ffb9d8ed}</Project>
+      <Name>Pitang.Kifome.Domain.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
