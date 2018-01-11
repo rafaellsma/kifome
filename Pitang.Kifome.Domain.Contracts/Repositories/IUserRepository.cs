@@ -8,9 +8,9 @@
  namespace Pitang.Kifome.Domain.Contracts.Repositories
  {
      public interface IUserRepository<T, TId> : IRepository<T, TId>
-        where T : class, IBaseEntity<TId>
+        where T : class, IBaseEntity<TId>, new()
         where TId : IComparable<TId>, IEquatable<TId>
-    {
-         User SelectByEmail(string email);
+     {
+         T SelectByEmail(string email);
      }
  }
