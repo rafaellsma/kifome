@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Pitang.Kifome.Infra.Repositories.Repository
 {
     public class EfRepository<T, TId> : IRepository<T, TId>
-        where T : class, IBaseEntity<TId>, new()
+        where T : class, IBaseEntity<TId>
         where TId : IComparable<TId>, IEquatable<TId>
     {
         protected DbContext Context { get; }
