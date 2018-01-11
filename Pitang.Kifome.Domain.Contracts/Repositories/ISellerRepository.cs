@@ -10,5 +10,7 @@ namespace Pitang.Kifome.Domain.Contracts.Repositories
     public interface ISellerRepository : IUserRepository<Seller, int>
     {
         List<Seller> SelectByRate(int rate);
+        List<Seller> SelectByPrice(float price);
+        List<Seller> SelectByName(string name);
     }
 }
