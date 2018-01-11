@@ -11,16 +11,18 @@ using Pitang.Kifome.Application.Services.Implementation;
 
 namespace Pitang.Kifome.Distribution.WebApi.Controllers
 {
-    public class UserController : ApiController
+    [RoutePrefix("api")]
+    public class AuthenticationController : ApiController
     {
         public readonly IUserAppService userAppService;
 
-        public UserController(IUserAppService userAppServiceInstance)
+        public AuthenticationController(IUserAppService userAppServiceInstance)
         {
             this.userAppService = userAppServiceInstance;
         }
-
-        [HttpGet]
+        //URL = /api/authentication/
+        [AcceptVerbs("Get")]
+        [Route("authentication")]
         public UserOutputDTO LoginAuthentication(LoginAuthenticationDTO login)
         {
             return this.userAppService.Authentication(login);
