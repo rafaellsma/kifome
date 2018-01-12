@@ -4,7 +4,7 @@ using System.Web.Http;
 
 namespace Pitang.Kifome.Distribution.WebApi.Controllers
 {
-    [RoutePrefix("api")]
+    [RoutePrefix("api/garnish")]
     public class GarnishesController : ApiController
     {
         public readonly ISellerAppService sellerAppService;
@@ -15,10 +15,15 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
         }
 
         [AcceptVerbs("post")]
-        [Route("garnish")]
         public void CreateGarnish(GarnishInputDTO garnish)
         {
             sellerAppService.RegisterGarnish(garnish);
+        }
+
+        [AcceptVerbs("get")]
+        public IHttpActionResult GetGarnishes()
+        {
+            return Ok(sellerAppService.GetGarnishes());
         }
     }
 }

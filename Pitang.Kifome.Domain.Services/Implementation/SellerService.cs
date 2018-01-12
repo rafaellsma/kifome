@@ -45,5 +45,10 @@ namespace Pitang.Kifome.Domain.Services.Implementation
         {
             throw new NotImplementedException();
         }
+
+        public IList<Garnish> GetGarnishes()
+        {
+            return unitOfWork.GarnishRepository.SelectAll();
+        }
     }
 }

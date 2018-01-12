@@ -9,6 +9,7 @@ namespace Pitang.Kifome.Application.Contracts.Services
 {
     public interface ISellerAppService
     {
-        void RegisterGarnish(GarnishInputDTO garnish);   
+        void RegisterGarnish(GarnishInputDTO garnish);
+        IList<GarnishOutputDTO> GetGarnishes();
     }
 }
