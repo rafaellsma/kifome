@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Castle.MicroKernel.Registration;
+﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using Pitang.Kifome.Application.Contracts.Services;
@@ -16,7 +11,8 @@ namespace Pitang.Kifome.Application.Services.IoC
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(
-                Component.For<IUserAppService, UserAppService>()
+                Component.For<IUserAppService, UserAppService>(),
+                Component.For<ISellerAppService, SellerAppService>()
             );
         }
     }

@@ -4,7 +4,7 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
 {
     public class Context : DbContext
     {
-        public Context() : base("Server=localhost;Database=Kifome;Trusted_Connection=True;")
+        public Context() : base("Data Source=FATIMA-PC\\SQLEXPRESS;Initial Catalog=Kifome;Integrated Security=True")
         {
             Database.SetInitializer<Context>(null);
         }
@@ -17,8 +17,8 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
             modelBuilder.Configurations.Add(new MealMapping());
             modelBuilder.Configurations.Add(new MenuMapping());
             modelBuilder.Configurations.Add(new OrderMapping());
-            modelBuilder.Configurations.Add(new SellerMapping());
-            modelBuilder.Configurations.Add(new CustomerMapping());
+            //modelBuilder.Configurations.Add(new SellerMapping());
+            //modelBuilder.Configurations.Add(new CustomerMapping());
             base.OnModelCreating(modelBuilder);
         }
     }
