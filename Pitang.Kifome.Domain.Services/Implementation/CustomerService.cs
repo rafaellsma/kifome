@@ -4,45 +4,79 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Pitang.Kifome.Domain.Contracts.Repositories;
 using Pitang.Kifome.Domain.Entities;
 
 namespace Pitang.Kifome.Domain.Services.Implementation
 {
-    public class CustomerService : ICustomerService
+    public class CustomerService : UserService<Customer>, ICustomerService
     {
+        private readonly IOrderRepository orderRepository;
+        private readonly ISellerRepository sellerRepository;
+
+        public CustomerService(IUserRepository<Customer, int> userRepository, 
+            IOrderRepository orderRepository,
+            ISellerRepository sellerRepository) 
+            : base(userRepository, orderRepository)
+        {
+            this.orderRepository = orderRepository;
+            this.sellerRepository = sellerRepository;
+        }
+
         public void CancelOrder(Order order)
         {
-            throw new NotImplementedException();
+            order.Status = OrderStatusEnum.Canceled;
+            orderRepository.Update(order);
         }
 
         public void EditOrder(Order order)
         {
-            throw new NotImplementedException();
+            orderRepository.Update(order);
         }
 
-        public Order MakeOrder(Seller seller, List<Meal> meals, Delivery local)
+        public Order MakeOrder(Seller seller, Customer customer, List<Meal> meals, Delivery delivery)
+        {
+            Order order = new Order()
+            {
+                Seller = seller,
+                Customer = customer,
+                Meals = meals,
+                Delivery = delivery,
+                Status = OrderStatusEnum.Waiting
+            };
+            orderRepository.Insert(order);
+            return orderRepository.SelectById(order.Id);
+        }
+
+        public List<Order> OrdersFromUser(int id)
+        {
+            return orderRepository.SelectAllByCustomerId(id);
+        }
+
+        public List<Seller> SearchSellerByLocal(double latitude, double longitude)
         {
             throw new NotImplementedException();
         }
 
-        public Seller SearchSellerByLocal(double latitude, double longitude)
+        public List<Seller> SearchSellerByName(string name)
         {
-            throw new NotImplementedException();
+            return sellerRepository.SelectByName(name);
         }
 
-        public Seller SearchSellerByName(string name)
+        public List<Seller> SearchSellerByPrice(float price)
         {
-            throw new NotImplementedException();
+            return sellerRepository.SelectByPrice(price);
         }
 
-        public Seller SearchSellerByPrice(float price)
+        public List<Seller> SearchSellerByRate(int rate)
         {
-            throw new NotImplementedException();
+            return sellerRepository.SelectByRate(rate);
         }
 
-        public void SellerEvaluation(int rate)
+        public void SellerEvaluation(Seller seller, int rate)
         {
-            throw new NotImplementedException();
+            seller.Rate = rate;
+            sellerRepository.Update(seller);
         }
     }
 }

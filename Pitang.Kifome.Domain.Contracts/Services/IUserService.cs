@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace Pitang.Kifome.Domain.Contracts.Services
 {
-    public interface IUserService
+    public interface IUserService<T, TId>
+        where T : class, IBaseEntity<TId>, new()
+        where TId : IComparable<TId>, IEquatable<TId>
     {
-        User Authenticate(string email, string password);
-        void CreateUser(User user);
-        void MakeComment(User user, Order order, string mensage);
-        List<Order> OrdersFromUser(User user);
+        bool Authenticate(string email, string password);
+        void CreateUser(T user);
+        void MakeComment(T user, Order order, string mensage);
     }
 }

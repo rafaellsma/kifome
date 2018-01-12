@@ -9,45 +9,44 @@ using System.Threading.Tasks;
 
 namespace Pitang.Kifome.Domain.Services.Implementation
 {
-    public class UserService : IUserService
+    public class UserService<T> : IUserService<T, int>
+        where T : User, IBaseEntity<int>, new()
     {
-        private readonly IUserRepository<User, int> userRepository;
+        private readonly IUserRepository<T, int> userRepository;
         private readonly IOrderRepository orderRepository;
 
-        public UserService(IUserRepository<User, int> userRepository, IOrderRepository orderRepository)
+        public UserService(IUserRepository<T, int> userRepository, IOrderRepository orderRepository)
         {
             this.userRepository = userRepository;
             this.orderRepository = orderRepository;
         }
 
-        public User Authenticate(string email, string password)
+        public bool Authenticate(string email, string password)
         {
-            User user = this.userRepository.SelectByEmail(email);
+            var user = this.userRepository.SelectByEmail(email);
+            bool autentication = false;
             if (user != null)
             {
-                return user;
+                autentication = user.Password == password;
             }
-            return null;
+            return autentication;
         }
 
-        public void CreateUser(User user)
+        public void CreateUser(T user)
         {
             userRepository.Insert(user);
         }
 
-        public void MakeComment(User user, Order order, string mensage)
+        public void MakeComment(T user, Order order, string mensage)
         {
-            //Comment comment = new Comment(user, order, mensage);
-            //order.Comments.Add(comment);
-            //orderRepository.Update(order);
-            throw new NotImplementedException();
+            Comment comment = new Comment()
+            {
+                User = user,
+                Order = order,
+                Message = mensage
+            };
+            order.Comments.Add(comment);
+            orderRepository.Update(order);
         }
-
-        public List<Order> OrdersFromUser(User user)
-        {
-            //return orderRepository.SelectAllByUser(user);
-            throw new NotImplementedException();
-        }
-
     }
 }

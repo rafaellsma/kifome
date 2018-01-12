@@ -7,7 +7,7 @@ using Pitang.Kifome.Domain.Entities;
 
 namespace Pitang.Kifome.Infra.Repositories.Repository
 {
-    public class CustomerRepository : UserRepository<Customer, int>, ICustomerRepository
+    public class CustomerRepository : UserRepository<Customer>, ICustomerRepository
     {
         public CustomerRepository(DbContext context) : base(context)
         {
