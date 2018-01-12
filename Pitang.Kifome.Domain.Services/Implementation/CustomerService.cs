@@ -20,22 +20,22 @@ namespace Pitang.Kifome.Domain.Services.Implementation
             throw new NotImplementedException();
         }
 
-        public Order MakeOrder(Seller seller, List<Meal> meals, Delivery local)
+        public Order MakeOrder(User seller, List<Meal> meals, Delivery local)
         {
             throw new NotImplementedException();
         }
 
-        public Seller SearchSellerByLocal(double latitude, double longitude)
+        public User SearchSellerByLocal(double latitude, double longitude)
         {
             throw new NotImplementedException();
         }
 
-        public Seller SearchSellerByName(string name)
+        public User SearchSellerByName(string name)
         {
             throw new NotImplementedException();
         }
 
-        public Seller SearchSellerByPrice(float price)
+        public User SearchSellerByPrice(float price)
         {
             throw new NotImplementedException();
         }

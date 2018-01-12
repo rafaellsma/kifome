@@ -10,20 +10,49 @@ using System.Threading.Tasks;
 
 namespace Pitang.Kifome.Infra.Repositories.Repository
 {
-    public class UserRepository<T, TId> : EfRepository<T, TId>, IUserRepository<T, TId>
-        where T : User, IBaseEntity<TId>, new()
-        where TId : IComparable<TId>, IEquatable<TId>
+    public class UserRepository : EfRepository<User, int>, IUserRepository
     {
         public UserRepository(DbContext context) : base(context)
         {
 
         }
-        public T SelectByEmail(string email)
+
+        public void Delete(User entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Insert(User entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public User SelectByEmail(string email)
         {
             var result = from user in this.Table
                          where user.Email == email
                          select user;
             return result.SingleOrDefault();
+        }
+
+        public User SelectById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(User entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<User> IRepository<User, int>.SelectAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        User IUserRepository.SelectByEmail(string email)
+        {
+            throw new NotImplementedException();
         }
     }
 }

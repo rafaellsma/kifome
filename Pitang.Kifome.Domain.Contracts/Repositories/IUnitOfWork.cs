@@ -9,6 +9,7 @@ namespace Pitang.Kifome.Domain.Contracts.Repositories
 {
     public interface IUnitOfWork : IDisposable
     {
-        IRepository<Garnish, int> GarnishRepository { get; }
+        IGarnishRepository GarnishRepository { get; }
+        IUserRepository UserRepository { get; }
     }
 }

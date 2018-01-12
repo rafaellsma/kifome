@@ -7,7 +7,7 @@ namespace Pitang.Kifome.Domain.Entities
 {
     public class Menu : BaseEntity<int>
     {
-        public Seller Seller { get; set; }
+        public User Seller { get; set; }
         public IList<Meal> Meals { get; set; }
         public DateTime InitialHour { get; set; }
         public DateTime FinalHour { get; set; }

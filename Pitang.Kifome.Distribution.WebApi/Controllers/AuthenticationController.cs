@@ -8,10 +8,12 @@ using Pitang.Kifome.Application.Contracts.Services;
 using Pitang.Kifome.Application.Entities;
 using Pitang.Kifome.Crosscuting.IoC;
 using Pitang.Kifome.Application.Services.Implementation;
+using System.Web.Http.Cors;
 
 namespace Pitang.Kifome.Distribution.WebApi.Controllers
 {
     [RoutePrefix("api")]
+    [EnableCors(origins: "*", headers: "*", methods:"*")]
     public class AuthenticationController : ApiController
     {
         public readonly IUserAppService userAppService;
@@ -21,7 +23,7 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
             this.userAppService = userAppServiceInstance;
         }
         //URL = /api/authentication/
-        [AcceptVerbs("Get")]
+        [AcceptVerbs("Post")]
         [Route("authentication")]
         public UserOutputDTO LoginAuthentication(LoginAuthenticationDTO login)
         {

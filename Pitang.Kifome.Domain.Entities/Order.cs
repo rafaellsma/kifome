@@ -7,8 +7,8 @@ namespace Pitang.Kifome.Domain.Entities
 {
     public class Order : BaseEntity<int>
     {
-        public Seller Seller { get; set; }
-        public Customer Customer { get; set; }
+        public User Seller { get; set; }
+        public User Customer { get; set; }
         public Delivery Delivery { get; set; }
         public IList<Meal> Meals { get; set; }
         public OrderStatusEnum Status { get; set; }

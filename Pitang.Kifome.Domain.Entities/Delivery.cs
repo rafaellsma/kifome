@@ -12,6 +12,6 @@ namespace Pitang.Kifome.Domain.Entities
         public double Longitude { get; set; }
         public DateTime InitialHour { get; set; }
         public DateTime FinalHour { get; set; }
-        public Seller Seller { get; set; }
+        public User Seller { get; set; }
     }
 }

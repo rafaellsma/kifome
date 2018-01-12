@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Pitang.Kifome.Infra.Repositories.Mapping
 {
-    public class SellerMapping : EntityTypeConfiguration<Seller>
+    public class SellerMapping : EntityTypeConfiguration<User>
     {
         public SellerMapping()
         {

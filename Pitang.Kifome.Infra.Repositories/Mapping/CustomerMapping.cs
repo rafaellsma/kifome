@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Pitang.Kifome.Infra.Repositories.Mapping
 {
-    public class CustomerMapping : EntityTypeConfiguration<Customer>
+    public class CustomerMapping : EntityTypeConfiguration<User>
     {
         public CustomerMapping()
         {

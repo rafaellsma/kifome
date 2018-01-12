@@ -12,11 +12,27 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {
+        #region Variables
+
         private DbContext context;
         private bool disposed;
-        private IRepository<Garnish, int> garnishRepository;
 
-        public IRepository<Garnish, int> GarnishRepository
+
+        #endregion
+
+        #region Constructor
+
+        public UnitOfWork()
+        {
+            this.context = new Context();
+            this.disposed = false;
+        }
+        #endregion
+
+        #region Props
+
+        private IGarnishRepository garnishRepository;
+        public IGarnishRepository GarnishRepository
         {
             get
             {
@@ -27,11 +43,27 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
                 return this.garnishRepository;
             }
         }
-        public UnitOfWork()
+
+        private IUserRepository userRepository;
+        public IUserRepository UserRepository
         {
-            this.context = new Context();
-            this.disposed = false;
+            get
+            {
+                if (this.userRepository == null)
+                {
+                    this.userRepository = new UserRepository(context);
+                }
+                return this.userRepository;
+            }
         }
+
+        #endregion
+
+
+
+        #region Dispose Pattern
+
+
         private void Dispose(bool disposing)
         {
             if (this.disposed)
@@ -48,5 +80,7 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
         {
             Dispose(true);
         }
+
+        #endregion
     }
 }

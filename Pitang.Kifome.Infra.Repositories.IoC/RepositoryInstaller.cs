@@ -12,15 +12,13 @@ namespace Pitang.Kifome.Infra.Repositories.IoC
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(
-                //Component.For<IUserRepository<User, int>, UserRepository>(),
+                Component.For<IUserRepository, UserRepository>(),
                 Component.For<ICommentRepository, CommentRepository>(),
-                Component.For<ICustomerRepository, CustomerRepository>(),
                 Component.For<IDeliveryRepository, DeliveryRepository>(),
                 Component.For<IGarnishRepository, GarnishRepository>(),
                 Component.For<IMealRepository, MealRepository>(),
                 Component.For<IMenuRepository, MenuRepository>(),
                 Component.For<IOrderRepository, OrderRepository>(),
-                Component.For<ISellerRepository, SellerRepository>(),
                 Component.For<IUnitOfWork, UnitOfWork>()
             );
         }
