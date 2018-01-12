@@ -12,7 +12,7 @@ namespace Pitang.Kifome.Application.Services.Implementation
 {
     public class UserAppService : IUserAppService
     {
-        private IUserService userService { get; set; }
+        private readonly IUserService userService;
 
         public UserAppService(IUserService userServiceInstance)
         {
@@ -31,9 +31,9 @@ namespace Pitang.Kifome.Application.Services.Implementation
             return userOutput;
         }
 
-        public string RegisterUser(UserInputDTO user)
+        public void RegisterUser(UserInputDTO user)
         {
-            throw new NotImplementedException();
+            userService.CreateUser(user.Name, user.Email, user.Password);
         }
     }
 }
