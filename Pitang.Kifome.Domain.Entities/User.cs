@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Pitang.Kifome.Domain.Entities
 {
-    public abstract class User : BaseEntity<int>
+    public class User : BaseEntity<int>
     {
         public string Name { get; set; }
         public string Email { get; set; }
