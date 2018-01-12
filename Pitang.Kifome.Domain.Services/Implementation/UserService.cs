@@ -28,8 +28,14 @@ namespace Pitang.Kifome.Domain.Services.Implementation
             return null;
         }
 
-        public void CreateUser(User user)
+        public void CreateUser(string name, string email, string password)
         {
+            User user = new User()
+            {
+                Name = name,
+                Email = email,
+                Password = password
+            };
             this.unitOfWork.UserRepository.Insert(user);
         }
 

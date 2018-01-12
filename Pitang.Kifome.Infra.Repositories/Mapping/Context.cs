@@ -17,8 +17,7 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
             modelBuilder.Configurations.Add(new MealMapping());
             modelBuilder.Configurations.Add(new MenuMapping());
             modelBuilder.Configurations.Add(new OrderMapping());
-            //modelBuilder.Configurations.Add(new SellerMapping());
-            //modelBuilder.Configurations.Add(new CustomerMapping());
+            modelBuilder.Configurations.Add(new UserMapping());
             base.OnModelCreating(modelBuilder);
         }
     }

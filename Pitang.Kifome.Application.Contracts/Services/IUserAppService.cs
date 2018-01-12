@@ -6,6 +6,6 @@ namespace Pitang.Kifome.Application.Contracts.Services
     public interface IUserAppService
     {
         UserOutputDTO Authentication(LoginAuthenticationDTO login);
-        String RegisterUser(UserInputDTO user);
+        void RegisterUser(UserInputDTO user);
     }
 }
