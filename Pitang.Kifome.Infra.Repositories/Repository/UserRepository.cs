@@ -14,17 +14,6 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
     {
         public UserRepository(DbContext context) : base(context)
         {
-
-        }
-
-        public void Delete(User entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Insert(User entity)
-        {
-            throw new NotImplementedException();
         }
 
         public User SelectByEmail(string email)
@@ -33,26 +22,6 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
                          where user.Email == email
                          select user;
             return result.SingleOrDefault();
-        }
-
-        public User SelectById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(User entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        List<User> IRepository<User, int>.SelectAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        User IUserRepository.SelectByEmail(string email)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -13,6 +13,7 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
     {
         public MenuMapping()
         {
+            this.ToTable("Menu");
             this.HasKey(m => m.Id);
             this.Property(m => m.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
