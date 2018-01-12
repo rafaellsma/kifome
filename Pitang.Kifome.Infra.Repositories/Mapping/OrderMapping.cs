@@ -13,6 +13,7 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
     {
         public OrderMapping()
         {
+            this.ToTable("Order");
             this.HasKey(o => o.Id);
             this.Property(o => o.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);

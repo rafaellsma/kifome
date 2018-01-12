@@ -57,6 +57,71 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
             }
         }
 
+        private IOrderRepository orderRepository;
+        public IOrderRepository OrderRepository
+        {
+            get
+            {
+                if (this.orderRepository == null)
+                {
+                    this.orderRepository = new OrderRepository(context);
+                }
+                return this.orderRepository;
+            }
+        }
+
+        private IMenuRepository menuRepository;
+        public IMenuRepository MenuRepository
+        {
+            get
+            {
+                if (this.menuRepository == null)
+                {
+                    this.menuRepository = new MenuRepository(context);
+                }
+                return this.menuRepository;
+            }
+        }
+
+        private IMealRepository mealRepository;
+        public IMealRepository MealRepository
+        {
+            get
+            {
+                if (this.mealRepository == null)
+                {
+                    this.mealRepository = new MealRepository(context);
+                }
+                return this.mealRepository;
+            }
+        }
+
+        private IDeliveryRepository deliveryRepository;
+        public IDeliveryRepository DeliveryRepository
+        {
+            get
+            {
+                if (this.deliveryRepository == null)
+                {
+                    this.deliveryRepository = new DeliveryRepository(context);
+                }
+                return this.deliveryRepository;
+            }
+        }
+
+        private ICommentRepository commentRepository;
+        public ICommentRepository CommentRepository
+        {
+            get
+            {
+                if (this.commentRepository == null)
+                {
+                    this.commentRepository = new CommentRepository(context);
+                }
+                return this.commentRepository;
+            }
+        }
+
         #endregion
 
 

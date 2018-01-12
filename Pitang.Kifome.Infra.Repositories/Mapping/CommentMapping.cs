@@ -13,6 +13,7 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
     {
         public CommentMapping()
         {
+            this.ToTable("Comment");
             this.HasKey(c => c.Id);
             this.Property(c => c.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);

@@ -10,6 +10,11 @@ namespace Pitang.Kifome.Domain.Contracts.Repositories
     public interface IUnitOfWork : IDisposable
     {
         IGarnishRepository GarnishRepository { get; }
+        IOrderRepository OrderRepository { get; }
+        IMenuRepository MenuRepository { get; }
+        IMealRepository MealRepository { get; }
+        IDeliveryRepository DeliveryRepository { get; }
+        ICommentRepository CommentRepository { get; }
         IUserRepository UserRepository { get; }
     }
 }

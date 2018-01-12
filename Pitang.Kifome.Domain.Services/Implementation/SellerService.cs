@@ -12,10 +12,12 @@ namespace Pitang.Kifome.Domain.Services.Implementation
     public class SellerService : ISellerService
     {
         private readonly IUnitOfWork unitOfWork;
+
         public SellerService(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
         }
+
         public void AcceptRequest(Order order)
         {
             throw new NotImplementedException();
@@ -43,7 +45,14 @@ namespace Pitang.Kifome.Domain.Services.Implementation
 
         public void RegisterMenu(List<Meal> meals, DateTime initialHour, DateTime finalHour, int limitOfMeals)
         {
-            throw new NotImplementedException();
+            Menu menu = new Menu()
+            {
+                Meals = meals,
+                InitialHour = initialHour,
+                FinalHour = finalHour,
+                LimitOfMeals = limitOfMeals
+            };
+            unitOfWork.MenuRepository.Insert(menu);
         }
 
         public IList<Garnish> GetGarnishes()
