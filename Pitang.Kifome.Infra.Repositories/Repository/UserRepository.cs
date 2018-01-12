@@ -10,8 +10,9 @@ using System.Threading.Tasks;
 
 namespace Pitang.Kifome.Infra.Repositories.Repository
 {
-    public class UserRepository<T> : EfRepository<T, int>, IUserRepository<T, int>
-        where T : User, IBaseEntity<int>, new()
+    public class UserRepository<T, TId> : EfRepository<T, TId>, IUserRepository<T, TId>
+        where T : User, IBaseEntity<TId>, new()
+        where TId : IComparable<TId>, IEquatable<TId>
     {
         public UserRepository(DbContext context) : base(context)
         {

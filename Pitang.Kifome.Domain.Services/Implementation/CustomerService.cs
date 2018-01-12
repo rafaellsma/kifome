@@ -4,79 +4,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Pitang.Kifome.Domain.Contracts.Repositories;
 using Pitang.Kifome.Domain.Entities;
 
 namespace Pitang.Kifome.Domain.Services.Implementation
 {
-    public class CustomerService : UserService<Customer>, ICustomerService
+    public class CustomerService : ICustomerService
     {
-        private readonly IOrderRepository orderRepository;
-        private readonly ISellerRepository sellerRepository;
-
-        public CustomerService(IUserRepository<Customer, int> userRepository, 
-            IOrderRepository orderRepository,
-            ISellerRepository sellerRepository) 
-            : base(userRepository, orderRepository)
-        {
-            this.orderRepository = orderRepository;
-            this.sellerRepository = sellerRepository;
-        }
-
         public void CancelOrder(Order order)
-        {
-            order.Status = OrderStatusEnum.Canceled;
-            orderRepository.Update(order);
-        }
-
-        public void EditOrder(Order order)
-        {
-            orderRepository.Update(order);
-        }
-
-        public Order MakeOrder(Seller seller, Customer customer, List<Meal> meals, Delivery delivery)
-        {
-            Order order = new Order()
-            {
-                Seller = seller,
-                Customer = customer,
-                Meals = meals,
-                Delivery = delivery,
-                Status = OrderStatusEnum.Waiting
-            };
-            orderRepository.Insert(order);
-            return orderRepository.SelectById(order.Id);
-        }
-
-        public List<Order> OrdersFromUser(int id)
-        {
-            return orderRepository.SelectAllByCustomerId(id);
-        }
-
-        public List<Seller> SearchSellerByLocal(double latitude, double longitude)
         {
             throw new NotImplementedException();
         }
 
-        public List<Seller> SearchSellerByName(string name)
+        public void EditOrder(Order order)
         {
-            return sellerRepository.SelectByName(name);
+            throw new NotImplementedException();
         }
 
-        public List<Seller> SearchSellerByPrice(float price)
+        public Order MakeOrder(Seller seller, List<Meal> meals, Delivery local)
         {
-            return sellerRepository.SelectByPrice(price);
+            throw new NotImplementedException();
         }
 
-        public List<Seller> SearchSellerByRate(int rate)
+        public Seller SearchSellerByLocal(double latitude, double longitude)
         {
-            return sellerRepository.SelectByRate(rate);
+            throw new NotImplementedException();
         }
 
-        public void SellerEvaluation(Seller seller, int rate)
+        public Seller SearchSellerByName(string name)
         {
-            seller.Rate = rate;
-            sellerRepository.Update(seller);
+            throw new NotImplementedException();
+        }
+
+        public Seller SearchSellerByPrice(float price)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SellerEvaluation(int rate)
+        {
+            throw new NotImplementedException();
         }
     }
 }
