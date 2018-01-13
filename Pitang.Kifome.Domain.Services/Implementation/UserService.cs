@@ -21,7 +21,7 @@ namespace Pitang.Kifome.Domain.Services.Implementation
         public User Authenticate(string email, string password)
         {
             User user = this.unitOfWork.UserRepository.SelectByEmail(email);
-            if (user != null)
+            if (user != null && user.Password == password)
             {
                 return user;
             }
