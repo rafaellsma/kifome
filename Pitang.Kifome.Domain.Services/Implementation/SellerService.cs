@@ -43,11 +43,16 @@ namespace Pitang.Kifome.Domain.Services.Implementation
             throw new NotImplementedException();
         }
 
-        public void RegisterMenu(List<Meal> meals, DateTime initialHour, DateTime finalHour, int limitOfMeals)
+        public IList<Garnish> GetGarnishes()
+        {
+            return unitOfWork.GarnishRepository.SelectAll();
+        }
+
+        public void CreateMenu(User seller, DateTime initialHour, DateTime finalHour, int limitOfMeals)
         {
             Menu menu = new Menu()
             {
-                Meals = meals,
+                Seller = seller,
                 InitialHour = initialHour,
                 FinalHour = finalHour,
                 LimitOfMeals = limitOfMeals
@@ -55,9 +60,9 @@ namespace Pitang.Kifome.Domain.Services.Implementation
             unitOfWork.MenuRepository.Insert(menu);
         }
 
-        public IList<Garnish> GetGarnishes()
+        public void AddMealToMenu(Meal meal, int menuId)
         {
-            return unitOfWork.GarnishRepository.SelectAll();
+            throw new NotImplementedException();
         }
     }
 }

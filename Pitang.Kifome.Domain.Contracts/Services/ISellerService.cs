@@ -11,7 +11,8 @@ namespace Pitang.Kifome.Domain.Contracts.Services
     {
         void RegisterGarnish(string name, string description);
         void RegisterMeal(string name, string description, float price, List<DayOfWeek> days, List<Garnish> garnishies);
-        void RegisterMenu(List<Meal> meals, DateTime initialHour, DateTime finalHour, int limitOfMeals);
+        void CreateMenu(User seller, DateTime initialHour, DateTime finalHour, int limitOfMeals);
+        void AddMealToMenu(Meal meal, int menuId);
         void RegisterDelivery(string local, DateTime initialHour, DateTime finalHour);
         void AcceptRequest(Order order);
         IList<Garnish> GetGarnishes();
