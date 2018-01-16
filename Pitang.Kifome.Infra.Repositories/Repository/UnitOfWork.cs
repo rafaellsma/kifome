@@ -96,16 +96,16 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
             }
         }
 
-        private IDeliveryRepository deliveryRepository;
-        public IDeliveryRepository DeliveryRepository
+        private IWithdrawalRepository withdrawalRepository;
+        public IWithdrawalRepository WithdrawalRepository
         {
             get
             {
-                if (this.deliveryRepository == null)
+                if (this.withdrawalRepository == null)
                 {
-                    this.deliveryRepository = new DeliveryRepository(context);
+                    this.withdrawalRepository = new WithdrawalRepository(context);
                 }
-                return this.deliveryRepository;
+                return this.withdrawalRepository;
             }
         }
 
@@ -121,6 +121,8 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
                 return this.commentRepository;
             }
         }
+
+        
 
         #endregion
 

@@ -12,7 +12,7 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new CommentMapping());
-            modelBuilder.Configurations.Add(new DeliveryMapping());
+            modelBuilder.Configurations.Add(new WithdrawalMapping());
             modelBuilder.Configurations.Add(new GarnishMapping());
             modelBuilder.Configurations.Add(new MealMapping());
             modelBuilder.Configurations.Add(new MenuMapping());

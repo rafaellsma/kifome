@@ -9,9 +9,9 @@ using Pitang.Kifome.Domain.Entities;
 
 namespace Pitang.Kifome.Infra.Repositories.Mapping
 {
-    public class DeliveryMapping : EntityTypeConfiguration<Delivery>
+    public class WithdrawalMapping : EntityTypeConfiguration<Withdrawal>
     {
-        public DeliveryMapping()
+        public WithdrawalMapping()
         {
             this.ToTable("Delivery");
             this.HasKey(d => d.Id);

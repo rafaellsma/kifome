@@ -13,7 +13,7 @@ namespace Pitang.Kifome.Domain.Contracts.Repositories
         IOrderRepository OrderRepository { get; }
         IMenuRepository MenuRepository { get; }
         IMealRepository MealRepository { get; }
-        IDeliveryRepository DeliveryRepository { get; }
+        IWithdrawalRepository WithdrawalRepository { get; }
         ICommentRepository CommentRepository { get; }
         IUserRepository UserRepository { get; }
     }

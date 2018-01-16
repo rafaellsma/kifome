@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Pitang.Kifome.Domain.Entities
 {
-    public class Delivery : BaseEntity<int>
+    public class Withdrawal : BaseEntity<int>
     {
         public string Street { get; set; }
         public int Number { get; set; }
