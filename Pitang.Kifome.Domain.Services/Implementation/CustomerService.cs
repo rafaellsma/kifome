@@ -10,7 +10,7 @@ namespace Pitang.Kifome.Domain.Services.Implementation
 {
     public class CustomerService : ICustomerService
     {
-        public void CancelOrder(Order order)
+        public void CancelOrder(int orderId)
         {
             throw new NotImplementedException();
         }
@@ -20,7 +20,7 @@ namespace Pitang.Kifome.Domain.Services.Implementation
             throw new NotImplementedException();
         }
 
-        public Order MakeOrder(User seller, List<Meal> meals, Delivery local)
+        public void MakeOrder(Order order)
         {
             throw new NotImplementedException();
         }
@@ -40,7 +40,7 @@ namespace Pitang.Kifome.Domain.Services.Implementation
             throw new NotImplementedException();
         }
 
-        public void SellerEvaluation(int rate)
+        public void SellerEvaluation(float rate)
         {
             throw new NotImplementedException();
         }

@@ -23,35 +23,23 @@ namespace Pitang.Kifome.Domain.Services.Implementation
             throw new NotImplementedException();
         }
 
-        public void RegisterDelivery(string local, DateTime initialHour, DateTime finalHour)
+        public void RegisterDelivery(Delivery delivery)
         {
             throw new NotImplementedException();
         }
 
-        public void RegisterGarnish(string name, string description)
+        public void RegisterGarnish(Garnish garnish)
         {
-            Garnish garnish = new Garnish()
-            {
-                Name = name,
-                Description = description
-            };
             unitOfWork.GarnishRepository.Insert(garnish);
         }
 
-        public void RegisterMeal(string name, string description, float price, List<DayOfWeek> days, List<Garnish> garnishies)
+        public void RegisterMeal(Meal meal)
         {
             throw new NotImplementedException();
         }
 
-        public void RegisterMenu(List<Meal> meals, DateTime initialHour, DateTime finalHour, int limitOfMeals)
+        public void RegisterMenu(Menu menu)
         {
-            Menu menu = new Menu()
-            {
-                Meals = meals,
-                InitialHour = initialHour,
-                FinalHour = finalHour,
-                LimitOfMeals = limitOfMeals
-            };
             unitOfWork.MenuRepository.Insert(menu);
         }
 

@@ -9,10 +9,10 @@ namespace Pitang.Kifome.Domain.Contracts.Services
 {
     public interface ISellerService
     {
-        void RegisterGarnish(string name, string description);
-        void RegisterMeal(string name, string description, float price, List<DayOfWeek> days, List<Garnish> garnishies);
-        void RegisterMenu(List<Meal> meals, DateTime initialHour, DateTime finalHour, int limitOfMeals);
-        void RegisterDelivery(string local, DateTime initialHour, DateTime finalHour);
+        void RegisterGarnish(Garnish garnish);
+        void RegisterMeal(Meal meal);
+        void RegisterMenu(Menu menu);
+        void RegisterDelivery(Delivery delivery);
         void AcceptRequest(Order order);
         IList<Garnish> GetGarnishes();
     }

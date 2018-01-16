@@ -37,7 +37,12 @@ namespace Pitang.Kifome.Application.Services.Implementation
 
         public void RegisterUser(UserInputDTO user)
         {
-            userService.CreateUser(user.Name, user.Email, user.Password);
+            userService.CreateUser(new User
+            {
+                Name = user.Name,
+                Email = user.Email,
+                Password = user.Password
+            });
         }
     }
 }

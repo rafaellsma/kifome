@@ -28,23 +28,17 @@ namespace Pitang.Kifome.Domain.Services.Implementation
             return null;
         }
 
-        public void CreateUser(string name, string email, string password)
+        public void CreateUser(User user)
         {
-            User user = new User()
-            {
-                Name = name,
-                Email = email,
-                Password = password
-            };
             this.unitOfWork.UserRepository.Insert(user);
         }
 
-        public void MakeComment(User user, Order order, string mensage)
+        public void MakeComment(Comment comment)
         {
             throw new NotImplementedException();
         }
 
-        public List<Order> OrdersFromUser(User user)
+        public List<Order> OrdersFromUser(int userId)
         {
             throw new NotImplementedException();
         }

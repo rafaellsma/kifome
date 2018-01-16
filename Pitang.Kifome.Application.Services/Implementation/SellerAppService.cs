@@ -12,7 +12,7 @@ namespace Pitang.Kifome.Application.Services.Implementation
 {
     public class SellerAppService : ISellerAppService
     {
-        private ISellerService sellerService;
+        private readonly ISellerService sellerService;
         public SellerAppService(ISellerService sellerService)
         {
             this.sellerService = sellerService;
@@ -36,7 +36,11 @@ namespace Pitang.Kifome.Application.Services.Implementation
 
         public void RegisterGarnish(GarnishInputDTO garnish)
         {
-            sellerService.RegisterGarnish(garnish.Name, garnish.Description);
+            sellerService.RegisterGarnish(new Garnish
+            {
+                Name = garnish.Name,
+                Description = garnish.Description
+            });
         }
     }
 }
