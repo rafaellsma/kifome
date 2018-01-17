@@ -35,6 +35,43 @@ namespace Pitang.Kifome.Application.Services.Implementation
             return null;
         }
 
+        public void DeleteUser(int Id)
+        {
+            this.userService.DeleteUser(Id);
+        }
+
+        public IList<UserOutputDTO> GetAllUsers()
+        {
+            IList<UserOutputDTO> usersOut = new List<UserOutputDTO>();
+
+            IList<User> users = this.userService.GetAllUsers();
+
+            foreach (var u in users)
+            {
+                UserOutputDTO user = new UserOutputDTO()
+                {
+                    Id = u.Id,
+                    Name = u.Name,
+                    Email = u.Email
+                };
+                usersOut.Add(user);
+            }
+
+            return usersOut;
+        }
+
+        public UserOutputDTO GetUserById(int Id)
+        {
+            User user = this.userService.GetUserById(Id);
+            UserOutputDTO userOUT = new UserOutputDTO()
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Email = user.Email
+            };
+            return userOUT;
+        }
+
         public void RegisterUser(UserInputDTO user)
         {
             userService.CreateUser(new User
@@ -42,6 +79,17 @@ namespace Pitang.Kifome.Application.Services.Implementation
                 Name = user.Name,
                 Email = user.Email,
                 Password = user.Password
+            });
+        }
+
+        public void UpdateUser(UserInputDTO user)
+        {
+            this.userService.UpdateUser(new User
+            {
+                Id = user.Id,
+                Email = user.Email,
+                Name = user.Name,
+                Rate = user.Rate
             });
         }
     }

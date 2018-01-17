@@ -24,7 +24,7 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
         }
         //URL = /api/authentication/
         [AcceptVerbs("Post")]
-        [Route("authentication")]
+        [Route("LoginAuthentication")]
         public UserOutputDTO LoginAuthentication(LoginAuthenticationDTO login)
         {
             return this.userAppService.Authentication(login);
