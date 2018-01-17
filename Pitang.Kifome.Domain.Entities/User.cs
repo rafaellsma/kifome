@@ -11,6 +11,6 @@ namespace Pitang.Kifome.Domain.Entities
         public string Email { get; set; }
         public string Password { get; set; }
         public float Rate { get; set; }
-        public IList<Withdrawal> Deliveries { get; set; }
+        public IList<Withdrawal> Withdrawals { get; set; }
     }
 }

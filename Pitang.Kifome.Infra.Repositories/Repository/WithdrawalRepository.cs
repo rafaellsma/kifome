@@ -15,9 +15,9 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
 
         public List<Withdrawal> SelectBySellerId(int sellerId)
         {
-            var result = from delivery in this.Table
-                         where delivery.Seller.Id == sellerId
-                         select delivery;
+            var result = from withdrawal in this.Table
+                         where withdrawal.Seller.Id == sellerId
+                         select withdrawal;
             return result.ToList();
         }
     }
