@@ -33,6 +33,22 @@ namespace Pitang.Kifome.Domain.Services.Implementation
             this.unitOfWork.UserRepository.Insert(user);
         }
 
+        public void DeleteUser(int Id)
+        {
+            User user = this.unitOfWork.UserRepository.SelectById(Id);
+            this.unitOfWork.UserRepository.Delete(user);
+        }
+
+        public List<User> GetAllUsers()
+        {
+            return this.unitOfWork.UserRepository.SelectAll();
+        }
+
+        public User GetUserById(int Id)
+        {
+            return this.unitOfWork.UserRepository.SelectById(Id);
+        }
+
         public void MakeComment(Comment comment)
         {
             throw new NotImplementedException();
@@ -43,5 +59,9 @@ namespace Pitang.Kifome.Domain.Services.Implementation
             throw new NotImplementedException();
         }
 
+        public void UpdateUser(User user)
+        {
+            this.unitOfWork.UserRepository.Update(user);
+        }
     }
 }
