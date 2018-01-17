@@ -12,7 +12,7 @@ namespace Pitang.Kifome.Domain.Contracts.Services
         void RegisterGarnish(Garnish garnish);
         void RegisterMeal(Meal meal);
         void RegisterMenu(Menu menu);
-        void RegisterDelivery(Delivery delivery);
+        void RegisterDelivery(Withdrawal delivery);
         void AcceptRequest(Order order);
         IList<Garnish> GetGarnishes();
     }

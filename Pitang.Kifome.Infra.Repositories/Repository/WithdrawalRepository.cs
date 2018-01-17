@@ -7,13 +7,13 @@ using Pitang.Kifome.Domain.Entities;
 
 namespace Pitang.Kifome.Infra.Repositories.Repository
 {
-    public class DeliveryRepository : EfRepository<Delivery, int>, IDeliveryRepository
+    public class WithdrawalRepository : EfRepository<Withdrawal, int>, IWithdrawalRepository
     {
-        public DeliveryRepository(DbContext context) : base(context)
+        public WithdrawalRepository(DbContext context) : base(context)
         {
         }
 
-        public List<Delivery> SelectBySellerId(int sellerId)
+        public List<Withdrawal> SelectBySellerId(int sellerId)
         {
             var result = from delivery in this.Table
                          where delivery.Seller.Id == sellerId

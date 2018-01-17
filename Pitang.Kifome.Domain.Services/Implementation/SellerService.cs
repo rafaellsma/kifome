@@ -23,7 +23,7 @@ namespace Pitang.Kifome.Domain.Services.Implementation
             throw new NotImplementedException();
         }
 
-        public void RegisterDelivery(Delivery delivery)
+        public void RegisterDelivery(Withdrawal delivery)
         {
             throw new NotImplementedException();
         }
