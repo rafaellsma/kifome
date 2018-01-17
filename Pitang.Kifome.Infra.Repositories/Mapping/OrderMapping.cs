@@ -20,7 +20,7 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
             this.Property(o => o.Status).HasColumnName("status").IsRequired();
             this.HasRequired(o => o.Seller);
             this.HasRequired(o => o.Customer);
-            this.HasRequired(o => o.Delivery);
+            this.HasRequired(o => o.Withdrawal);
             this.HasMany(o => o.Meals)
                 .WithMany(m => m.Orders)
                 .Map(om =>

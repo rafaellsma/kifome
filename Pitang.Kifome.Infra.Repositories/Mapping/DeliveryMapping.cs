@@ -25,7 +25,7 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
             this.Property(d => d.Latitude).HasColumnName("latitude").IsRequired();
             this.Property(d => d.Longitude).HasColumnName("longitude").IsRequired();
             this.HasRequired(d => d.Seller)
-                .WithMany(s => s.Deliveries);
+                .WithMany(s => s.Withdrawals);
         }
     }
 }
