@@ -4,7 +4,7 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
 {
     public class Context : DbContext
     {
-        public Context() : base("Data Source=DESKTOP-N9O34VC\\SQLEXPRESS;Initial Catalog=Kifome;Integrated Security=True")
+        public Context() : base("ConnKiFomePCRafael")
         {
             Database.SetInitializer<Context>(null);
         }
