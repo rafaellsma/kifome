@@ -42,5 +42,20 @@ namespace Pitang.Kifome.Application.Services.Implementation
                 Description = garnish.Description
             });
         }
+
+        public void RegisterWithdrawal(WithdrawalInputDTO withdrawal)
+        {
+            sellerService.RegisterWithdrawal(new Withdrawal
+            {
+                Street = withdrawal.Street,
+                Number = withdrawal.Number,
+                CEP = withdrawal.CEP,
+                InitialHour = Convert.ToDateTime(withdrawal.InitailHour),
+                FinalHour = Convert.ToDateTime(withdrawal.FinalHour),
+                Latitude = withdrawal.Latitude,
+                Longitude = withdrawal.Longitude,
+                SellerId = withdrawal.SellerId
+            });
+        }
     }
 }

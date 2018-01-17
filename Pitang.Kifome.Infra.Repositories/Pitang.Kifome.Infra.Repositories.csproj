@@ -56,7 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mapping\CommentMapping.cs" />
-    <Compile Include="Mapping\DeliveryMapping.cs" />
+    <Compile Include="Mapping\WithdrawalMapping.cs" />
     <Compile Include="Mapping\GarnishMapping.cs" />
     <Compile Include="Mapping\MealMapping.cs" />
     <Compile Include="Mapping\MenuMapping.cs" />
