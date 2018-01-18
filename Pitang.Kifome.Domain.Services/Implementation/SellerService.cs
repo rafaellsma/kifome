@@ -25,7 +25,7 @@ namespace Pitang.Kifome.Domain.Services.Implementation
 
         public void RegisterWithdrawal(Withdrawal withdrawal)
         {
-            throw new NotImplementedException();
+            unitOfWork.WithdrawalRepository.Insert(withdrawal);
         }
 
         public void RegisterGarnish(Garnish garnish)
