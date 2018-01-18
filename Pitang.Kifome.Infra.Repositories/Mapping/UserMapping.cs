@@ -21,6 +21,8 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
             this.Property(u => u.Name).HasColumnName("name").IsRequired();
             this.Property(u => u.Password).HasColumnName("password").IsRequired();
             this.Property(u => u.Rate).HasColumnName("rate");
+            this.HasOptional(u => u.Menu)
+                .WithRequired(m => m.Seller);
         }
     }
 }

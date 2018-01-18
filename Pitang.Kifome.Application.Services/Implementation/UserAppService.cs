@@ -82,7 +82,7 @@ namespace Pitang.Kifome.Application.Services.Implementation
             });
         }
 
-        public void UpdateUser(UserInputDTO user)
+        public void UpdateUser(UserUpdateInputDTO user)
         {
             this.userService.UpdateUser(new User
             {

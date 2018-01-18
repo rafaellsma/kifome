@@ -12,5 +12,6 @@ namespace Pitang.Kifome.Domain.Entities
         public string Password { get; set; }
         public double Rate { get; set; }
         public IList<Withdrawal> Withdrawals { get; set; }
+        public virtual Menu Menu { get; set; }
     }
 }

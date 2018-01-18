@@ -43,7 +43,7 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
 
         [AcceptVerbs("Put")]
         [Route("UpdateUser")]
-        public void UpdateUser(UserInputDTO user)
+        public void UpdateUser(UserUpdateInputDTO user)
         {
             this.userAppService.UpdateUser(user);
         }
