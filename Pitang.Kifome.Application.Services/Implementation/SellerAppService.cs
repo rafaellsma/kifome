@@ -111,13 +111,25 @@ namespace Pitang.Kifome.Application.Services.Implementation
 
         public void RegisterMeal(MealInputDTO meal)
         {
-            this.sellerService.RegisterMeal(new Meal
+            sellerService.RegisterMeal(new Meal
             {
                 Name = meal.Name,
                 Description = meal.Description,
                 Price = meal.Price,
                 MenuId = meal.MenuId,
                 Days = meal.Days
+             }); 
+        }
+        
+        public void RegisterMenu(MenuInputDTO menu)
+        {
+            sellerService.RegisterMenu(new Menu
+            {
+                LimitOfMeals = menu.LimitOfMeals,
+                InitialHour = Convert.ToDateTime(menu.InitialTimeToOrder),
+                FinalHour = Convert.ToDateTime(menu.FinalTimeToOrder),
+                SellerId = menu.SellerId,
+                Id = menu.SellerId
             });
         }
 

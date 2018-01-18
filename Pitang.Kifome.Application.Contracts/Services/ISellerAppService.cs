@@ -18,6 +18,7 @@ namespace Pitang.Kifome.Application.Contracts.Services
         IList<MealOutputDTO> GetMealByFilters(MealFiltersDTO mealFilters);
         void UpdateMeal(MealInputDTO meal);
         void DeleteMeal(int Id);
+        void RegisterMenu(MenuInputDTO menu);
 
     }
 }

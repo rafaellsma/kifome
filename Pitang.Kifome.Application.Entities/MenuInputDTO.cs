@@ -12,8 +12,10 @@ namespace Pitang.Kifome.Application.Entities
         [Required]
         public int LimitOfMeals { get; set; }
         [Required]
-        public DateTime InitialTimeToOrder { get; set; }
+        public string InitialTimeToOrder { get; set; }
         [Required]
-        public DateTime FinalTimeToOrder { get; set; }
+        public string FinalTimeToOrder { get; set; }
+        [Required]
+        public int SellerId { get; set; }
     }
 }

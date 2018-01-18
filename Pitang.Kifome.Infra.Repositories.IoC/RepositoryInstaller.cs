@@ -19,7 +19,8 @@ namespace Pitang.Kifome.Infra.Repositories.IoC
                 Component.For<IMealRepository, MealRepository>(),
                 Component.For<IMenuRepository, MenuRepository>(),
                 Component.For<IOrderRepository, OrderRepository>(),
-                Component.For<IUnitOfWork, UnitOfWork>()
+                Component.For<IUnitOfWork, UnitOfWork>(),
+                Component.For<IConfiguredMealRepository, ConfiguredMeal>()
             );
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Pitang.Kifome.Crosscuting.IoC;
+using Pitang.Kifome.Distribution.WebApi.Filters;
 using Pitang.Kifome.Distribution.WebApi.IoC;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ namespace Pitang.Kifome.Distribution.WebApi
             config.MapHttpAttributeRoutes();
 
             config.Services.Replace(typeof(IHttpControllerActivator), new ApiControllerActivator());
+
+            config.Filters.Add(new BeforeActionValidationFilter());
 
             config.Formatters.Remove(config.Formatters.XmlFormatter);
         }

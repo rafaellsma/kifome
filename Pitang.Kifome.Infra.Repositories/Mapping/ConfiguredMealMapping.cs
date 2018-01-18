@@ -27,6 +27,14 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
             this.HasRequired(cm => cm.Meal)
                 .WithMany(m => m.ConfiguredMeals)
                 .HasForeignKey(cm => cm.MealId);
+            this.HasMany(cm => cm.SelectedGarnishes)
+                .WithMany(g => g.ConfiguredMeals)
+                .Map(sg =>
+                {
+                    sg.MapLeftKey("configured_meal_id");
+                    sg.MapRightKey("garnish_id");
+                    sg.ToTable("SelectedGarnish");
+                });
         }
     }
 }
