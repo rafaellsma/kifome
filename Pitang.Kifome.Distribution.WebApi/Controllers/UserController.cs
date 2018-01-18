@@ -9,7 +9,7 @@ using Pitang.Kifome.Application.Entities;
 
 namespace Pitang.Kifome.Distribution.WebApi.Controllers
 {
-    [RoutePrefix("api/user")]
+    [RoutePrefix("api")]
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class UserController : ApiController
     {
@@ -20,36 +20,36 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
             this.userAppService = userAppService;
         }
 
-        [AcceptVerbs("post")]
-        [Route("CreateUser")]
+        [AcceptVerbs("Post")]
+        [Route("user")]
         public void CreateUser(UserInputDTO user)
         {
             this.userAppService.RegisterUser(user);
         }
 
         [AcceptVerbs("Get")]
-        [Route("GetAllUsers")]
-        public IList<UserOutputDTO> GetAllUsers()
+        [Route("user")]
+        public IList<UserOutputDTO> GetUsers()
         {
-            return this.userAppService.GetAllUsers();
+            return this.userAppService.GetUsers();
         }
 
         [AcceptVerbs("Get")]
-        [Route("GetUserById")]
+        [Route("user/{id}")]
         public UserOutputDTO GetUserById(int Id)
         {
             return this.userAppService.GetUserById(Id);
         }
 
         [AcceptVerbs("Put")]
-        [Route("UpdateUser")]
+        [Route("user")]
         public void UpdateUser(UserInputDTO user)
         {
             this.userAppService.UpdateUser(user);
         }
 
         [AcceptVerbs("Delete")]
-        [Route("DeleteUser")]
+        [Route("user/{id}")]
         public void DeleteUser(int Id)
         {
             this.userAppService.DeleteUser(Id);

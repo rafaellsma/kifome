@@ -12,5 +12,12 @@ namespace Pitang.Kifome.Application.Contracts.Services
         void RegisterGarnish(GarnishInputDTO garnish);
         IList<GarnishOutputDTO> GetGarnishes();
         void RegisterWithdrawal(WithdrawalInputDTO withdrawal);
+        void RegisterMeal(MealInputDTO meal);
+        IList<MealOutputDTO> GetMeals();
+        MealOutputDTO GetMealById(int Id);
+        IList<MealOutputDTO> GetMealByFilters(MealFiltersDTO mealFilters);
+        void UpdateMeal(MealInputDTO meal);
+        void DeleteMeal(int Id);
+
     }
 }

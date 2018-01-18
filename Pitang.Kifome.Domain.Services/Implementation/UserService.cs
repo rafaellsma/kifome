@@ -39,7 +39,7 @@ namespace Pitang.Kifome.Domain.Services.Implementation
             this.unitOfWork.UserRepository.Delete(user);
         }
 
-        public List<User> GetAllUsers()
+        public List<User> GetUsers()
         {
             return this.unitOfWork.UserRepository.SelectAll();
         }

@@ -54,6 +54,9 @@
     <Compile Include="GarnishInputDTO.cs" />
     <Compile Include="GarnishOutputDTO.cs" />
     <Compile Include="LoginAuthenticationDTO.cs" />
+    <Compile Include="MealFiltersDTO.cs" />
+    <Compile Include="MealInputDTO.cs" />
+    <Compile Include="MealOutputDTO.cs" />
     <Compile Include="MenuInputDTO.cs" />
     <Compile Include="MenuOutputDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
