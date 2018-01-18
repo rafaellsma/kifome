@@ -43,6 +43,18 @@ namespace Pitang.Kifome.Application.Services.Implementation
             });
         }
 
+        public void RegisterMenu(MenuInputDTO menu)
+        {
+            sellerService.RegisterMenu(new Menu
+            {
+                LimitOfMeals = menu.LimitOfMeals,
+                InitialHour = Convert.ToDateTime(menu.InitialTimeToOrder),
+                FinalHour = Convert.ToDateTime(menu.FinalTimeToOrder),
+                SellerId = menu.SellerId,
+                Id = menu.SellerId
+            });
+        }
+
         public void RegisterWithdrawal(WithdrawalInputDTO withdrawal)
         {
             sellerService.RegisterWithdrawal(new Withdrawal

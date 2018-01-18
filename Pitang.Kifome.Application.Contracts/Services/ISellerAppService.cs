@@ -12,5 +12,6 @@ namespace Pitang.Kifome.Application.Contracts.Services
         void RegisterGarnish(GarnishInputDTO garnish);
         IList<GarnishOutputDTO> GetGarnishes();
         void RegisterWithdrawal(WithdrawalInputDTO withdrawal);
+        void RegisterMenu(MenuInputDTO menu);
     }
 }
