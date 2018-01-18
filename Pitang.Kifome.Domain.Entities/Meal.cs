@@ -12,7 +12,7 @@ namespace Pitang.Kifome.Domain.Entities
         public float Price { get; set; }
         public Menu Menu { get; set; }
         public IList<Garnish> Garnishies { get; set; }
-        public IList<Order> Orders { get; set; }
+        public IList<ConfiguredMeal> ConfiguredMeals { get; set; }
         public DayOfWeek Days { get; set; }
     }
 }

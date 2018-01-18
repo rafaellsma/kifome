@@ -21,14 +21,6 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
             this.HasRequired(o => o.Seller);
             this.HasRequired(o => o.Customer);
             this.HasRequired(o => o.Withdrawal);
-            this.HasMany(o => o.Meals)
-                .WithMany(m => m.Orders)
-                .Map(om =>
-                {
-                    om.MapLeftKey("order_id");
-                    om.MapRightKey("order_meal");
-                    om.ToTable("OrderMeal");
-                });
         }
     }
 }

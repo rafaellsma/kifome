@@ -12,22 +12,13 @@ namespace Pitang.Kifome.Distribution.WebApi
     {
         public static void Register(HttpConfiguration config)
         {
-            // Serviços e configuração da API da Web
-
             config.EnableCors();
 
-            // Rotas da API da Web
             config.MapHttpAttributeRoutes();
 
             config.Services.Replace(typeof(IHttpControllerActivator), new ApiControllerActivator());
 
             config.Formatters.Remove(config.Formatters.XmlFormatter);
-
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
         }
     }
 }
