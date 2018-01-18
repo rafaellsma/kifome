@@ -1,10 +1,13 @@
 ﻿using Pitang.Kifome.Application.Contracts.Services;
 using Pitang.Kifome.Application.Entities;
+using System.Collections.Generic;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Pitang.Kifome.Distribution.WebApi.Controllers
 {
-    [RoutePrefix("api/garnish")]
+    [Route("api/garnishes")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class GarnishesController : ApiController
     {
         public readonly ISellerAppService sellerAppService;
@@ -14,16 +17,16 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
             this.sellerAppService = sellerAppService;
         }
 
-        [AcceptVerbs("post")]
+        [HttpPost]
         public void CreateGarnish(GarnishInputDTO garnish)
         {
             sellerAppService.RegisterGarnish(garnish);
         }
 
-        [AcceptVerbs("get")]
-        public IHttpActionResult GetGarnishes()
+        [HttpGet]
+        public IList<GarnishOutputDTO> GetGarnishes()
         {
-            return Ok(sellerAppService.GetGarnishes());
+            return sellerAppService.GetGarnishes();
         }
     }
 }
