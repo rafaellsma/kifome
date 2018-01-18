@@ -116,6 +116,7 @@
     <Compile Include="Controllers\GarnishesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WithdrawalController.cs" />
+    <Compile Include="Filters\BeforeActionValidationFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
