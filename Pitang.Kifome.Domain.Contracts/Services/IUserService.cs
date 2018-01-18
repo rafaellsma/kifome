@@ -13,7 +13,7 @@ namespace Pitang.Kifome.Domain.Contracts.Services
         void CreateUser(User user);
         void MakeComment(Comment comment);
         List<Order> OrdersFromUser(int userId);
-        List<User> GetAllUsers();
+        List<User> GetUsers();
         void UpdateUser(User user);
         User GetUserById(int Id);
         void DeleteUser(int Id);

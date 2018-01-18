@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pitang.Kifome.Application.Entities
 {
-    public class MenuOutputDTO
+    public class MealFiltersDTO
     {
     }
 }

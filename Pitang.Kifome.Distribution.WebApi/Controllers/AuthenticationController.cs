@@ -12,7 +12,7 @@ using System.Web.Http.Cors;
 
 namespace Pitang.Kifome.Distribution.WebApi.Controllers
 {
-    [RoutePrefix("api/authentication")]
+    [RoutePrefix("api")]
     [EnableCors(origins: "*", headers: "*", methods:"*")]
     public class AuthenticationController : ApiController
     {
@@ -24,7 +24,7 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
         }
         //URL = /api/authentication/
         [AcceptVerbs("Post")]
-        [Route("LoginAuthentication")]
+        [Route("authentication")]
         public UserOutputDTO LoginAuthentication(LoginAuthenticationDTO login)
         {
             return this.userAppService.Authentication(login);

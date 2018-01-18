@@ -40,11 +40,11 @@ namespace Pitang.Kifome.Application.Services.Implementation
             this.userService.DeleteUser(Id);
         }
 
-        public IList<UserOutputDTO> GetAllUsers()
+        public IList<UserOutputDTO> GetUsers()
         {
             IList<UserOutputDTO> usersOut = new List<UserOutputDTO>();
 
-            IList<User> users = this.userService.GetAllUsers();
+            IList<User> users = this.userService.GetUsers();
 
             foreach (var u in users)
             {

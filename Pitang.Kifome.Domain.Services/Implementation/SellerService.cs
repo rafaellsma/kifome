@@ -35,7 +35,7 @@ namespace Pitang.Kifome.Domain.Services.Implementation
 
         public void RegisterMeal(Meal meal)
         {
-            throw new NotImplementedException();
+            unitOfWork.MealRepository.Insert(meal);
         }
 
         public void RegisterMenu(Menu menu)
@@ -46,6 +46,31 @@ namespace Pitang.Kifome.Domain.Services.Implementation
         public IList<Garnish> GetGarnishes()
         {
             return unitOfWork.GarnishRepository.SelectAll();
+        }
+
+        public IList<Meal> GetMeals()
+        {
+            return this.unitOfWork.MealRepository.SelectAll();
+        }
+
+        public Meal GetMealById(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Meal GetMealByFilters()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateMeal(Meal meal)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteMeal(int Id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
