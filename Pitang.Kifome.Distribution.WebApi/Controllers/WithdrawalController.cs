@@ -9,7 +9,7 @@ using Pitang.Kifome.Application.Entities;
 
 namespace Pitang.Kifome.Distribution.WebApi.Controllers
 {
-    [RoutePrefix("api/withdrawal")]
+    [RoutePrefix("api")]
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class WithdrawalController : ApiController
     {
@@ -20,6 +20,8 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
             this.sellerAppService = sellerAppService;
         }
 
+        [AcceptVerbs("Post")]
+        [Route("withdrawal")]
         public void CreateWithdrawal(WithdrawalInputDTO withdrawal)
         {
             sellerAppService.RegisterWithdrawal(withdrawal);

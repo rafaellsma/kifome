@@ -16,7 +16,7 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
             this.ToTable("ConfiguredMeal");
             this.HasKey(cm => cm.Id);
             this.Property(cm => cm.Id)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);]
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             this.Property(cm => cm.OrderId)
                 .HasColumnName("order_id");
             this.Property(cm => cm.MealId)
