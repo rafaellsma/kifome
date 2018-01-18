@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Comment.cs" />
+    <Compile Include="ConfiguredMeal.cs" />
     <Compile Include="DayOfWeekEnum.cs" />
     <Compile Include="Garnish.cs" />
     <Compile Include="IBaseEntity.cs" />
