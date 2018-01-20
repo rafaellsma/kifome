@@ -18,6 +18,31 @@ namespace Pitang.Kifome.Application.Services.Implementation
             this.sellerService = sellerService;
         }
 
+        #region Meal
+        public void RegisterMeal(MealInputDTO meal)
+        {
+            sellerService.RegisterMeal(new Meal
+            {
+                Name = meal.Name,
+                Description = meal.Description,
+                Price = meal.Price,
+                MenuId = meal.MenuId,
+                Days = meal.Days
+            });
+        }
+
+        public void UpdateMeal(MealInputDTO meal)
+        {
+            this.sellerService.UpdateMeal(new Meal
+            {
+                Name = meal.Name,
+                Description = meal.Description,
+                Price = meal.Price,
+                Days = meal.Days,
+                MenuId = meal.MenuId
+            });
+        }
+
         public void DeleteMeal(int Id)
         {
             this.sellerService.DeleteMeal(Id);
@@ -54,22 +79,6 @@ namespace Pitang.Kifome.Application.Services.Implementation
             return mealsDTO;
         }
 
-        public IList<GarnishOutputDTO> GetGarnishes()
-        {
-            var garnishes = sellerService.GetGarnishes();
-            IList<GarnishOutputDTO> garnishesOutput = new List<GarnishOutputDTO>();
-            foreach (var garnish in garnishes)
-            {
-                garnishesOutput.Add(new GarnishOutputDTO()
-                {
-                    Name = garnish.Name,
-                    Description = garnish.Description
-                });
-            }
-            return garnishesOutput;
-
-        }
-
         public IList<MealOutputDTO> GetMealByFilters(MealFiltersDTO mealFilters)
         {
             throw new NotImplementedException();
@@ -99,6 +108,23 @@ namespace Pitang.Kifome.Application.Services.Implementation
             };
             return mealDTO;
         }
+        #endregion
+        #region Garnish
+        public IList<GarnishOutputDTO> GetGarnishes()
+        {
+            var garnishes = sellerService.GetGarnishes();
+            IList<GarnishOutputDTO> garnishesOutput = new List<GarnishOutputDTO>();
+            foreach (var garnish in garnishes)
+            {
+                garnishesOutput.Add(new GarnishOutputDTO()
+                {
+                    Name = garnish.Name,
+                    Description = garnish.Description
+                });
+            }
+            return garnishesOutput;
+
+        }
 
         public void RegisterGarnish(GarnishInputDTO garnish)
         {
@@ -108,19 +134,8 @@ namespace Pitang.Kifome.Application.Services.Implementation
                 Description = garnish.Description
             });
         }
-
-        public void RegisterMeal(MealInputDTO meal)
-        {
-            sellerService.RegisterMeal(new Meal
-            {
-                Name = meal.Name,
-                Description = meal.Description,
-                Price = meal.Price,
-                MenuId = meal.MenuId,
-                Days = meal.Days
-             }); 
-        }
-        
+        #endregion
+        #region Menu
         public void RegisterMenu(MenuInputDTO menu)
         {
             sellerService.RegisterMenu(new Menu
@@ -132,7 +147,8 @@ namespace Pitang.Kifome.Application.Services.Implementation
                 Id = menu.SellerId
             });
         }
-
+        #endregion
+        #region Withdrawal
         public void RegisterWithdrawal(WithdrawalInputDTO withdrawal)
         {
             sellerService.RegisterWithdrawal(new Withdrawal
@@ -148,16 +164,25 @@ namespace Pitang.Kifome.Application.Services.Implementation
             });
         }
 
-        public void UpdateMeal(MealInputDTO meal)
+        public IList<WithdrawalOutputDTO> GetWithdrawals()
         {
-            this.sellerService.UpdateMeal(new Meal
-            {
-                Name = meal.Name,
-                Description = meal.Description,
-                Price = meal.Price,
-                Days = meal.Days,
-                MenuId = meal.MenuId
-            });
+            throw new NotImplementedException();
         }
+
+        public WithdrawalOutputDTO GetWithdrawalById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateWithdrawal(WithdrawalUpdateInputDTO withdrawal)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteWithdrawal(int id)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 }
