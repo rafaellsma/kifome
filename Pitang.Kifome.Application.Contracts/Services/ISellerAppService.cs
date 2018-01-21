@@ -16,6 +16,7 @@ namespace Pitang.Kifome.Application.Contracts.Services
         #region Withdrawal
         void RegisterWithdrawal(WithdrawalInputDTO withdrawal);
         IList<WithdrawalOutputDTO> GetWithdrawals();
+        IList<WithdrawalOutputDTO> GetWithdrawalsBySellerId(int id);
         WithdrawalOutputDTO GetWithdrawalById(int id);
         void UpdateWithdrawal(WithdrawalUpdateInputDTO withdrawal);
         void DeleteWithdrawal(int id);

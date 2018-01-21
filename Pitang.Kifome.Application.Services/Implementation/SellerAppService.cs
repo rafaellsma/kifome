@@ -13,9 +13,11 @@ namespace Pitang.Kifome.Application.Services.Implementation
     public class SellerAppService : ISellerAppService
     {
         private readonly ISellerService sellerService;
-        public SellerAppService(ISellerService sellerService)
+        private readonly IUserService userService;
+        public SellerAppService(ISellerService sellerService, IUserService userService)
         {
             this.sellerService = sellerService;
+            this.userService = userService;
         }
 
         #region Meal
@@ -166,22 +168,84 @@ namespace Pitang.Kifome.Application.Services.Implementation
 
         public IList<WithdrawalOutputDTO> GetWithdrawals()
         {
-            throw new NotImplementedException();
+            var withdrawals = sellerService.GetWithdrawals();
+            IList<WithdrawalOutputDTO> withdrawalsOutput = new List<WithdrawalOutputDTO>();
+            foreach (var withdrawal in withdrawals)
+            {
+                withdrawal.Seller = userService.GetUserById(withdrawal.SellerId);
+                withdrawalsOutput.Add(new WithdrawalOutputDTO
+                {
+                    Street = withdrawal.Street,
+                    Number = withdrawal.Number,
+                    CEP = withdrawal.CEP,
+                    InitialHour = withdrawal.InitialHour.ToLongTimeString(),
+                    FinalHour = withdrawal.FinalHour.ToLongTimeString(),
+                    Latitude = withdrawal.Latitude,
+                    Longitude = withdrawal.Longitude,
+                    SellerName = withdrawal.Seller.Name
+                });
+            }
+            return withdrawalsOutput;
+        }
+
+        public IList<WithdrawalOutputDTO> GetWithdrawalsBySellerId(int id)
+        {
+            var withdrawals = sellerService.GetWithdrawalsBySellerId(id);
+            IList<WithdrawalOutputDTO> withdrawalsOutput = new List<WithdrawalOutputDTO>();
+            foreach (var withdrawal in withdrawals)
+            {
+                withdrawal.Seller = userService.GetUserById(withdrawal.SellerId);
+                withdrawalsOutput.Add(new WithdrawalOutputDTO
+                {
+                    Street = withdrawal.Street,
+                    Number = withdrawal.Number,
+                    CEP = withdrawal.CEP,
+                    InitialHour = withdrawal.InitialHour.ToLongTimeString(),
+                    FinalHour = withdrawal.FinalHour.ToLongTimeString(),
+                    Latitude = withdrawal.Latitude,
+                    Longitude = withdrawal.Longitude,
+                    SellerName = withdrawal.Seller.Name
+                });
+            }
+            return withdrawalsOutput;
         }
 
         public WithdrawalOutputDTO GetWithdrawalById(int id)
         {
-            throw new NotImplementedException();
+            var withdrawal = sellerService.GetWithdrawalById(id);
+            withdrawal.Seller = userService.GetUserById(withdrawal.SellerId);
+            WithdrawalOutputDTO withdrawalOutput = new WithdrawalOutputDTO
+            {
+                Street = withdrawal.Street,
+                Number = withdrawal.Number,
+                CEP = withdrawal.CEP,
+                InitialHour = withdrawal.InitialHour.ToLongTimeString(),
+                FinalHour = withdrawal.FinalHour.ToLongTimeString(),
+                Latitude = withdrawal.Latitude,
+                Longitude = withdrawal.Longitude,
+                SellerName = withdrawal.Seller.Name
+            };
+            return withdrawalOutput;
         }
 
         public void UpdateWithdrawal(WithdrawalUpdateInputDTO withdrawal)
         {
-            throw new NotImplementedException();
+            sellerService.UpdateWithdrawal(new Withdrawal
+            {
+                Id = withdrawal.Id,
+                Street = withdrawal.Street,
+                Number = withdrawal.Number,
+                CEP = withdrawal.CEP,
+                InitialHour = Convert.ToDateTime(withdrawal.InitailHour),
+                FinalHour = Convert.ToDateTime(withdrawal.FinalHour),
+                Latitude = withdrawal.Latitude,
+                Longitude = withdrawal.Longitude
+            });
         }
 
         public void DeleteWithdrawal(int id)
         {
-            throw new NotImplementedException();
+            sellerService.DeleteWithdrawal(id);
         }
         #endregion
     }
