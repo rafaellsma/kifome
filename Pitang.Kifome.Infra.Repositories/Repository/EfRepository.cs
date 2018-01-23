@@ -50,6 +50,13 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
 
         public void Update(T entity)
         {
+            foreach (var entry in Context.ChangeTracker.Entries<T>().ToList())
+            {
+                if (entry.Entity.Id.Equals(entity.Id))
+                {
+                    entry.State = EntityState.Detached;
+                }
+            }
             Context.Set<T>().Attach(entity);
             Context.Entry(entity).State = EntityState.Modified;
             this.Context.SaveChanges();
