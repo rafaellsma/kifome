@@ -78,6 +78,11 @@ namespace Pitang.Kifome.Domain.Services.Implementation
             return this.unitOfWork.MealRepository.SelectAll();
         }
 
+        public IList<Meal> GetMealsByMenuId(int id)
+        {
+            return unitOfWork.MealRepository.SelectMealByMenuId(id);
+        }
+
         public Meal GetMealById(int Id)
         {
             throw new NotImplementedException();
@@ -102,6 +107,16 @@ namespace Pitang.Kifome.Domain.Services.Implementation
         public void RegisterMenu(Menu menu)
         {
             unitOfWork.MenuRepository.Insert(menu);
+        }
+
+        public Menu GetMenuBySellerId(int id)
+        {
+            return unitOfWork.MenuRepository.SelectById(id);
+        }
+
+        public void UpdateMenu(Menu menu)
+        {
+            unitOfWork.MenuRepository.Update(menu);
         }
         #endregion
     }

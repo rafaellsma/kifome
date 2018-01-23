@@ -31,6 +31,8 @@ namespace Pitang.Kifome.Application.Contracts.Services
         #endregion
         #region Menu
         void RegisterMenu(MenuInputDTO menu);
+        MenuOutputDTO GetMenuBySellerId(int id);
+        void UpdateMenu(MenuUpdateInputDTO menu);
         #endregion
 
     }

@@ -59,6 +59,7 @@
     <Compile Include="MealOutputDTO.cs" />
     <Compile Include="MenuInputDTO.cs" />
     <Compile Include="MenuOutputDTO.cs" />
+    <Compile Include="MenuUpdateInputDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserInputDTO.cs" />
     <Compile Include="UserOutputDTO.cs" />

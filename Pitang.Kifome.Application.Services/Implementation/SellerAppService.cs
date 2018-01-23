@@ -149,6 +149,39 @@ namespace Pitang.Kifome.Application.Services.Implementation
                 Id = menu.SellerId
             });
         }
+
+        public MenuOutputDTO GetMenuBySellerId(int id)
+        {
+            var menu = sellerService.GetMenuBySellerId(id);
+            menu.Seller = userService.GetUserById(menu.SellerId);
+            menu.Meals = sellerService.GetMealsByMenuId(menu.Id);
+            IList<string> mealsNames = new List<string>();
+            foreach (var meal in menu.Meals)
+            {
+                mealsNames.Add(meal.Name);
+            }
+            MenuOutputDTO menuOutput = new MenuOutputDTO
+            {
+                LimitOfMeals = menu.LimitOfMeals,
+                InitialTimeToOrder = menu.InitialHour.ToShortTimeString(),
+                FinalTimeToOrder = menu.FinalHour.ToShortTimeString(),
+                MealsNames = mealsNames,
+                SellerName = menu.Seller.Name
+            };
+            return menuOutput;
+        }
+
+        public void UpdateMenu(MenuUpdateInputDTO menu)
+        {
+            sellerService.UpdateMenu(new Menu
+            {
+                Id = menu.SellerId,
+                LimitOfMeals = menu.LimitOfMeals,
+                InitialHour = Convert.ToDateTime(menu.InitialTimeToOrder),
+                FinalHour = Convert.ToDateTime(menu.FinalTimeToOrder),
+                SellerId = menu.SellerId
+            });
+        }
         #endregion
         #region Withdrawal
         public void RegisterWithdrawal(WithdrawalInputDTO withdrawal)
@@ -178,8 +211,8 @@ namespace Pitang.Kifome.Application.Services.Implementation
                     Street = withdrawal.Street,
                     Number = withdrawal.Number,
                     CEP = withdrawal.CEP,
-                    InitialHour = withdrawal.InitialHour.ToLongTimeString(),
-                    FinalHour = withdrawal.FinalHour.ToLongTimeString(),
+                    InitialHour = withdrawal.InitialHour.ToShortTimeString(),
+                    FinalHour = withdrawal.FinalHour.ToShortTimeString(),
                     Latitude = withdrawal.Latitude,
                     Longitude = withdrawal.Longitude,
                     SellerName = withdrawal.Seller.Name
@@ -200,8 +233,8 @@ namespace Pitang.Kifome.Application.Services.Implementation
                     Street = withdrawal.Street,
                     Number = withdrawal.Number,
                     CEP = withdrawal.CEP,
-                    InitialHour = withdrawal.InitialHour.ToLongTimeString(),
-                    FinalHour = withdrawal.FinalHour.ToLongTimeString(),
+                    InitialHour = withdrawal.InitialHour.ToShortTimeString(),
+                    FinalHour = withdrawal.FinalHour.ToShortTimeString(),
                     Latitude = withdrawal.Latitude,
                     Longitude = withdrawal.Longitude,
                     SellerName = withdrawal.Seller.Name
@@ -219,8 +252,8 @@ namespace Pitang.Kifome.Application.Services.Implementation
                 Street = withdrawal.Street,
                 Number = withdrawal.Number,
                 CEP = withdrawal.CEP,
-                InitialHour = withdrawal.InitialHour.ToLongTimeString(),
-                FinalHour = withdrawal.FinalHour.ToLongTimeString(),
+                InitialHour = withdrawal.InitialHour.ToShortTimeString(),
+                FinalHour = withdrawal.FinalHour.ToShortTimeString(),
                 Latitude = withdrawal.Latitude,
                 Longitude = withdrawal.Longitude,
                 SellerName = withdrawal.Seller.Name
