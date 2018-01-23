@@ -239,7 +239,8 @@ namespace Pitang.Kifome.Application.Services.Implementation
                 InitialHour = Convert.ToDateTime(withdrawal.InitailHour),
                 FinalHour = Convert.ToDateTime(withdrawal.FinalHour),
                 Latitude = withdrawal.Latitude,
-                Longitude = withdrawal.Longitude
+                Longitude = withdrawal.Longitude,
+                SellerId = withdrawal.SellerId
             });
         }
 
