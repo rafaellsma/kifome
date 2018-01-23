@@ -27,5 +27,19 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
         {
             sellerAppService.RegisterMenu(menu);
         }
+
+        [AcceptVerbs("Get")]
+        [Route("Menu/{sellerId}/seller")]
+        public MenuOutputDTO GetMenuBySellerId(int sellerId)
+        {
+            return sellerAppService.GetMenuBySellerId(sellerId);
+        }
+
+        [AcceptVerbs("Put")]
+        [Route("Menu")]
+        public void UpdateMenu(MenuUpdateInputDTO menu)
+        {
+            sellerAppService.UpdateMenu(menu);
+        }
     }
 }

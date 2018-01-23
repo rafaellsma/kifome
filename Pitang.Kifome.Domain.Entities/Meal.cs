@@ -9,7 +9,7 @@ namespace Pitang.Kifome.Domain.Entities
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public float Price { get; set; }
+        public double Price { get; set; }
         public Menu Menu { get; set; }
         public int MenuId { get; set; }
         public IList<Garnish> Garnishies { get; set; }

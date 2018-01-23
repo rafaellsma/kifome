@@ -14,7 +14,7 @@ namespace Pitang.Kifome.Application.Entities
         [Required]
         public String Description { get; set; }
         [Required]
-        public float Price { get; set; }
+        public double Price { get; set; }
         [Required]
         public int MenuId { get; set; }
         //Optional
@@ -24,11 +24,3 @@ namespace Pitang.Kifome.Application.Entities
 
     }
 }
-
-//public string Name { get; set; }
-//public string Description { get; set; }
-//public float Price { get; set; }
-//public Menu Menu { get; set; }
-//public IList<Garnish> Garnishies { get; set; }
-//public IList<ConfiguredMeal> ConfiguredMeals { get; set; }
-//public DayOfWeek Days { get; set; }

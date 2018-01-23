@@ -16,6 +16,7 @@ namespace Pitang.Kifome.Domain.Contracts.Services
         #region Meal
         void RegisterMeal(Meal meal);
         IList<Meal> GetMeals();
+        IList<Meal> GetMealsByMenuId(int id); 
         Meal GetMealById(int Id);
         Meal GetMealByFilters();
         void UpdateMeal(Meal meal);
@@ -23,6 +24,8 @@ namespace Pitang.Kifome.Domain.Contracts.Services
         #endregion
         #region Menu
         void RegisterMenu(Menu menu);
+        Menu GetMenuBySellerId(int id);
+        void UpdateMenu(Menu menu);
         #endregion
         #region Withdrawal
         void RegisterWithdrawal(Withdrawal withdrawal);
