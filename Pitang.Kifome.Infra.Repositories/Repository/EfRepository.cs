@@ -50,7 +50,8 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
 
         public void Update(T entity)
         {
-            this.Context.Entry(entity).State = EntityState.Modified;
+            Context.Set<T>().Attach(entity);
+            Context.Entry(entity).State = EntityState.Modified;
             this.Context.SaveChanges();
         }
     }

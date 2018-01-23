@@ -64,6 +64,8 @@
     <Compile Include="UserOutputDTO.cs" />
     <Compile Include="UserUpdateInputDTO.cs" />
     <Compile Include="WithdrawalInputDTO.cs" />
+    <Compile Include="WithdrawalOutputDTO.cs" />
+    <Compile Include="WithdrawalUpdateInputDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
