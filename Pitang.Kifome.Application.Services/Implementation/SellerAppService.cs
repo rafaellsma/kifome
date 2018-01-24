@@ -140,7 +140,7 @@ namespace Pitang.Kifome.Application.Services.Implementation
                 Street = withdrawal.Street,
                 Number = withdrawal.Number,
                 CEP = withdrawal.CEP,
-                InitialHour = Convert.ToDateTime(withdrawal.InitailHour),
+                InitialHour = Convert.ToDateTime(withdrawal.InitialHour),
                 FinalHour = Convert.ToDateTime(withdrawal.FinalHour),
                 Latitude = withdrawal.Latitude,
                 Longitude = withdrawal.Longitude,

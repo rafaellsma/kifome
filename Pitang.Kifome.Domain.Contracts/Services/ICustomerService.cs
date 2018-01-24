@@ -16,5 +16,6 @@ namespace Pitang.Kifome.Domain.Contracts.Services
         void SellerEvaluation(float rate);
         void CancelOrder(int orderId);
         void EditOrder(Order order);
+        Order GetOrderById(int Id);
     }
 }

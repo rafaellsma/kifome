@@ -11,5 +11,10 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
         public MealRepository(DbContext context) : base(context)
         {
         }
+
+        public Meal SelectConfiguredMealWithGarnishies()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
