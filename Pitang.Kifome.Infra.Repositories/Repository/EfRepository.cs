@@ -50,9 +50,9 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
 
         public void Update(T entity)
         {
-            var local = (from e in Context.Set<T>()
-                         where e.Id.Equals(entity.Id)
-                         select e).SingleOrDefault();
+            var local = (from entry in Context.Set<T>()
+                         where entry.Id.Equals(entity.Id)
+                         select entry).SingleOrDefault();
 
             Context.Entry(local).State = EntityState.Detached;
             Context.Set<T>().Attach(entity);
