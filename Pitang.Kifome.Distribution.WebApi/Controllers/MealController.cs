@@ -40,8 +40,8 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
             return this.sellerAppService.GetMealById(Id);
         }
 
-        [AcceptVerbs("Get")]
-        [Route("meal")]
+        [AcceptVerbs("Post")]
+        [Route("meal/filters")]
         public IList<MealOutputDTO> GetMealByFilters(MealFiltersDTO mealFilters)
         {
             return this.sellerAppService.GetMealByFilters(mealFilters);

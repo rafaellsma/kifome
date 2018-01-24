@@ -55,7 +55,7 @@ namespace Pitang.Kifome.Domain.Services.Implementation
 
         public Meal GetMealById(int Id)
         {
-            throw new NotImplementedException();
+            return this.unitOfWork.MealRepository.SelectById(Id);
         }
 
         public Meal GetMealByFilters()
@@ -65,12 +65,16 @@ namespace Pitang.Kifome.Domain.Services.Implementation
 
         public void UpdateMeal(Meal meal)
         {
-            throw new NotImplementedException();
+            this.unitOfWork.MealRepository.Update(meal);
         }
 
         public void DeleteMeal(int Id)
         {
-            throw new NotImplementedException();
+            var meal = this.unitOfWork.MealRepository.SelectById(Id);
+            if(meal != null)
+            {
+                this.unitOfWork.MealRepository.Delete(meal);
+            }
         }
     }
 }
