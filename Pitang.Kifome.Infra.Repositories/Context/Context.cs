@@ -4,7 +4,7 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
 {
     public class Context : DbContext
     {
-        public Context() : base("ConnKiFomePC09")
+        public Context() : base("ConnJeyJey")
         {
             Database.SetInitializer<Context>(null);
         }
