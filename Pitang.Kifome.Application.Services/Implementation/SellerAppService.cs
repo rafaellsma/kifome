@@ -1,4 +1,5 @@
-﻿using Pitang.Kifome.Application.Contracts.Services;
+﻿using AutoMapper;
+using Pitang.Kifome.Application.Contracts.Services;
 using Pitang.Kifome.Application.Entities;
 using Pitang.Kifome.Domain.Contracts.Services;
 using Pitang.Kifome.Domain.Entities;
@@ -14,10 +15,12 @@ namespace Pitang.Kifome.Application.Services.Implementation
     {
         private readonly ISellerService sellerService;
         private readonly IUserService userService;
-        public SellerAppService(ISellerService sellerService, IUserService userService)
+        private readonly IMapper mapper;
+        public SellerAppService(ISellerService sellerService, IUserService userService, IMapper mapper)
         {
             this.sellerService = sellerService;
             this.userService = userService;
+            this.mapper = mapper;
         }
 
         #region Meal
@@ -116,21 +119,12 @@ namespace Pitang.Kifome.Application.Services.Implementation
 
         public void RegisterGarnish(GarnishInputDTO garnish)
         {
-            sellerService.RegisterGarnish(new Garnish
-            {
-                Name = garnish.Name,
-                Description = garnish.Description
-            });
+            sellerService.RegisterGarnish(mapper.Map<Garnish>(garnish));
         }
 
         public void UpdateGarnish(GarnishUpdateDTO garnish)
         {
-            sellerService.UpdateGarnish(new Garnish()
-            {
-                Name = garnish.Name,
-                Description = garnish.Description,
-                Id = garnish.Id
-            });
+            sellerService.UpdateGarnish(mapper.Map<Garnish>(garnish));
         }
 
         public void DeleteGarnish(int id)

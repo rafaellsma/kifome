@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoMapper\AutoMapperConfiguration.cs" />
     <Compile Include="Implementation\CustomerAppService.cs" />
     <Compile Include="Implementation\SellerAppService.cs" />
     <Compile Include="Implementation\UserAppService.cs" />

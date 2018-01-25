@@ -52,10 +52,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfiguredMealInputDTO.cs" />
-    <Compile Include="GarnishInputDTO.cs" />
-    <Compile Include="GarnishOutputDTO.cs" />
-    <Compile Include="GarnishUpdateDTO.cs" />
+    <Compile Include="Garnish\GarnishInputDTO.cs" />
+    <Compile Include="Garnish\GarnishOutputDTO.cs" />
+    <Compile Include="Garnish\GarnishUpdateDTO.cs" />
     <Compile Include="LoginAuthenticationDTO.cs" />
+    <Compile Include="MealDTO.cs" />
     <Compile Include="MealFiltersDTO.cs" />
     <Compile Include="MealInputDTO.cs" />
     <Compile Include="MealOutputDTO.cs" />

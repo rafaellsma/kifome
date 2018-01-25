@@ -14,5 +14,6 @@ namespace Pitang.Kifome.Application.Entities
         public string Name { get; set; }
         [Required]
         public string Description { get; set; }
+        public IList<MealDTO> Meals { get; set; }
     }
 }

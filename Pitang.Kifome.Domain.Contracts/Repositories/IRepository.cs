@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,7 +15,7 @@ namespace Pitang.Kifome.Domain.Contracts.Repositories
         void Insert(T entity);
         void Update(T entity);
         T SelectById(TId id);
-        List<T> SelectAll();
+        List<T> SelectAll(params Expression<Func<T, object>>[] includes);
         void Delete(T entity);
     }
 }

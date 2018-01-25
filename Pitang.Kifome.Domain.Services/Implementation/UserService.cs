@@ -67,7 +67,7 @@ namespace Pitang.Kifome.Domain.Services.Implementation
         #region Garnish
         public IList<Garnish> GetGarnishes()
         {
-            return unitOfWork.GarnishRepository.SelectAll();
+            return unitOfWork.GarnishRepository.SelectAll(x => x.Meals);
         }
 
         public Garnish GetGarnishById(int id)

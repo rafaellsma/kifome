@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Pitang.Kifome.Application.Contracts.Services;
 using Pitang.Kifome.Application.Entities;
 using Pitang.Kifome.Domain.Contracts.Services;
@@ -13,10 +14,12 @@ namespace Pitang.Kifome.Application.Services.Implementation
     public class UserAppService : IUserAppService
     {
         private readonly IUserService userService;
+        private readonly IMapper mapper;
 
-        public UserAppService(IUserService userServiceInstance)
+        public UserAppService(IUserService userServiceInstance, IMapper mapper)
         {
             this.userService = userServiceInstance;
+            this.mapper = mapper;
         }
         
         public UserOutputDTO Authentication(LoginAuthenticationDTO login)
@@ -97,35 +100,14 @@ namespace Pitang.Kifome.Application.Services.Implementation
         public IList<GarnishOutputDTO> GetGarnishes()
         {
             var garnishes = userService.GetGarnishes();
-            IList<GarnishOutputDTO> garnishesOutput = new List<GarnishOutputDTO>();
-            foreach (var garnish in garnishes)
-            {
-                garnishesOutput.Add(new GarnishOutputDTO()
-                {
-                    Id = garnish.Id,
-                    Name = garnish.Name,
-                    Description = garnish.Description
-                });
-            }
-            return garnishesOutput;
+            return mapper.Map<GarnishOutputDTO[]>(garnishes);
 
         }
 
         public GarnishOutputDTO GetGarnishByID(int id)
         {
             var garnish = userService.GetGarnishById(id);
-            GarnishOutputDTO garnishOutput = null;
-
-            if (garnish != null)
-            {
-                garnishOutput = new GarnishOutputDTO()
-                {
-                    Id = garnish.Id,
-                    Name = garnish.Name,
-                    Description = garnish.Description
-                };
-            }
-            return garnishOutput;
+            return mapper.Map<GarnishOutputDTO>(garnish);
         }
         #endregion
     }
