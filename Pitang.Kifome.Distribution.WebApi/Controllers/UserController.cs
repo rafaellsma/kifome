@@ -29,7 +29,7 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
 
         [AcceptVerbs("Get")]
         [Route("user")]
-        public IList<UserOutputDTO> GetUsers()
+        public IList<UserOutputDTO> GetAllUsers()
         {
             return this.userAppService.GetAllUsers();
         }
