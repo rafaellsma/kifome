@@ -20,6 +20,7 @@ namespace Pitang.Kifome.Application.Services.AutoMapper
             configurationExpression.CreateMap<GarnishInputDTO, Garnish>();
             configurationExpression.CreateMap<Meal, MealOutputDTO>();
             configurationExpression.CreateMap<Meal, MealDTO>();
+            configurationExpression.CreateMap<GarnishUpdateDTO, Garnish>();
             return configurationExpression;
         }
     }

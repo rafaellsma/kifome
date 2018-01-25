@@ -17,7 +17,7 @@ namespace Pitang.Kifome.Application.Services.Implementation
         private readonly IMapper mapper;
         private readonly ISellerService sellerService;
 
-        public UserAppService(IUserService userServiceInstance, ISellerService sellerService)
+        public UserAppService(IUserService userServiceInstance, ISellerService sellerService, IMapper mapper)
         {
             this.userService = userServiceInstance;
             this.mapper = mapper;
@@ -45,7 +45,7 @@ namespace Pitang.Kifome.Application.Services.Implementation
             this.userService.DeleteUser(Id);
         }
 
-        public IList<UserOutputDTO> GetAllUsers()
+        public IList<UserOutputDTO> GetUsers()
         {
             IList<UserOutputDTO> usersOut = new List<UserOutputDTO>();
 
