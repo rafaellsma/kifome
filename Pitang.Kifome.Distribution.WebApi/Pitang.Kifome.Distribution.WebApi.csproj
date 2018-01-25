@@ -116,6 +116,7 @@
     <Compile Include="Controllers\MealController.cs" />
     <Compile Include="Controllers\GarnishesController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WithdrawalController.cs" />
     <Compile Include="Filters\BeforeActionValidationFilter.cs" />

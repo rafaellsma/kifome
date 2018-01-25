@@ -13,6 +13,11 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
         {
         }
 
+        public Meal SelectConfiguredMealWithGarnishies()
+        {
+            throw new NotImplementedException();
+        }
+
         public IList<Meal> SelectMealByMenuId(int menuId)
         {
             var result = from meal in this.Table

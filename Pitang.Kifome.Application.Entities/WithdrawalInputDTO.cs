@@ -16,7 +16,7 @@ namespace Pitang.Kifome.Application.Entities
         [Required]
         public string CEP { get; set; }
         [Required]
-        public string InitailHour { get; set; }
+        public string InitialHour { get; set; }
         [Required]
         public string FinalHour { get; set; }
         [Required]

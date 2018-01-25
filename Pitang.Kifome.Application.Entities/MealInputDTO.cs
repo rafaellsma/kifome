@@ -9,6 +9,7 @@ namespace Pitang.Kifome.Application.Entities
 {
     public class MealInputDTO
     {
+        public int Id { get; set; }
         [Required]
         public String Name { get; set; }
         [Required]

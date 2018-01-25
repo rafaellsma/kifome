@@ -71,6 +71,10 @@
       <Project>{ec121a18-ffca-435e-85dc-00c2ffb9d8ed}</Project>
       <Name>Pitang.Kifome.Domain.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Pitang.Kifome.Infra.Repositories\Pitang.Kifome.Infra.Repositories.csproj">
+      <Project>{76CA5D59-E522-4A0F-BEF8-2AE0E8AFD26C}</Project>
+      <Name>Pitang.Kifome.Infra.Repositories</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
