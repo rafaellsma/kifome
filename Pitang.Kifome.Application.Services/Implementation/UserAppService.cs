@@ -15,10 +15,12 @@ namespace Pitang.Kifome.Application.Services.Implementation
     {
         private readonly IUserService userService;
         private readonly IMapper mapper;
+        private readonly ISellerService sellerService;
 
-        public UserAppService(IUserService userServiceInstance, IMapper mapper)
+        public UserAppService(IUserService userServiceInstance, ISellerService sellerService, IMapper mapper)
         {
             this.userService = userServiceInstance;
+            this.sellerService = sellerService;
             this.mapper = mapper;
         }
         
@@ -43,7 +45,7 @@ namespace Pitang.Kifome.Application.Services.Implementation
             this.userService.DeleteUser(Id);
         }
 
-        public IList<UserOutputDTO> GetUsers()
+        public IList<UserOutputDTO> GetAllUsers()
         {
             IList<UserOutputDTO> usersOut = new List<UserOutputDTO>();
 
@@ -87,12 +89,17 @@ namespace Pitang.Kifome.Application.Services.Implementation
 
         public void UpdateUser(UserUpdateInputDTO user)
         {
+            IList<Withdrawal> withdrawals = sellerService.GetWithdrawalsBySellerId(user.Id);
+            Menu menu = sellerService.GetMenuBySellerId(user.Id);
             this.userService.UpdateUser(new User
             {
                 Id = user.Id,
                 Email = user.Email,
                 Name = user.Name,
-                Rate = user.Rate
+                Password = user.Password,
+                Rate = user.Rate,
+                Withdrawals = withdrawals,
+                Menu = menu
             });
         }
 
