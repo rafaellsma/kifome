@@ -5,24 +5,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Pitang.Kifome.Domain.Entities;
+using Pitang.Kifome.Domain.Contracts.Repositories;
 
 namespace Pitang.Kifome.Domain.Services.Implementation
 {
     public class CustomerService : ICustomerService
     {
-        public void CancelOrder(Order order)
+        private readonly IUnitOfWork unitOfWork;
+        public CustomerService(IUnitOfWork unitOfWorkInstance)
         {
-            throw new NotImplementedException();
+            this.unitOfWork = unitOfWorkInstance;
+        }
+        public void CancelOrder(int orderId)
+        {
+            var order = this.unitOfWork.OrderRepository.SelectById(orderId);
+            if(order != null)
+            {
+                this.unitOfWork.OrderRepository.Delete(order);
+            }
         }
 
         public void EditOrder(Order order)
         {
-            throw new NotImplementedException();
+            this.unitOfWork.OrderRepository.Update(order);
         }
 
-        public Order MakeOrder(User seller, List<Meal> meals, Delivery local)
+        public Order GetOrderById(int Id)
         {
-            throw new NotImplementedException();
+            return this.unitOfWork.OrderRepository.SelectById(Id);
+        }
+
+        public void MakeOrder(Order order)
+        {
+            this.unitOfWork.OrderRepository.Insert(order);
         }
 
         public User SearchSellerByLocal(double latitude, double longitude)
@@ -40,7 +55,7 @@ namespace Pitang.Kifome.Domain.Services.Implementation
             throw new NotImplementedException();
         }
 
-        public void SellerEvaluation(int rate)
+        public void SellerEvaluation(float rate)
         {
             throw new NotImplementedException();
         }

@@ -12,7 +12,8 @@ namespace Pitang.Kifome.Application.Services.IoC
         {
             container.Register(
                 Component.For<IUserAppService, UserAppService>(),
-                Component.For<ISellerAppService, SellerAppService>()
+                Component.For<ISellerAppService, SellerAppService>(),
+                Component.For<ICustomerAppService, CustomerAppService>()
             );
         }
     }

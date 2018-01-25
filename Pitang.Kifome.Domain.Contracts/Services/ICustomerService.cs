@@ -9,12 +9,13 @@ namespace Pitang.Kifome.Domain.Contracts.Services
 {
     public interface ICustomerService
     {
-        Order MakeOrder(User seller, List<Meal> meals, Delivery local);
+        void MakeOrder(Order order);
         User SearchSellerByPrice(float price);
         User SearchSellerByName(string name);
         User SearchSellerByLocal(double latitude, double longitude);
-        void SellerEvaluation(int rate);
-        void CancelOrder(Order order);
+        void SellerEvaluation(float rate);
+        void CancelOrder(int orderId);
         void EditOrder(Order order);
+        Order GetOrderById(int Id);
     }
 }

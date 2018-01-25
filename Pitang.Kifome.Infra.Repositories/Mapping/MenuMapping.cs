@@ -13,13 +13,14 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
     {
         public MenuMapping()
         {
+            this.ToTable("Menu");
             this.HasKey(m => m.Id);
-            this.Property(m => m.Id)
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            this.Property(m => m.Id).HasColumnName("id");
+            this.HasKey(m => m.SellerId);
+            this.Property(m => m.SellerId).HasColumnName("seller_id");
             this.Property(m => m.InitialHour).HasColumnName("initialTimeToOrder").IsRequired();
             this.Property(m => m.FinalHour).HasColumnName("finalTimeToOrder").IsRequired();
             this.Property(m => m.LimitOfMeals).HasColumnName("limitOfMeals").IsRequired();
-            this.HasRequired(m => m.Seller);
         }
     }
 }

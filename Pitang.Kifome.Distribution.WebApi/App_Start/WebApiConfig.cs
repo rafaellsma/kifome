@@ -1,4 +1,5 @@
 ﻿using Pitang.Kifome.Crosscuting.IoC;
+using Pitang.Kifome.Distribution.WebApi.Filters;
 using Pitang.Kifome.Distribution.WebApi.IoC;
 using System;
 using System.Collections.Generic;
@@ -12,22 +13,15 @@ namespace Pitang.Kifome.Distribution.WebApi
     {
         public static void Register(HttpConfiguration config)
         {
-            // Serviços e configuração da API da Web
-
             config.EnableCors();
 
-            // Rotas da API da Web
             config.MapHttpAttributeRoutes();
 
             config.Services.Replace(typeof(IHttpControllerActivator), new ApiControllerActivator());
 
-            config.Formatters.Remove(config.Formatters.XmlFormatter);
+            config.Filters.Add(new BeforeActionValidationFilter());
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
         }
     }
 }

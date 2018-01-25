@@ -28,5 +28,12 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
                          select order;
             return result.ToList();
         }
+
+        //public Order SelectOrderById()
+        //{
+        //    var result = from order in this.Table
+        //                 join s in  on order.Seller.Id equals s.Id
+        //                 join 
+        //}
     }
 }

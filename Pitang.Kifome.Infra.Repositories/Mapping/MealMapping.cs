@@ -13,6 +13,7 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
     {
         public MealMapping()
         {
+            this.ToTable("Meal");
             this.HasKey(m => m.Id);
             this.Property(m => m.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
@@ -20,8 +21,10 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
             this.Property(m => m.Description).HasColumnName("description");
             this.Property(m => m.Days).HasColumnName("day").IsRequired();
             this.Property(m => m.Price).HasColumnName("price").IsRequired();
+            this.Property(m => m.MenuId).HasColumnName("menu_id").IsRequired();
             this.HasRequired(m => m.Menu)
-                .WithMany(me => me.Meals);
+                .WithMany(me => me.Meals)
+                .HasForeignKey(m => m.MenuId);
         }
     }
 }

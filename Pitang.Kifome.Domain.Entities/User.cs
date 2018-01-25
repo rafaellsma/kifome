@@ -10,7 +10,8 @@ namespace Pitang.Kifome.Domain.Entities
         public string Name { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public float Rate { get; set; }
-        public IList<Delivery> Deliveries { get; set; }
+        public double Rate { get; set; }
+        public IList<Withdrawal> Withdrawals { get; set; }
+        public virtual Menu Menu { get; set; }
     }
 }

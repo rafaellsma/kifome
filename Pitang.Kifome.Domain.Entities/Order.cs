@@ -9,8 +9,8 @@ namespace Pitang.Kifome.Domain.Entities
     {
         public User Seller { get; set; }
         public User Customer { get; set; }
-        public Delivery Delivery { get; set; }
-        public IList<Meal> Meals { get; set; }
+        public Withdrawal Withdrawal { get; set; }
+        public IList<ConfiguredMeal> ConfiguredMeals { get; set; }
         public OrderStatusEnum Status { get; set; }
         public IList<Comment> Comments { get; set; }
     }

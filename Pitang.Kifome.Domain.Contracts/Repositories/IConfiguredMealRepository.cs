@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace Pitang.Kifome.Domain.Contracts.Repositories
 {
-    public interface IDeliveryRepository : IRepository<Delivery, int>
+    public interface IConfiguredMealRepository : IRepository<ConfiguredMeal, int>
     {
-        List<Delivery> SelectBySellerId(int sellerId);
     }
 }

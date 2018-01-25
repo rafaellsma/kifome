@@ -14,12 +14,13 @@ namespace Pitang.Kifome.Infra.Repositories.IoC
             container.Register(
                 Component.For<IUserRepository, UserRepository>(),
                 Component.For<ICommentRepository, CommentRepository>(),
-                Component.For<IDeliveryRepository, DeliveryRepository>(),
+                Component.For<IWithdrawalRepository, WithdrawalRepository >(),
                 Component.For<IGarnishRepository, GarnishRepository>(),
                 Component.For<IMealRepository, MealRepository>(),
                 Component.For<IMenuRepository, MenuRepository>(),
                 Component.For<IOrderRepository, OrderRepository>(),
-                Component.For<IUnitOfWork, UnitOfWork>()
+                Component.For<IUnitOfWork, UnitOfWork>(),
+                Component.For<IConfiguredMealRepository, ConfiguredMeal>()
             );
         }
     }

@@ -12,5 +12,6 @@ namespace Pitang.Kifome.Domain.Entities
         public DateTime InitialHour { get; set; }
         public DateTime FinalHour { get; set; }
         public int LimitOfMeals { get; set; }
+        public int SellerId { get; set; }
     }
 }
