@@ -26,5 +26,40 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
         {
             sellerAppService.RegisterWithdrawal(withdrawal);
         }
+
+        [AcceptVerbs("Get")]
+        [Route("withdrawal")]
+        public IList<WithdrawalOutputDTO> GetWithdrawals()
+        {
+            return sellerAppService.GetWithdrawals();
+        }
+
+        [AcceptVerbs("Get")]
+        [Route("withdrawal/{sellerId}/seller")]
+        public IList<WithdrawalOutputDTO> GetWithdrawalsBySellerId(int sellerId)
+        {
+            return sellerAppService.GetWithdrawalsBySellerId(sellerId);
+        }
+
+        [AcceptVerbs("Get")]
+        [Route("withdrawal/{id}")]
+        public WithdrawalOutputDTO GetWithdrawalById(int id)
+        {
+            return sellerAppService.GetWithdrawalById(id);
+        }
+
+        [AcceptVerbs("Put")]
+        [Route("withdrawal")]
+        public void UpdateWithdrawal(WithdrawalUpdateInputDTO withdrawal)
+        {
+            sellerAppService.UpdateWithdrawal(withdrawal);
+        }
+
+        [AcceptVerbs("Delete")]
+        [Route("withdrawal/{id}")]
+        public void DeleteWithdrawal(int id)
+        {
+            sellerAppService.DeleteWithdrawal(id);
+        }
     }
 }

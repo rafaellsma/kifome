@@ -10,5 +10,6 @@ namespace Pitang.Kifome.Domain.Contracts.Repositories
     public interface IMealRepository : IRepository<Meal, int>
     {
         Meal SelectConfiguredMealWithGarnishies();
+        IList<Meal> SelectMealByMenuId(int menuId);
     }
 }

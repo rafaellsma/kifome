@@ -18,39 +18,69 @@ namespace Pitang.Kifome.Domain.Services.Implementation
             this.unitOfWork = unitOfWork;
         }
 
+        #region Order
         public void AcceptRequest(Order order)
         {
             throw new NotImplementedException();
         }
-
+        #endregion
+        #region Withdrawal
         public void RegisterWithdrawal(Withdrawal withdrawal)
         {
             unitOfWork.WithdrawalRepository.Insert(withdrawal);
         }
 
+        public IList<Withdrawal> GetWithdrawals()
+        {
+            return unitOfWork.WithdrawalRepository.SelectAll();
+        }
+
+        public IList<Withdrawal> GetWithdrawalsBySellerId(int id)
+        {
+            return unitOfWork.WithdrawalRepository.SelectBySellerId(id);
+        }
+
+        public Withdrawal GetWithdrawalById(int id)
+        {
+            return unitOfWork.WithdrawalRepository.SelectById(id);
+        }
+
+        public void UpdateWithdrawal(Withdrawal withdrawal)
+        {
+            unitOfWork.WithdrawalRepository.Update(withdrawal);
+        }
+
+        public void DeleteWithdrawal(int id)
+        {
+            Withdrawal withdrawal = unitOfWork.WithdrawalRepository.SelectById(id);
+            unitOfWork.WithdrawalRepository.Delete(withdrawal);
+        }
+        #endregion
+        #region Garnish
         public void RegisterGarnish(Garnish garnish)
         {
             unitOfWork.GarnishRepository.Insert(garnish);
-        }
-
-        public void RegisterMeal(Meal meal)
-        {
-            unitOfWork.MealRepository.Insert(meal);
-        }
-
-        public void RegisterMenu(Menu menu)
-        {
-            unitOfWork.MenuRepository.Insert(menu);
         }
 
         public IList<Garnish> GetGarnishes()
         {
             return unitOfWork.GarnishRepository.SelectAll();
         }
+        #endregion
+        #region Meal
+        public void RegisterMeal(Meal meal)
+        {
+            unitOfWork.MealRepository.Insert(meal);
+        }
 
         public IList<Meal> GetMeals()
         {
             return this.unitOfWork.MealRepository.SelectAll();
+        }
+
+        public IList<Meal> GetMealsByMenuId(int id)
+        {
+            return unitOfWork.MealRepository.SelectMealByMenuId(id);
         }
 
         public Meal GetMealById(int Id)
@@ -76,5 +106,22 @@ namespace Pitang.Kifome.Domain.Services.Implementation
                 this.unitOfWork.MealRepository.Delete(meal);
             }
         }
+        #endregion
+        #region Menu
+        public void RegisterMenu(Menu menu)
+        {
+            unitOfWork.MenuRepository.Insert(menu);
+        }
+
+        public Menu GetMenuBySellerId(int id)
+        {
+            return unitOfWork.MenuRepository.SelectById(id);
+        }
+
+        public void UpdateMenu(Menu menu)
+        {
+            unitOfWork.MenuRepository.Update(menu);
+        }
+        #endregion
     }
 }
