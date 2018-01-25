@@ -35,13 +35,6 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
         }
 
         [AcceptVerbs("Get")]
-        [Route("withdrawal/{sellerId}/seller")]
-        public IList<WithdrawalOutputDTO> GetWithdrawalsBySellerId(int sellerId)
-        {
-            return sellerAppService.GetWithdrawalsBySellerId(sellerId);
-        }
-
-        [AcceptVerbs("Get")]
         [Route("withdrawal/{id}")]
         public WithdrawalOutputDTO GetWithdrawalById(int id)
         {

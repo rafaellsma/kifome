@@ -14,10 +14,12 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
     public class UserController : ApiController
     {
         public readonly IUserAppService userAppService;
+        public readonly ISellerAppService sellerAppService;
 
-        public UserController(IUserAppService userAppService)
+        public UserController(IUserAppService userAppService, ISellerAppService sellerAppService)
         {
             this.userAppService = userAppService;
+            this.sellerAppService = sellerAppService;
         }
 
         [AcceptVerbs("Post")]
@@ -53,6 +55,20 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
         public void DeleteUser(int Id)
         {
             this.userAppService.DeleteUser(Id);
+        }
+
+        [AcceptVerbs("Get")]
+        [Route("user/{id}/withdrawal")]
+        public IList<WithdrawalOutputDTO> GetWithdrawalsBySellerId(int id)
+        {
+            return sellerAppService.GetWithdrawalsBySellerId(id);
+        }
+
+        [AcceptVerbs("Get")]
+        [Route("user/{id}/menu")]
+        public MenuOutputDTO GetMenuBySellerId(int id)
+        {
+            return sellerAppService.GetMenuBySellerId(id);
         }
     }
 }
