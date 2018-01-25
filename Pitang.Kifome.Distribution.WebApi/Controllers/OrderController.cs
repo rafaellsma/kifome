@@ -19,12 +19,14 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
         {
             this.customerAppService = customerAppServiceInstance;
         }
+
         [AcceptVerbs("Get")]
-        [Route("order")]
+        [Route("order/{Id}")]
         public OrderOutputDTO GetOrderById(int Id)
         {
             return this.customerAppService.GetOrderById(Id);
         }
+
         [AcceptVerbs("Post")]
         [Route("order")]
         public void MakeOrder(OrderInputDTO order)
