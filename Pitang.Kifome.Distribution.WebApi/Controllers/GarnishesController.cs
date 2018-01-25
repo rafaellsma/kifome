@@ -6,27 +6,38 @@ using System.Web.Http.Cors;
 
 namespace Pitang.Kifome.Distribution.WebApi.Controllers
 {
-    [Route("api/garnishes")]
+    [RoutePrefix("api")]
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class GarnishesController : ApiController
     {
-        public readonly ISellerAppService sellerAppService;
+        private readonly ISellerAppService sellerAppService;
+        private readonly IUserAppService userAppService;
 
-        public GarnishesController(ISellerAppService sellerAppService)
+        public GarnishesController(ISellerAppService sellerAppService, IUserAppService userAppService)
         {
             this.sellerAppService = sellerAppService;
+            this.userAppService = userAppService;
         }
 
         [HttpPost]
+        [Route("garnishes")]
         public void CreateGarnish(GarnishInputDTO garnish)
         {
             sellerAppService.RegisterGarnish(garnish);
         }
 
         [HttpGet]
+        [Route("garnishes")]
         public IList<GarnishOutputDTO> GetGarnishes()
         {
-            return sellerAppService.GetGarnishes();
+            return userAppService.GetGarnishes();
+        }
+
+        [HttpGet]
+        [Route("garnishes/{id:int}")]
+        public GarnishOutputDTO GarnishById(int id)
+        {
+            return userAppService.GetGarnishByID(id);
         }
     }
 }

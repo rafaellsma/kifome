@@ -92,5 +92,41 @@ namespace Pitang.Kifome.Application.Services.Implementation
                 Rate = user.Rate
             });
         }
+
+        #region Garnish
+        public IList<GarnishOutputDTO> GetGarnishes()
+        {
+            var garnishes = userService.GetGarnishes();
+            IList<GarnishOutputDTO> garnishesOutput = new List<GarnishOutputDTO>();
+            foreach (var garnish in garnishes)
+            {
+                garnishesOutput.Add(new GarnishOutputDTO()
+                {
+                    Id = garnish.Id,
+                    Name = garnish.Name,
+                    Description = garnish.Description
+                });
+            }
+            return garnishesOutput;
+
+        }
+
+        public GarnishOutputDTO GetGarnishByID(int id)
+        {
+            var garnish = userService.GetGarnishById(id);
+            GarnishOutputDTO garnishOutput = null;
+
+            if (garnish != null)
+            {
+                garnishOutput = new GarnishOutputDTO()
+                {
+                    Id = garnish.Id,
+                    Name = garnish.Name,
+                    Description = garnish.Description
+                };
+            }
+            return garnishOutput;
+        }
+        #endregion
     }
 }

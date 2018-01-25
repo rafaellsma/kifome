@@ -112,21 +112,7 @@ namespace Pitang.Kifome.Application.Services.Implementation
         }
         #endregion
         #region Garnish
-        public IList<GarnishOutputDTO> GetGarnishes()
-        {
-            var garnishes = sellerService.GetGarnishes();
-            IList<GarnishOutputDTO> garnishesOutput = new List<GarnishOutputDTO>();
-            foreach (var garnish in garnishes)
-            {
-                garnishesOutput.Add(new GarnishOutputDTO()
-                {
-                    Name = garnish.Name,
-                    Description = garnish.Description
-                });
-            }
-            return garnishesOutput;
-
-        }
+        
 
         public void RegisterGarnish(GarnishInputDTO garnish)
         {
@@ -136,7 +122,18 @@ namespace Pitang.Kifome.Application.Services.Implementation
                 Description = garnish.Description
             });
         }
+
+        public void UpdateGarnish(GarnishInputDTO garnish)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteGarnish(int id)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
+
         #region Menu
         public void RegisterMenu(MenuInputDTO menu)
         {

@@ -12,5 +12,10 @@ namespace Pitang.Kifome.Application.Contracts.Services
         void UpdateUser(UserUpdateInputDTO user);
         UserOutputDTO GetUserById(int Id);
         void DeleteUser(int Id);
+
+        #region Garnish
+        IList<GarnishOutputDTO> GetGarnishes();
+        GarnishOutputDTO GetGarnishByID(int id);
+        #endregion
     }
 }
