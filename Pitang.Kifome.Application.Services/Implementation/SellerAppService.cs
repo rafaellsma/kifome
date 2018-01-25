@@ -58,14 +58,17 @@ namespace Pitang.Kifome.Application.Services.Implementation
             {
                 IList<GarnishOutputDTO> garnishDTO = new List<GarnishOutputDTO>();
                 //Casting Entity Garnish into GarnishOutputDTO
-                foreach (var g in m.Garnishies)
+                if (m.Garnishies != null)
                 {
-                    GarnishOutputDTO garnish = new GarnishOutputDTO()
+                    foreach (var g in m.Garnishies)
                     {
-                        Name =  g.Name,
-                        Description = g.Description
-                    };
-                    garnishDTO.Add(garnish);
+                        GarnishOutputDTO garnish = new GarnishOutputDTO()
+                        {
+                            Name = g.Name,
+                            Description = g.Description
+                        };
+                        garnishDTO.Add(garnish);
+                    }
                 }
                 //Casting Entity Meal into MealOutputDTO
                 MealOutputDTO meal = new MealOutputDTO
@@ -91,22 +94,25 @@ namespace Pitang.Kifome.Application.Services.Implementation
             var meal = this.sellerService.GetMealById(Id);
             IList<GarnishOutputDTO> garnishDTO = new List<GarnishOutputDTO>();
             //Casting Entity Garnish into GarnishOutputDTO
-            foreach (var g in meal.Garnishies)
+            if(meal.Garnishies != null)
             {
-                GarnishOutputDTO garnish = new GarnishOutputDTO()
+                foreach (var g in meal.Garnishies)
                 {
-                    Name = g.Name,
-                    Description = g.Description
-                };
-                garnishDTO.Add(garnish);
+                    GarnishOutputDTO garnish = new GarnishOutputDTO()
+                    {
+                        Name = g.Name,
+                        Description = g.Description
+                    };
+                    garnishDTO.Add(garnish);
+                }
             }
             MealOutputDTO mealDTO = new MealOutputDTO()
             {
-                 Name = meal.Name,
-                 Description = meal.Description,
-                 Price = meal.Price,
-                 Days = meal.Days,
-                 Garnishies = garnishDTO
+                Name = meal.Name,
+                Description = meal.Description,
+                Price = meal.Price,
+                Days = meal.Days,
+                Garnishies = garnishDTO
             };
             return mealDTO;
         }

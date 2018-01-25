@@ -13,10 +13,12 @@ namespace Pitang.Kifome.Application.Services.Implementation
     public class UserAppService : IUserAppService
     {
         private readonly IUserService userService;
+        private readonly ISellerService sellerService;
 
-        public UserAppService(IUserService userServiceInstance)
+        public UserAppService(IUserService userServiceInstance, ISellerService sellerService)
         {
             this.userService = userServiceInstance;
+            this.sellerService = sellerService;
         }
         
         public UserOutputDTO Authentication(LoginAuthenticationDTO login)
@@ -84,12 +86,17 @@ namespace Pitang.Kifome.Application.Services.Implementation
 
         public void UpdateUser(UserUpdateInputDTO user)
         {
+            IList<Withdrawal> withdrawals = sellerService.GetWithdrawalsBySellerId(user.Id);
+            Menu menu = sellerService.GetMenuBySellerId(user.Id);
             this.userService.UpdateUser(new User
             {
                 Id = user.Id,
                 Email = user.Email,
                 Name = user.Name,
-                Rate = user.Rate
+                Password = user.Password,
+                Rate = user.Rate,
+                Withdrawals = withdrawals,
+                Menu = menu
             });
         }
     }

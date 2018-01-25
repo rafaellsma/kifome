@@ -22,24 +22,24 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
         }
 
         [AcceptVerbs("Post")]
-        [Route("Menu")]
+        [Route("menu")]
         public void CreateMenu(MenuInputDTO menu)
         {
             sellerAppService.RegisterMenu(menu);
         }
 
-        [AcceptVerbs("Get")]
-        [Route("Menu/{sellerId}/seller")]
-        public MenuOutputDTO GetMenuBySellerId(int sellerId)
-        {
-            return sellerAppService.GetMenuBySellerId(sellerId);
-        }
-
         [AcceptVerbs("Put")]
-        [Route("Menu")]
+        [Route("menu")]
         public void UpdateMenu(MenuUpdateInputDTO menu)
         {
             sellerAppService.UpdateMenu(menu);
+        }
+
+        [AcceptVerbs("Get")]
+        [Route("menu/{id}")]
+        public MenuOutputDTO GetMenuBySellerId(int id)
+        {
+            return sellerAppService.GetMenuBySellerId(id);
         }
     }
 }
