@@ -123,14 +123,20 @@ namespace Pitang.Kifome.Application.Services.Implementation
             });
         }
 
-        public void UpdateGarnish(GarnishInputDTO garnish)
+        public void UpdateGarnish(GarnishUpdateDTO garnish)
         {
-            throw new NotImplementedException();
+            sellerService.UpdateGarnish(new Garnish()
+            {
+                Name = garnish.Name,
+                Description = garnish.Description,
+                Id = garnish.Id
+            });
         }
 
         public void DeleteGarnish(int id)
         {
-            throw new NotImplementedException();
+            var garnish = userService.GetGarnishById(id);
+            sellerService.DeleteGarnish(garnish);
         }
         #endregion
 

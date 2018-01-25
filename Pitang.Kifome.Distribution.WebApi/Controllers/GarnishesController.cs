@@ -39,5 +39,24 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
         {
             return userAppService.GetGarnishByID(id);
         }
+
+        [HttpPut]
+        [Route("garnishes/{id:int}")]
+        public void UpdateGarnish([FromUri]int id, [FromBody]GarnishInputDTO garnishBody)
+        {
+            sellerAppService.UpdateGarnish(new GarnishUpdateDTO()
+            {
+                Id = id,
+                Name = garnishBody.Name,
+                Description = garnishBody.Description
+            });
+        }
+
+        [HttpDelete]
+        [Route("garnishes/{id:int}")]
+        public void DeleteGarnish(int id)
+        {
+            sellerAppService.DeleteGarnish(id);
+        }
     }
 }

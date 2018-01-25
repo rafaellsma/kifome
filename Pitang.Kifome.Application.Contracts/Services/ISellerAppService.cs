@@ -11,7 +11,7 @@ namespace Pitang.Kifome.Application.Contracts.Services
     {
         #region Garnish
         void RegisterGarnish(GarnishInputDTO garnish);
-        void UpdateGarnish(GarnishInputDTO garnish);
+        void UpdateGarnish(GarnishUpdateDTO garnish);
         void DeleteGarnish(int id);
         #endregion
         #region Withdrawal
