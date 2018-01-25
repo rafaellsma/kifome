@@ -17,11 +17,11 @@ namespace Pitang.Kifome.Application.Services.Implementation
         private readonly IMapper mapper;
         private readonly ISellerService sellerService;
 
-        public UserAppService(IUserService userServiceInstance, ISellerService sellerService, IMapper mapper)
+        public UserAppService(IUserService userServiceInstance, ISellerService sellerService)
         {
             this.userService = userServiceInstance;
-            this.sellerService = sellerService;
             this.mapper = mapper;
+            this.sellerService = sellerService;
         }
         
         public UserOutputDTO Authentication(LoginAuthenticationDTO login)
