@@ -19,7 +19,7 @@ namespace Pitang.Kifome.Application.Entities
         [Required]
         public int MenuId { get; set; }
         //Optional
-        //public IList<GarnishInputDTO> Garnishies { get; set; }
+        public IList<GarnishOutputDTO> Garnishies { get; set; }
         [Required]
         public DayOfWeek Days { get; set; }
 
