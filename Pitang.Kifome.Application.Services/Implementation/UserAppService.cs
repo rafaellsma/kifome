@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Pitang.Kifome.Application.Contracts.Services;
 using Pitang.Kifome.Application.Entities;
 using Pitang.Kifome.Domain.Contracts.Services;
@@ -13,11 +14,13 @@ namespace Pitang.Kifome.Application.Services.Implementation
     public class UserAppService : IUserAppService
     {
         private readonly IUserService userService;
+        private readonly IMapper mapper;
         private readonly ISellerService sellerService;
 
-        public UserAppService(IUserService userServiceInstance, ISellerService sellerService)
+        public UserAppService(IUserService userServiceInstance, ISellerService sellerService, IMapper mapper)
         {
             this.userService = userServiceInstance;
+            this.mapper = mapper;
             this.sellerService = sellerService;
         }
         
@@ -42,7 +45,7 @@ namespace Pitang.Kifome.Application.Services.Implementation
             this.userService.DeleteUser(Id);
         }
 
-        public IList<UserOutputDTO> GetAllUsers()
+        public IList<UserOutputDTO> GetUsers()
         {
             IList<UserOutputDTO> usersOut = new List<UserOutputDTO>();
 
@@ -99,5 +102,20 @@ namespace Pitang.Kifome.Application.Services.Implementation
                 Menu = menu
             });
         }
+
+        #region Garnish
+        public IList<GarnishOutputDTO> GetGarnishes()
+        {
+            var garnishes = userService.GetGarnishes();
+            return mapper.Map<GarnishOutputDTO[]>(garnishes);
+
+        }
+
+        public GarnishOutputDTO GetGarnishByID(int id)
+        {
+            var garnish = userService.GetGarnishById(id);
+            return mapper.Map<GarnishOutputDTO>(garnish);
+        }
+        #endregion
     }
 }

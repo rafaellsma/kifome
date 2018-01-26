@@ -11,7 +11,8 @@ namespace Pitang.Kifome.Domain.Contracts.Services
     {
         #region Garnish
         void RegisterGarnish(Garnish garnish);
-        IList<Garnish> GetGarnishes();
+        void UpdateGarnish(Garnish garnish);
+        void DeleteGarnish(Garnish garnish);
         #endregion
         #region Meal
         void RegisterMeal(Meal meal);

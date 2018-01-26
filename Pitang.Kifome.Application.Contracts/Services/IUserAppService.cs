@@ -8,9 +8,14 @@ namespace Pitang.Kifome.Application.Contracts.Services
     {
         UserOutputDTO Authentication(LoginAuthenticationDTO login);
         void RegisterUser(UserInputDTO user);
-        IList<UserOutputDTO> GetAllUsers();
+        IList<UserOutputDTO> GetUsers();
         void UpdateUser(UserUpdateInputDTO user);
         UserOutputDTO GetUserById(int Id);
         void DeleteUser(int Id);
+
+        #region Garnish
+        IList<GarnishOutputDTO> GetGarnishes();
+        GarnishOutputDTO GetGarnishByID(int id);
+        #endregion
     }
 }

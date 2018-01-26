@@ -63,5 +63,17 @@ namespace Pitang.Kifome.Domain.Services.Implementation
         {
             this.unitOfWork.UserRepository.Update(user);
         }
+
+        #region Garnish
+        public IList<Garnish> GetGarnishes()
+        {
+            return unitOfWork.GarnishRepository.SelectAll(x => x.Meals);
+        }
+
+        public Garnish GetGarnishById(int id)
+        {
+            return unitOfWork.GarnishRepository.SelectById(id);
+        }
+        #endregion
     }
 }

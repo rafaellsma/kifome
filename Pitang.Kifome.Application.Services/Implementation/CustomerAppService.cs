@@ -13,10 +13,14 @@ namespace Pitang.Kifome.Application.Services.Implementation
     public class CustomerAppService : ICustomerAppService
     {
         private readonly ICustomerService customerService;
+        private readonly ISellerService sellerService;
+        private readonly IUserService userService;
 
-        public CustomerAppService(ICustomerService customerServiceInstance)
+        public CustomerAppService(ICustomerService customerServiceInstance, ISellerService sellerServiceInstance, IUserService userServiceInstance)
         {
             this.customerService = customerServiceInstance;
+            this.sellerService = sellerServiceInstance;
+            this.userService = userServiceInstance;
         }
 
         public void DeleteOrder(int orderId)
@@ -93,45 +97,60 @@ namespace Pitang.Kifome.Application.Services.Implementation
 
         public void MakeOrder(OrderInputDTO order)
         {
-            IList<ConfiguredMeal> configuredMeals = new List<ConfiguredMeal>();
-            ConfiguredMeal configMeal = null;
-            if (order.ConfiguredMeals != null)
-            {
-                foreach (var cm in order.ConfiguredMeals)
-                {
-                    configMeal = new ConfiguredMeal();
-                    configMeal.MealId = cm.Meal.Id;
-                    configMeal.OrderId = cm.Order.Id;
-                }
-                configuredMeals.Add(configMeal);
-            }
+            var customer = this.userService.GetUserById(order.CustomerId);
+            var seller = this.userService.GetUserById(order.SellerId);
+            var withdrawal = this.sellerService.GetWithdrawalById(order.WithdrawalId);
 
             this.customerService.MakeOrder(new Order
             {
-                Seller = new User {
-                    Id = order.Seller.Id,
-                    Name = order.Seller.Name,
-                    Email =  order.Seller.Email
-                },
-                Customer = new User
-                {
-                    Id = order.Customer.Id,
-                    Name = order.Customer.Name,
-                    Email = order.Customer.Email
-                },
-                ConfiguredMeals = configuredMeals,
-                Status = (OrderStatusEnum)order.Status,
-                Withdrawal = new Withdrawal
-                {
-                    InitialHour = Convert.ToDateTime(order.Withdrawal.InitialHour),
-                    FinalHour = Convert.ToDateTime(order.Withdrawal.FinalHour),
-                    SellerId = order.Withdrawal.SellerId,
-                    CEP = order.Withdrawal.CEP,
-                    Number = order.Withdrawal.Number,
-                    Street = order.Withdrawal.Street
-                }               
+                Customer = customer,
+                Seller = seller,
+                Withdrawal = withdrawal,
+                Status = (OrderStatusEnum)order.Status
             });
         }
+
+        //public void MakeOrder(OrderInputDTO order)
+        //{
+        //    IList<ConfiguredMeal> configuredMeals = new List<ConfiguredMeal>();
+        //    ConfiguredMeal configMeal = null;
+        //    if (order.ConfiguredMeals != null)
+        //    {
+        //        foreach (var cm in order.ConfiguredMeals)
+        //        {
+        //            configMeal = new ConfiguredMeal();
+        //            configMeal.MealId = cm.Meal.Id;
+        //            configMeal.OrderId = cm.Order.Id;
+        //        }
+        //        configuredMeals.Add(configMeal);
+        //    }
+
+        //    this.customerService.MakeOrder(new Order
+        //    {
+        //        Seller = new User {
+        //            Id = order.Seller.Id,
+        //            Name = order.Seller.Name,
+        //            Email =  order.Seller.Email
+        //        },
+        //        Customer = new User
+        //        {
+        //            Id = order.Customer.Id,
+        //            Name = order.Customer.Name,
+        //            Email = order.Customer.Email
+        //        },
+        //        ConfiguredMeals = configuredMeals,
+        //        Status = (OrderStatusEnum)order.Status,
+        //        Withdrawal = new Withdrawal
+        //        {
+        //            InitialHour = Convert.ToDateTime(order.Withdrawal.InitialHour),
+        //            FinalHour = Convert.ToDateTime(order.Withdrawal.FinalHour),
+        //            SellerId = order.Withdrawal.SellerId,
+        //            CEP = order.Withdrawal.CEP,
+        //            Number = order.Withdrawal.Number,
+        //            Street = order.Withdrawal.Street
+        //        }               
+        //    });
+        //}
 
         public UserOutputDTO SearchSellerByLocal(double latitude, double longitude)
         {
@@ -155,45 +174,50 @@ namespace Pitang.Kifome.Application.Services.Implementation
 
         public void UpdateOrder(OrderInputDTO order)
         {
-            IList<ConfiguredMeal> configuredMeals = new List<ConfiguredMeal>();
-            ConfiguredMeal configMeal = null;
-            if (order.ConfiguredMeals != null)
-            {
-                foreach (var cm in order.ConfiguredMeals)
-                {
-                    configMeal = new ConfiguredMeal();
-                    configMeal.MealId = cm.Meal.Id;
-                    configMeal.OrderId = cm.Order.Id;
-                }
-                configuredMeals.Add(configMeal);
-            }
-
-            this.customerService.EditOrder(new Order
-            {
-                Seller = new User
-                {
-                    Id = order.Seller.Id,
-                    Name = order.Seller.Name,
-                    Email = order.Seller.Email
-                },
-                Customer = new User
-                {
-                    Id = order.Customer.Id,
-                    Name = order.Customer.Name,
-                    Email = order.Customer.Email
-                },
-                ConfiguredMeals = configuredMeals,
-                Status = (OrderStatusEnum)order.Status,
-                Withdrawal = new Withdrawal
-                {
-                    InitialHour = Convert.ToDateTime(order.Withdrawal.InitialHour),
-                    FinalHour = Convert.ToDateTime(order.Withdrawal.FinalHour),
-                    SellerId = order.Withdrawal.SellerId,
-                    CEP = order.Withdrawal.CEP,
-                    Number = order.Withdrawal.Number,
-                    Street = order.Withdrawal.Street
-                }
-            });
+            throw new NotImplementedException();
         }
+
+        //public void UpdateOrder(OrderInputDTO order)
+        //{
+        //    IList<ConfiguredMeal> configuredMeals = new List<ConfiguredMeal>();
+        //    ConfiguredMeal configMeal = null;
+        //    if (order.ConfiguredMeals != null)
+        //    {
+        //        foreach (var cm in order.ConfiguredMeals)
+        //        {
+        //            configMeal = new ConfiguredMeal();
+        //            configMeal.MealId = cm.Meal.Id;
+        //            configMeal.OrderId = cm.Order.Id;
+        //        }
+        //        configuredMeals.Add(configMeal);
+        //    }
+
+        //    this.customerService.EditOrder(new Order
+        //    {
+        //        Seller = new User
+        //        {
+        //            Id = order.Seller.Id,
+        //            Name = order.Seller.Name,
+        //            Email = order.Seller.Email
+        //        },
+        //        Customer = new User
+        //        {
+        //            Id = order.Customer.Id,
+        //            Name = order.Customer.Name,
+        //            Email = order.Customer.Email
+        //        },
+        //        ConfiguredMeals = configuredMeals,
+        //        Status = (OrderStatusEnum)order.Status,
+        //        Withdrawal = new Withdrawal
+        //        {
+        //            InitialHour = Convert.ToDateTime(order.Withdrawal.InitialHour),
+        //            FinalHour = Convert.ToDateTime(order.Withdrawal.FinalHour),
+        //            SellerId = order.Withdrawal.SellerId,
+        //            CEP = order.Withdrawal.CEP,
+        //            Number = order.Withdrawal.Number,
+        //            Street = order.Withdrawal.Street
+        //        }
+        //    });
+        //}
     }
 }

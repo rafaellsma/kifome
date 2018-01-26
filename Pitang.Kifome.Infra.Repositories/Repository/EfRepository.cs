@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -41,10 +42,16 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
             return result.SingleOrDefault();
         }
 
-        public List<T> SelectAll()
+        public List<T> SelectAll(params Expression<Func<T, object>>[] includes)
         {
             var result = from entity in Context.Set<T>()
                          select entity;
+
+            foreach(var include in includes)
+            {
+                result = result.Include(include);
+            }
+
             return result.ToList();
         }
 
