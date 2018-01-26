@@ -33,6 +33,20 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
         {
             this.customerAppService.MakeOrder(order);
         }
+
+        [AcceptVerbs("Put")]
+        [Route("order")]
+        public void EditOrder(OrderInputDTO order)
+        {
+            this.customerAppService.UpdateOrder(order);
+        }
+
+        [AcceptVerbs("Delete")]
+        [Route("order/{Id}")]
+        public void DeleteOrder(int Id)
+        {
+            this.customerAppService.DeleteOrder(Id);
+        }
        
     }
 }

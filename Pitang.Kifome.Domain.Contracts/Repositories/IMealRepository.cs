@@ -11,5 +11,7 @@ namespace Pitang.Kifome.Domain.Contracts.Repositories
     {
         Meal SelectConfiguredMealWithGarnishies();
         IList<Meal> SelectMealByMenuId(int menuId);
+        void InsertMeal(Meal meal);
+        void UpdateMeal(Meal meal);
     }
 }

@@ -32,7 +32,7 @@ namespace Pitang.Kifome.Domain.Services.Implementation
 
         public Order GetOrderById(int Id)
         {
-            return this.unitOfWork.OrderRepository.SelectById(Id);
+            return this.unitOfWork.OrderRepository.SelectOrderById(Id);
         }
 
         public void MakeOrder(Order order)

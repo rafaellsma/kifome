@@ -40,15 +40,18 @@ namespace Pitang.Kifome.Application.Services.Implementation
                 foreach (var cm in order.ConfiguredMeals)
                 {
                     configMeal = new ConfiguredMealInputDTO();
-                    foreach (var g in cm.Meal.Garnishies)
+                    if (order.ConfiguredMeals != null)
                     {
-                        garnish = new GarnishOutputDTO()
+                        foreach (var g in cm.Meal.Garnishies)
                         {
-                            Id = g.Id,
-                            Name = g.Name,
-                            Description = g.Description
-                        };
-                        garnishies.Add(garnish);
+                            garnish = new GarnishOutputDTO()
+                            {
+                                Id = g.Id,
+                                Name = g.Name,
+                                Description = g.Description
+                            };
+                            garnishies.Add(garnish);
+                        }
                     }
                     
                     configMeal.Meal = new MealOutputDTO
