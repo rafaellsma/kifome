@@ -98,6 +98,11 @@ namespace Pitang.Kifome.Application.Services.Implementation
             return orderDTO;
         }
 
+        public void GetOrders()
+        {
+            var orders = this.customerService.GetOrders();
+        }
+
         public void MakeOrder(OrderInputDTO order)
         {
             var customer = this.userService.GetUserById(order.CustomerId);

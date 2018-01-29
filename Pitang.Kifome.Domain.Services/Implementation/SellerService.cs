@@ -62,10 +62,16 @@ namespace Pitang.Kifome.Domain.Services.Implementation
             unitOfWork.GarnishRepository.Insert(garnish);
         }
 
-        public IList<Garnish> GetGarnishes()
+        public void UpdateGarnish(Garnish garnish)
         {
-            return unitOfWork.GarnishRepository.SelectAll();
+            unitOfWork.GarnishRepository.Update(garnish);
         }
+
+        public void DeleteGarnish(Garnish garnish)
+        {
+            unitOfWork.GarnishRepository.Delete(garnish);
+        }
+
         #endregion
         #region Meal
         public void RegisterMeal(Meal meal)

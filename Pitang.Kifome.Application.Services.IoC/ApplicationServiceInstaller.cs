@@ -1,7 +1,9 @@
-﻿using Castle.MicroKernel.Registration;
+﻿using AutoMapper;
+using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using Pitang.Kifome.Application.Contracts.Services;
+using Pitang.Kifome.Application.Services.AutoMapper;
 using Pitang.Kifome.Application.Services.Implementation;
 
 namespace Pitang.Kifome.Application.Services.IoC
@@ -13,7 +15,11 @@ namespace Pitang.Kifome.Application.Services.IoC
             container.Register(
                 Component.For<IUserAppService, UserAppService>(),
                 Component.For<ISellerAppService, SellerAppService>(),
-                Component.For<ICustomerAppService, CustomerAppService>()
+                Component.For<ICustomerAppService, CustomerAppService>(),
+                Component.For<IMapper>().UsingFactoryMethod(x =>
+                {
+                    return new MapperConfiguration(new AutoMapperConfiguration().Configuration()).CreateMapper();
+                })
             );
         }
     }

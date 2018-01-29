@@ -17,5 +17,8 @@ namespace Pitang.Kifome.Domain.Contracts.Services
         void UpdateUser(User user);
         User GetUserById(int Id);
         void DeleteUser(int Id);
+        IList<Garnish> GetGarnishes();
+        Garnish GetGarnishById(int id);
+
     }
 }

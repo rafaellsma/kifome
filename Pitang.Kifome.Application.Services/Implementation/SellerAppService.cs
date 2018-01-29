@@ -1,4 +1,5 @@
-﻿using Pitang.Kifome.Application.Contracts.Services;
+﻿using AutoMapper;
+using Pitang.Kifome.Application.Contracts.Services;
 using Pitang.Kifome.Application.Entities;
 using Pitang.Kifome.Domain.Contracts.Services;
 using Pitang.Kifome.Domain.Entities;
@@ -14,10 +15,12 @@ namespace Pitang.Kifome.Application.Services.Implementation
     {
         private readonly ISellerService sellerService;
         private readonly IUserService userService;
-        public SellerAppService(ISellerService sellerService, IUserService userService)
+        private readonly IMapper mapper;
+        public SellerAppService(ISellerService sellerService, IUserService userService, IMapper mapper)
         {
             this.sellerService = sellerService;
             this.userService = userService;
+            this.mapper = mapper;
         }
 
         #region Meal
@@ -74,14 +77,17 @@ namespace Pitang.Kifome.Application.Services.Implementation
             {
                 IList<GarnishOutputDTO> garnishDTO = new List<GarnishOutputDTO>();
                 //Casting Entity Garnish into GarnishOutputDTO
-                foreach (var g in m.Garnishies)
+                if (m.Garnishies != null)
                 {
-                    GarnishOutputDTO garnish = new GarnishOutputDTO()
+                    foreach (var g in m.Garnishies)
                     {
-                        Name =  g.Name,
-                        Description = g.Description
-                    };
-                    garnishDTO.Add(garnish);
+                        GarnishOutputDTO garnish = new GarnishOutputDTO()
+                        {
+                            Name = g.Name,
+                            Description = g.Description
+                        };
+                        garnishDTO.Add(garnish);
+                    }
                 }
                 //Casting Entity Meal into MealOutputDTO
                 MealOutputDTO meal = new MealOutputDTO
@@ -107,52 +113,50 @@ namespace Pitang.Kifome.Application.Services.Implementation
             var meal = this.sellerService.GetMealById(Id);
             IList<GarnishOutputDTO> garnishDTO = new List<GarnishOutputDTO>();
             //Casting Entity Garnish into GarnishOutputDTO
-            foreach (var g in meal.Garnishies)
+            if(meal.Garnishies != null)
             {
-                GarnishOutputDTO garnish = new GarnishOutputDTO()
+                foreach (var g in meal.Garnishies)
                 {
-                    Name = g.Name,
-                    Description = g.Description
-                };
-                garnishDTO.Add(garnish);
+                    GarnishOutputDTO garnish = new GarnishOutputDTO()
+                    {
+                        Name = g.Name,
+                        Description = g.Description
+                    };
+                    garnishDTO.Add(garnish);
+                }
             }
             MealOutputDTO mealDTO = new MealOutputDTO()
             {
-                 Name = meal.Name,
-                 Description = meal.Description,
-                 Price = meal.Price,
-                 Days = meal.Days,
-                 Garnishies = garnishDTO
+                Name = meal.Name,
+                Description = meal.Description,
+                Price = meal.Price,
+                Days = meal.Days,
+                Garnishies = garnishDTO
             };
             return mealDTO;
         }
         #endregion
-        #region Garnish
-        public IList<GarnishOutputDTO> GetGarnishes()
-        {
-            var garnishes = sellerService.GetGarnishes();
-            IList<GarnishOutputDTO> garnishesOutput = new List<GarnishOutputDTO>();
-            foreach (var garnish in garnishes)
-            {
-                garnishesOutput.Add(new GarnishOutputDTO()
-                {
-                    Name = garnish.Name,
-                    Description = garnish.Description
-                });
-            }
-            return garnishesOutput;
 
-        }
+        #region Garnish
+        
 
         public void RegisterGarnish(GarnishInputDTO garnish)
         {
-            sellerService.RegisterGarnish(new Garnish
-            {
-                Name = garnish.Name,
-                Description = garnish.Description
-            });
+            sellerService.RegisterGarnish(mapper.Map<Garnish>(garnish));
+        }
+
+        public void UpdateGarnish(GarnishUpdateDTO garnish)
+        {
+            sellerService.UpdateGarnish(mapper.Map<Garnish>(garnish));
+        }
+
+        public void DeleteGarnish(int id)
+        {
+            var garnish = userService.GetGarnishById(id);
+            sellerService.DeleteGarnish(garnish);
         }
         #endregion
+
         #region Menu
         public void RegisterMenu(MenuInputDTO menu)
         {
@@ -199,6 +203,7 @@ namespace Pitang.Kifome.Application.Services.Implementation
             });
         }
         #endregion
+
         #region Withdrawal
         public void RegisterWithdrawal(WithdrawalInputDTO withdrawal)
         {

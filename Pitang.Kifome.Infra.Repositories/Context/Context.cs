@@ -1,10 +1,12 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 
 namespace Pitang.Kifome.Infra.Repositories.Mapping
 {
     public class Context : DbContext
     {
-        public Context() : base("ConnJeyJey")
+
+        public Context() : base(Environment.GetEnvironmentVariable("CONN_KIFOME"))
         {
             Database.SetInitializer<Context>(null);
         }

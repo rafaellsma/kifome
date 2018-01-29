@@ -7,12 +7,9 @@ using System.Threading.Tasks;
 
 namespace Pitang.Kifome.Application.Entities
 {
-    public class GarnishOutputDTO
+    public class GarnishUpdateDTO : GarnishInputDTO
     {
-        public int Id { get; set; }
         [Required]
-        public string Name { get; set; }
-        [Required]
-        public string Description { get; set; }
+        public int Id;
     }
 }
