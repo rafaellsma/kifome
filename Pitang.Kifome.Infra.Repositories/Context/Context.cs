@@ -5,6 +5,7 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
 {
     public class Context : DbContext
     {
+
         public Context() : base(Environment.GetEnvironmentVariable("CONN_KIFOME"))
         {
             Database.SetInitializer<Context>(null);
@@ -19,6 +20,7 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
             modelBuilder.Configurations.Add(new MenuMapping());
             modelBuilder.Configurations.Add(new OrderMapping());
             modelBuilder.Configurations.Add(new UserMapping());
+            modelBuilder.Configurations.Add(new ConfiguredMealMapping());
             base.OnModelCreating(modelBuilder);
         }
     }

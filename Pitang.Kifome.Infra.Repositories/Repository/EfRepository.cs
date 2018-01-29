@@ -66,5 +66,6 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
             Context.Entry(entity).State = EntityState.Modified;
             this.Context.SaveChanges();
         }
+
     }
 }

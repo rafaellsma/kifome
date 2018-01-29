@@ -11,5 +11,6 @@ namespace Pitang.Kifome.Domain.Contracts.Repositories
     {
         List<Order> SelectAllBySellerId(int id);
         List<Order> SelectAllByCustomerId(int id);
+        Order SelectOrderById(int Id);
     }
 }

@@ -26,13 +26,29 @@ namespace Pitang.Kifome.Application.Services.Implementation
         #region Meal
         public void RegisterMeal(MealInputDTO meal)
         {
+            IList<Garnish> garnishies = new List<Garnish>();
+            if(meal.Garnishies != null)
+            {
+                foreach (var g in meal.Garnishies)
+                {
+                    Garnish garnish = new Garnish()
+                    {
+                        Id = g.Id,
+                        Name = g.Name,
+                        Description = g.Description
+                    };
+                    garnishies.Add(garnish);
+                }
+            }
+            
             sellerService.RegisterMeal(new Meal
             {
                 Name = meal.Name,
                 Description = meal.Description,
                 Price = meal.Price,
                 MenuId = meal.MenuId,
-                Days = meal.Days
+                Days = meal.Days,
+                Garnishies = garnishies
             });
         }
 
