@@ -29,9 +29,9 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
 
         [AcceptVerbs("Get")]
         [Route("order")]
-        public void GetOrders()
+        public IList<OrderOutputDTO> GetOrders()
         {
-            this.customerAppService.GetOrders();
+            return this.customerAppService.GetOrders();
         }
 
         [AcceptVerbs("Post")]

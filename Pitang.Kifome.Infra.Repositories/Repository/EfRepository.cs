@@ -34,11 +34,16 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
             this.Context.SaveChanges();
         }
 
-        public T SelectById(TId id)
+        public T SelectById(TId id, params Expression<Func<T, object>>[] includes)
         {
             var result = from entity in Context.Set<T>()
                          where entity.Id.Equals(id)
                          select entity;
+
+            foreach (var include in includes)
+            {
+                result = result.Include(include);
+            }
             return result.SingleOrDefault();
         }
 

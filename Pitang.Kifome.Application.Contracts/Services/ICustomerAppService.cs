@@ -19,6 +19,6 @@ namespace Pitang.Kifome.Application.Contracts.Services
         void SellerEvaluation(float rate);
 
         //IList<OrderOutputDTO> GetOrders();
-        void GetOrders();
+        IList<OrderOutputDTO> GetOrders();
     }
 }
