@@ -193,48 +193,6 @@ namespace Pitang.Kifome.Application.Services.Implementation
             });
         }
 
-        //public void MakeOrder(OrderInputDTO order)
-        //{
-        //    IList<ConfiguredMeal> configuredMeals = new List<ConfiguredMeal>();
-        //    ConfiguredMeal configMeal = null;
-        //    if (order.ConfiguredMeals != null)
-        //    {
-        //        foreach (var cm in order.ConfiguredMeals)
-        //        {
-        //            configMeal = new ConfiguredMeal();
-        //            configMeal.MealId = cm.Meal.Id;
-        //            configMeal.OrderId = cm.Order.Id;
-        //        }
-        //        configuredMeals.Add(configMeal);
-        //    }
-
-        //    this.customerService.MakeOrder(new Order
-        //    {
-        //        Seller = new User {
-        //            Id = order.Seller.Id,
-        //            Name = order.Seller.Name,
-        //            Email =  order.Seller.Email
-        //        },
-        //        Customer = new User
-        //        {
-        //            Id = order.Customer.Id,
-        //            Name = order.Customer.Name,
-        //            Email = order.Customer.Email
-        //        },
-        //        ConfiguredMeals = configuredMeals,
-        //        Status = (OrderStatusEnum)order.Status,
-        //        Withdrawal = new Withdrawal
-        //        {
-        //            InitialHour = Convert.ToDateTime(order.Withdrawal.InitialHour),
-        //            FinalHour = Convert.ToDateTime(order.Withdrawal.FinalHour),
-        //            SellerId = order.Withdrawal.SellerId,
-        //            CEP = order.Withdrawal.CEP,
-        //            Number = order.Withdrawal.Number,
-        //            Street = order.Withdrawal.Street
-        //        }               
-        //    });
-        //}
-
         public UserOutputDTO SearchSellerByLocal(double latitude, double longitude)
         {
             throw new NotImplementedException();
@@ -257,7 +215,18 @@ namespace Pitang.Kifome.Application.Services.Implementation
 
         public void UpdateOrder(OrderInputDTO order)
         {
-            throw new NotImplementedException();
+            var customer = this.userService.GetUserById(order.CustomerId);
+            var seller = this.userService.GetUserById(order.SellerId);
+            var withdrawal = this.sellerService.GetWithdrawalById(order.WithdrawalId);
+
+            this.customerService.EditOrder(new Order
+            {
+                Id = order.Id,
+                Customer = customer,
+                Seller = seller,
+                Withdrawal = withdrawal,
+                Status = (OrderStatusEnum)order.Status
+            });
         }
 
         //public void UpdateOrder(OrderInputDTO order)
