@@ -32,38 +32,40 @@ namespace Pitang.Kifome.Application.Services.Implementation
         {
             Order order = this.customerService.GetOrderById(orderId);
             IList<ConfiguredMealInputDTO> configuredMeal = new List<ConfiguredMealInputDTO>();
-            ConfiguredMealInputDTO configMeal = null;
             if (order.ConfiguredMeals != null)
             {
                 IList<GarnishOutputDTO> garnishies = new List<GarnishOutputDTO>();
-                GarnishOutputDTO garnish = null;
                 foreach (var cm in order.ConfiguredMeals)
                 {
-                    configMeal = new ConfiguredMealInputDTO();
+                    ConfiguredMealInputDTO configMeal = new ConfiguredMealInputDTO();
                     if (order.ConfiguredMeals != null)
                     {
-                        foreach (var g in cm.Meal.Garnishies)
+                        if (cm.SelectedGarnishes != null)
                         {
-                            garnish = new GarnishOutputDTO()
+                            foreach (var g in cm.SelectedGarnishes)
                             {
-                                Id = g.Id,
-                                Name = g.Name,
-                                Description = g.Description
-                            };
-                            garnishies.Add(garnish);
+                                GarnishOutputDTO garnish = new GarnishOutputDTO()
+                                {
+                                    Id = g.Id,
+                                    Name = g.Name,
+                                    Description = g.Description
+                                };
+                                garnishies.Add(garnish);
+                            }
                         }
+
+
+                        configMeal.Meal = new MealOutputDTO
+                        {
+                            Id = cm.Meal.Id,
+                            Days = cm.Meal.Days,
+                            Description = cm.Meal.Description,
+                            Garnishies = garnishies,
+                            Name = cm.Meal.Name,
+                            Price = cm.Meal.Price
+                        };
+                        configuredMeal.Add(configMeal);
                     }
-                    
-                    configMeal.Meal = new MealOutputDTO
-                    {
-                        Id = cm.Meal.Id,
-                        Days = cm.Meal.Days,
-                        Description = cm.Meal.Description,
-                        Garnishies = garnishies,
-                        Name = cm.Meal.Name,
-                        Price = cm.Meal.Price
-                    };
-                    configuredMeal.Add(configMeal);
                 }
             }
             OrderOutputDTO orderDTO = new OrderOutputDTO
@@ -96,6 +98,84 @@ namespace Pitang.Kifome.Application.Services.Implementation
                 }
             };
             return orderDTO;
+        }
+
+        public IList<OrderOutputDTO> GetOrders()
+        {
+            var orders = this.customerService.GetOrders();
+            IList<OrderOutputDTO> ordersDTO = new List<OrderOutputDTO>();
+            foreach (var order in orders)
+            {
+                IList<ConfiguredMealInputDTO> configuredMeal = new List<ConfiguredMealInputDTO>();
+                if (order.ConfiguredMeals != null)
+                {
+                    IList<GarnishOutputDTO> garnishies = new List<GarnishOutputDTO>();
+                    foreach (var cm in order.ConfiguredMeals)
+                    {
+                        ConfiguredMealInputDTO configMeal = new ConfiguredMealInputDTO();
+                        if (order.ConfiguredMeals != null)
+                        {
+                            if (cm.SelectedGarnishes != null)
+                            {
+                                foreach (var g in cm.SelectedGarnishes)
+                                {
+                                    GarnishOutputDTO garnish = new GarnishOutputDTO()
+                                    {
+                                        Id = g.Id,
+                                        Name = g.Name,
+                                        Description = g.Description
+                                    };
+                                    garnishies.Add(garnish);
+                                }
+                            }
+
+                            configMeal.Meal = new MealOutputDTO
+                            {
+                                Id = cm.Meal.Id,
+                                Days = cm.Meal.Days,
+                                Description = cm.Meal.Description,
+                                Garnishies = garnishies,
+                                Name = cm.Meal.Name,
+                                Price = cm.Meal.Price
+                            };
+                            configuredMeal.Add(configMeal);
+                        }
+                    }
+                }
+                OrderOutputDTO orderDTO = new OrderOutputDTO
+                {
+                    Id = order.Id,
+                    Seller = new UserOutputDTO
+                    {
+                        Id = order.Seller.Id,
+                        Name = order.Seller.Name,
+                        Email = order.Seller.Email
+                    },
+                    Customer = new UserOutputDTO
+                    {
+                        Id = order.Seller.Id,
+                        Name = order.Seller.Name,
+                        Email = order.Seller.Email
+                    },
+                    ConfiguredMeals = configuredMeal,
+                    Status = (OrderStatusEnumDTO)order.Status,
+                    Withdrawal = new WithdrawalInputDTO
+                    {
+                        CEP = order.Withdrawal.CEP,
+                        FinalHour = Convert.ToString(order.Withdrawal.FinalHour),
+                        InitialHour = Convert.ToString(order.Withdrawal.InitialHour),
+                        Latitude = order.Withdrawal.Latitude,
+                        Longitude = order.Withdrawal.Longitude,
+                        Number = order.Withdrawal.Number,
+                        SellerId = order.Withdrawal.Seller.Id,
+                        Street = order.Withdrawal.Street
+                    }
+                };
+
+                ordersDTO.Add(orderDTO);
+            }
+
+            return ordersDTO;
         }
 
         public void MakeOrder(OrderInputDTO order)

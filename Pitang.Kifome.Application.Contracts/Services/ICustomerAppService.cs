@@ -17,5 +17,6 @@ namespace Pitang.Kifome.Application.Contracts.Services
         UserOutputDTO SearchSellerByName(string name);
         UserOutputDTO SearchSellerByPrice(float price);
         void SellerEvaluation(float rate);
+        IList<OrderOutputDTO> GetOrders();
     }
 }
