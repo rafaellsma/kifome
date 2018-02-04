@@ -7,13 +7,17 @@ using System.Threading.Tasks;
 
 namespace Pitang.Kifome.Application.Entities
 {
-    public class OrderInputDTO
+    public class OrderUpdateInputDTO
     {
+        [Required]
+        public int Id { get; set; }
         [Required]
         public int SellerId { get; set; }
         [Required]
         public int CustomerId { get; set; }
         [Required]
         public int WithdrawalId { get; set; }
+        [Required]
+        public int OrderStatus { get; set; }
     }
 }

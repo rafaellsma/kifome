@@ -25,5 +25,34 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
                          select meal;
             return result.ToList();
         }
+
+        public void InsertMeal(Meal meal)
+        {
+            if (meal.Garnishies != null)
+            {
+                foreach (var garnish in meal.Garnishies)
+                {
+                    this.Context.Set<Garnish>().Add(garnish);
+                    this.Context.Entry<Garnish>(garnish).State = EntityState.Unchanged;
+                }
+            }
+            this.Context.Set<Meal>().Add(meal);
+            this.Context.SaveChanges();
+        }
+
+        public void UpdateMeal(Meal meal)
+        {
+            if(meal.Garnishies != null)
+            {
+                foreach (var garnish in meal.Garnishies)
+                {
+                    this.Context.Set<Garnish>().Add(garnish);
+                    this.Context.Entry<Garnish>(garnish).State = EntityState.Unchanged;
+                }
+            }
+            this.Context.Set<Meal>().Add(meal);
+            this.Context.SaveChanges();
+
+        }
     }
 }

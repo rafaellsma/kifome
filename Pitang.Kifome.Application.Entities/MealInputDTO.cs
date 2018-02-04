@@ -9,7 +9,6 @@ namespace Pitang.Kifome.Application.Entities
 {
     public class MealInputDTO
     {
-        public int Id { get; set; }
         [Required]
         public String Name { get; set; }
         [Required]
@@ -18,8 +17,8 @@ namespace Pitang.Kifome.Application.Entities
         public double Price { get; set; }
         [Required]
         public int MenuId { get; set; }
-        //Optional
-        //public IList<GarnishInputDTO> Garnishies { get; set; }
+        [Required]
+        public IList<int> GarnishiesId { get; set; }
         [Required]
         public DayOfWeek Days { get; set; }
 

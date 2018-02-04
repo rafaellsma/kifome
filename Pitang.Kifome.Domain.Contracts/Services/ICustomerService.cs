@@ -17,5 +17,6 @@ namespace Pitang.Kifome.Domain.Contracts.Services
         void CancelOrder(int orderId);
         void EditOrder(Order order);
         Order GetOrderById(int Id);
+        IList<Order> GetOrders();
     }
 }

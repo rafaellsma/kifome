@@ -71,17 +71,16 @@ namespace Pitang.Kifome.Domain.Services.Implementation
         {
             unitOfWork.GarnishRepository.Delete(garnish);
         }
-
         #endregion
         #region Meal
         public void RegisterMeal(Meal meal)
         {
-            unitOfWork.MealRepository.Insert(meal);
+            unitOfWork.MealRepository.InsertMeal(meal);            
         }
 
         public IList<Meal> GetMeals()
         {
-            return this.unitOfWork.MealRepository.SelectAll();
+            return this.unitOfWork.MealRepository.SelectAll(x => x.Garnishies);
         }
 
         public IList<Meal> GetMealsByMenuId(int id)
@@ -91,7 +90,7 @@ namespace Pitang.Kifome.Domain.Services.Implementation
 
         public Meal GetMealById(int Id)
         {
-            return this.unitOfWork.MealRepository.SelectById(Id);
+            return this.unitOfWork.MealRepository.SelectById(Id, x => x.Garnishies);
         }
 
         public Meal GetMealByFilters()
@@ -101,7 +100,7 @@ namespace Pitang.Kifome.Domain.Services.Implementation
 
         public void UpdateMeal(Meal meal)
         {
-            this.unitOfWork.MealRepository.Update(meal);
+            this.unitOfWork.MealRepository.UpdateMeal(meal);
         }
 
         public void DeleteMeal(int Id)

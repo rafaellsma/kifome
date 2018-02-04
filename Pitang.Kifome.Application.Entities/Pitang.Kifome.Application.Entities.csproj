@@ -66,6 +66,7 @@
     <Compile Include="OrderOutputDTO.cs" />
     <Compile Include="OrderStatusEnumDTO.cs" />
     <Compile Include="MenuUpdateInputDTO.cs" />
+    <Compile Include="OrderUpdateInputDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserInputDTO.cs" />
     <Compile Include="UserOutputDTO.cs" />
