@@ -75,7 +75,7 @@ namespace Pitang.Kifome.Domain.Services.Implementation
         #region Meal
         public void RegisterMeal(Meal meal)
         {
-            unitOfWork.MealRepository.InsertMeal(meal);            
+            unitOfWork.MealRepository.Insert(meal);            
         }
 
         public IList<Meal> GetMeals()
@@ -100,7 +100,7 @@ namespace Pitang.Kifome.Domain.Services.Implementation
 
         public void UpdateMeal(Meal meal)
         {
-            this.unitOfWork.MealRepository.UpdateMeal(meal);
+            this.unitOfWork.MealRepository.Update(meal);
         }
 
         public void DeleteMeal(int Id)

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Pitang.Kifome.Application.Contracts.Services;
 using Pitang.Kifome.Application.Entities;
+using Pitang.Kifome.Application.Entities.Meal;
 using Pitang.Kifome.Domain.Contracts.Services;
 using Pitang.Kifome.Domain.Entities;
 using System;
@@ -46,15 +47,26 @@ namespace Pitang.Kifome.Application.Services.Implementation
             });
         }
 
-        public void UpdateMeal(MealInputDTO meal)
+        public void UpdateMeal(MealUpdateInputeDTO meal)
         {
+            IList<Garnish> garnishies = new List<Garnish>();
+            if (meal.GarnishiesId != null)
+            {
+                foreach (var g in meal.GarnishiesId)
+                {
+                    garnishies.Add(userService.GetGarnishById(g));
+                }
+            }
+
             this.sellerService.UpdateMeal(new Meal
             {
+                Id = meal.Id,
                 Name = meal.Name,
                 Description = meal.Description,
                 Price = meal.Price,
                 Days = meal.Days,
-                MenuId = meal.MenuId
+                MenuId = meal.MenuId,
+                Garnishies = garnishies
             });
         }
 

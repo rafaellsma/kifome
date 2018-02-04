@@ -16,5 +16,6 @@ namespace Pitang.Kifome.Domain.Contracts.Repositories
         IWithdrawalRepository WithdrawalRepository { get; }
         ICommentRepository CommentRepository { get; }
         IUserRepository UserRepository { get; }
+        IConfiguredMealRepository ConfiguredMealRepository { get; }
     }
 }
