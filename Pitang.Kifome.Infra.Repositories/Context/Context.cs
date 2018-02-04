@@ -5,6 +5,7 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
 {
     public class Context : DbContext
     {
+
         public Context() : base(Environment.GetEnvironmentVariable("CONN_KIFOME"))
         {
             Database.SetInitializer<Context>(null);

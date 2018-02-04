@@ -48,7 +48,6 @@ namespace Pitang.Kifome.Application.Services.Implementation
                             }
                         }
 
-
                         configMeal.Meal = new MealOutputDTO
                         {
                             Id = cm.Meal.Id,
