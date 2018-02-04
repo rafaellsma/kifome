@@ -16,10 +16,12 @@ namespace Pitang.Kifome.Domain.Services.Implementation
         {
             this.unitOfWork = unitOfWorkInstance;
         }
+
+        #region Order
         public void CancelOrder(int orderId)
         {
             var order = this.unitOfWork.OrderRepository.SelectById(orderId);
-            if(order != null)
+            if (order != null)
             {
                 this.unitOfWork.OrderRepository.Delete(order);
             }
@@ -44,7 +46,9 @@ namespace Pitang.Kifome.Domain.Services.Implementation
         {
             this.unitOfWork.OrderRepository.Insert(order);
         }
+        #endregion
 
+        #region Seller
         public User SearchSellerByLocal(double latitude, double longitude)
         {
             throw new NotImplementedException();
@@ -64,5 +68,18 @@ namespace Pitang.Kifome.Domain.Services.Implementation
         {
             throw new NotImplementedException();
         }
+        #endregion
+
+        #region ConfiguratedMeal
+        public void MakeConfiguratedMeal(ConfiguredMeal configuredMeal)
+        {
+            unitOfWork.ConfiguredMealRepository.Insert(configuredMeal);
+        }
+
+        public IList<ConfiguredMeal> GetConfiguredMealByOrderId(int orderId)
+        {
+            return unitOfWork.ConfiguredMealRepository.SelectConfiguredMealByOrderId(orderId, x => x.SelectedGarnishes);
+        }
+        #endregion
     }
 }

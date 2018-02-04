@@ -51,33 +51,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfiguredMealInputDTO.cs" />
+    <Compile Include="ConfiguratedMeal\ConfiguratedMealDTO.cs" />
+    <Compile Include="ConfiguratedMeal\ConfiguratedMealOutputDTO.cs" />
+    <Compile Include="ConfiguratedMeal\ConfiguredMealInputDTO.cs" />
     <Compile Include="Garnish\GarnishInputDTO.cs" />
     <Compile Include="Garnish\GarnishOutputDTO.cs" />
     <Compile Include="Garnish\GarnishUpdateDTO.cs" />
-    <Compile Include="LoginAuthenticationDTO.cs" />
-    <Compile Include="MealDTO.cs" />
-    <Compile Include="MealFiltersDTO.cs" />
-    <Compile Include="MealInputDTO.cs" />
-    <Compile Include="MealOutputDTO.cs" />
-    <Compile Include="MenuInputDTO.cs" />
-    <Compile Include="MenuOutputDTO.cs" />
-    <Compile Include="OrderInputDTO.cs" />
-    <Compile Include="OrderOutputDTO.cs" />
-    <Compile Include="OrderStatusEnumDTO.cs" />
-    <Compile Include="MenuUpdateInputDTO.cs" />
-    <Compile Include="OrderUpdateInputDTO.cs" />
+    <Compile Include="Meal\MealUpdateInputeDTO.cs" />
+    <Compile Include="User\LoginAuthenticationDTO.cs" />
+    <Compile Include="Meal\MealDTO.cs" />
+    <Compile Include="Meal\MealFiltersDTO.cs" />
+    <Compile Include="Meal\MealInputDTO.cs" />
+    <Compile Include="Meal\MealOutputDTO.cs" />
+    <Compile Include="Menu\MenuInputDTO.cs" />
+    <Compile Include="Menu\MenuOutputDTO.cs" />
+    <Compile Include="Order\OrderInputDTO.cs" />
+    <Compile Include="Order\OrderOutputDTO.cs" />
+    <Compile Include="Order\OrderStatusEnumDTO.cs" />
+    <Compile Include="Menu\MenuUpdateInputDTO.cs" />
+    <Compile Include="Order\OrderUpdateInputDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserInputDTO.cs" />
-    <Compile Include="UserOutputDTO.cs" />
-    <Compile Include="UserUpdateInputDTO.cs" />
-    <Compile Include="WithdrawalInputDTO.cs" />
-    <Compile Include="WithdrawalOutputDTO.cs" />
-    <Compile Include="WithdrawalUpdateInputDTO.cs" />
+    <Compile Include="User\UserInputDTO.cs" />
+    <Compile Include="User\UserOutputDTO.cs" />
+    <Compile Include="User\UserUpdateInputDTO.cs" />
+    <Compile Include="Withdrawal\WithdrawalInputDTO.cs" />
+    <Compile Include="Withdrawal\WithdrawalOutputDTO.cs" />
+    <Compile Include="Withdrawal\WithdrawalUpdateInputDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

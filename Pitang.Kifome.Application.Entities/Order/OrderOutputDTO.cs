@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pitang.Kifome.Application.Entities.ConfiguratedMeal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,7 @@ namespace Pitang.Kifome.Application.Entities
         public UserOutputDTO Seller { get; set; }
         public UserOutputDTO Customer { get; set; }
         public WithdrawalInputDTO Withdrawal { get; set; }
-        public IList<ConfiguredMealInputDTO> ConfiguredMeals { get; set; }
+        public IList<ConfiguratedMealDTO> ConfiguredMeals { get; set; }
         public OrderStatusEnumDTO Status { get; set; }
-     
-        //public IList<Comment> Comments { get; set; }
     }
 }

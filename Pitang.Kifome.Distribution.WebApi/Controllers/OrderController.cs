@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using Pitang.Kifome.Application.Contracts.Services;
 using Pitang.Kifome.Application.Entities;
+using Pitang.Kifome.Application.Entities.ConfiguratedMeal;
 
 namespace Pitang.Kifome.Distribution.WebApi.Controllers
 {
@@ -32,6 +33,13 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
         public IList<OrderOutputDTO> GetOrders()
         {
             return this.customerAppService.GetOrders();
+        }
+
+        [AcceptVerbs("Get")]
+        [Route("order/{id}/configuratedMeal")]
+        public IList<ConfiguratedMealOutputDTO> GetConfiguratedMealsByOrderId(int id)
+        {
+            return this.customerAppService.GetConfiguratedMealsByOrderId(id);
         }
 
         [AcceptVerbs("Post")]
