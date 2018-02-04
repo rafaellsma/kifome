@@ -34,7 +34,7 @@ namespace Pitang.Kifome.Application.Services.Implementation
             IList<ConfiguredMealInputDTO> configuredMeal = new List<ConfiguredMealInputDTO>();
             if (order.ConfiguredMeals != null)
             {
-                IList<GarnishOutputDTO> garnishies = new List<GarnishOutputDTO>();
+                IList<string> garnishiesNames = new List<string>();
                 foreach (var cm in order.ConfiguredMeals)
                 {
                     ConfiguredMealInputDTO configMeal = new ConfiguredMealInputDTO();
@@ -44,13 +44,7 @@ namespace Pitang.Kifome.Application.Services.Implementation
                         {
                             foreach (var g in cm.SelectedGarnishes)
                             {
-                                GarnishOutputDTO garnish = new GarnishOutputDTO()
-                                {
-                                    Id = g.Id,
-                                    Name = g.Name,
-                                    Description = g.Description
-                                };
-                                garnishies.Add(garnish);
+                                garnishiesNames.Add(g.Name);
                             }
                         }
 
@@ -60,7 +54,7 @@ namespace Pitang.Kifome.Application.Services.Implementation
                             Id = cm.Meal.Id,
                             Days = cm.Meal.Days,
                             Description = cm.Meal.Description,
-                            Garnishies = garnishies,
+                            GarnishiesName = garnishiesNames,
                             Name = cm.Meal.Name,
                             Price = cm.Meal.Price
                         };
@@ -109,7 +103,7 @@ namespace Pitang.Kifome.Application.Services.Implementation
                 IList<ConfiguredMealInputDTO> configuredMeal = new List<ConfiguredMealInputDTO>();
                 if (order.ConfiguredMeals != null)
                 {
-                    IList<GarnishOutputDTO> garnishies = new List<GarnishOutputDTO>();
+                    IList<string> garnishiesNames = new List<string>();
                     foreach (var cm in order.ConfiguredMeals)
                     {
                         ConfiguredMealInputDTO configMeal = new ConfiguredMealInputDTO();
@@ -119,13 +113,7 @@ namespace Pitang.Kifome.Application.Services.Implementation
                             {
                                 foreach (var g in cm.SelectedGarnishes)
                                 {
-                                    GarnishOutputDTO garnish = new GarnishOutputDTO()
-                                    {
-                                        Id = g.Id,
-                                        Name = g.Name,
-                                        Description = g.Description
-                                    };
-                                    garnishies.Add(garnish);
+                                    garnishiesNames.Add(g.Name);
                                 }
                             }
 
@@ -134,7 +122,7 @@ namespace Pitang.Kifome.Application.Services.Implementation
                                 Id = cm.Meal.Id,
                                 Days = cm.Meal.Days,
                                 Description = cm.Meal.Description,
-                                Garnishies = garnishies,
+                                GarnishiesName = garnishiesNames,
                                 Name = cm.Meal.Name,
                                 Price = cm.Meal.Price
                             };
@@ -189,7 +177,7 @@ namespace Pitang.Kifome.Application.Services.Implementation
                 Customer = customer,
                 Seller = seller,
                 Withdrawal = withdrawal,
-                Status = (OrderStatusEnum)order.Status
+                Status = 0
             });
         }
 
@@ -213,7 +201,7 @@ namespace Pitang.Kifome.Application.Services.Implementation
             throw new NotImplementedException();
         }
 
-        public void UpdateOrder(OrderInputDTO order)
+        public void UpdateOrder(OrderUpdateInputDTO order)
         {
             var customer = this.userService.GetUserById(order.CustomerId);
             var seller = this.userService.GetUserById(order.SellerId);
@@ -225,51 +213,8 @@ namespace Pitang.Kifome.Application.Services.Implementation
                 Customer = customer,
                 Seller = seller,
                 Withdrawal = withdrawal,
-                Status = (OrderStatusEnum)order.Status
+                Status = (OrderStatusEnum)order.OrderStatus
             });
         }
-
-        //public void UpdateOrder(OrderInputDTO order)
-        //{
-        //    IList<ConfiguredMeal> configuredMeals = new List<ConfiguredMeal>();
-        //    ConfiguredMeal configMeal = null;
-        //    if (order.ConfiguredMeals != null)
-        //    {
-        //        foreach (var cm in order.ConfiguredMeals)
-        //        {
-        //            configMeal = new ConfiguredMeal();
-        //            configMeal.MealId = cm.Meal.Id;
-        //            configMeal.OrderId = cm.Order.Id;
-        //        }
-        //        configuredMeals.Add(configMeal);
-        //    }
-
-        //    this.customerService.EditOrder(new Order
-        //    {
-        //        Seller = new User
-        //        {
-        //            Id = order.Seller.Id,
-        //            Name = order.Seller.Name,
-        //            Email = order.Seller.Email
-        //        },
-        //        Customer = new User
-        //        {
-        //            Id = order.Customer.Id,
-        //            Name = order.Customer.Name,
-        //            Email = order.Customer.Email
-        //        },
-        //        ConfiguredMeals = configuredMeals,
-        //        Status = (OrderStatusEnum)order.Status,
-        //        Withdrawal = new Withdrawal
-        //        {
-        //            InitialHour = Convert.ToDateTime(order.Withdrawal.InitialHour),
-        //            FinalHour = Convert.ToDateTime(order.Withdrawal.FinalHour),
-        //            SellerId = order.Withdrawal.SellerId,
-        //            CEP = order.Withdrawal.CEP,
-        //            Number = order.Withdrawal.Number,
-        //            Street = order.Withdrawal.Street
-        //        }
-        //    });
-        //}
     }
 }

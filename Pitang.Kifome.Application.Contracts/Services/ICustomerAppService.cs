@@ -10,7 +10,7 @@ namespace Pitang.Kifome.Application.Contracts.Services
     public interface ICustomerAppService
     {
         void MakeOrder(OrderInputDTO order);
-        void UpdateOrder(OrderInputDTO order);
+        void UpdateOrder(OrderUpdateInputDTO order);
         void DeleteOrder(int orderId);
         OrderOutputDTO GetOrderById(int orderId);
         UserOutputDTO SearchSellerByLocal(double latitude, double longitude);

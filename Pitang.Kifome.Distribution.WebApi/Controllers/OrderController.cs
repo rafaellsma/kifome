@@ -43,7 +43,7 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
 
         [AcceptVerbs("Put")]
         [Route("order")]
-        public void EditOrder(OrderInputDTO order)
+        public void EditOrder(OrderUpdateInputDTO order)
         {
             this.customerAppService.UpdateOrder(order);
         }

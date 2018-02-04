@@ -8,6 +8,6 @@ namespace Pitang.Kifome.Application.Entities
 {
     public class MealOutputDTO : MealDTO
     {
-        public IList<GarnishOutputDTO> Garnishies { get; set; }
+        public IList<string> GarnishiesName { get; set; }
     }
 }
