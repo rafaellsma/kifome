@@ -84,7 +84,7 @@ namespace Pitang.Kifome.Domain.Services.Implementation
 
         public IList<Comment> GetCommentsFromOrder(int orderId)
         {
-            var order = this.unitOfWork.OrderRepository.SelectById(orderId, o => o.Comments);
+            var order = this.unitOfWork.OrderRepository.SelectById(orderId, o => o.Comments, o => o.Customer);
             return order.Comments;
         }
         #endregion

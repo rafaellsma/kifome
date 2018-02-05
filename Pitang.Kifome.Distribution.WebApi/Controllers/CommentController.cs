@@ -33,5 +33,12 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
 
             userAppService.MakeComment(comment);
         }
+
+        [HttpGet]
+        [Route("order/{orderId:int}/comments")]
+        public IList<CommentOutputDTO> GetAllCommentsFromOrder(int orderId)
+        {
+            return userAppService.ShowAllCommentsFromOrder(orderId);
+        }
     }
 }

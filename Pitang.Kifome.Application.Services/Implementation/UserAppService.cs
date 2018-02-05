@@ -17,12 +17,14 @@ namespace Pitang.Kifome.Application.Services.Implementation
         private readonly IUserService userService;
         private readonly IMapper mapper;
         private readonly ISellerService sellerService;
+        private readonly ICustomerService customerService;
 
-        public UserAppService(IUserService userServiceInstance, ISellerService sellerService, IMapper mapper)
+        public UserAppService(IUserService userServiceInstance, ISellerService sellerService, IMapper mapper, ICustomerService costumerService)
         {
             this.userService = userServiceInstance;
             this.mapper = mapper;
             this.sellerService = sellerService;
+            this.customerService = customerService;
         }
         
         public UserOutputDTO Authentication(LoginAuthenticationDTO login)
@@ -134,7 +136,7 @@ namespace Pitang.Kifome.Application.Services.Implementation
 
         public IList<CommentOutputDTO> ShowAllCommentsFromOrder(int orderId)
         {
-            throw new NotImplementedException();
+            return mapper.Map<CommentOutputDTO[]>(userService.GetCommentsFromOrder(orderId));
         }
 
         #endregion
