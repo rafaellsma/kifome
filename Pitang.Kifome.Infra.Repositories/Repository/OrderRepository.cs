@@ -28,6 +28,5 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
                          select order;
             return result.ToList();
         }
-
     }
 }

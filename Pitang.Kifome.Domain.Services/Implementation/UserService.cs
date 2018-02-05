@@ -49,14 +49,11 @@ namespace Pitang.Kifome.Domain.Services.Implementation
             return this.unitOfWork.UserRepository.SelectById(Id);
         }
 
-        public void MakeComment(Comment comment)
+        public IList<Order> OrdersFromUser(int userId)
         {
-            throw new NotImplementedException();
-        }
-
-        public List<Order> OrdersFromUser(int userId)
-        {
-            throw new NotImplementedException();
+            var user = this.unitOfWork.UserRepository.SelectById(userId, u => u.MadeOrders, u => u.ReceivedOrders);
+            var allOrders = user.ReceivedOrders.Concat(user.MadeOrders);
+            return allOrders.ToList();
         }
 
         public void UpdateUser(User user)
@@ -73,6 +70,22 @@ namespace Pitang.Kifome.Domain.Services.Implementation
         public Garnish GetGarnishById(int id)
         {
             return unitOfWork.GarnishRepository.SelectById(id);
+        }
+        #endregion
+
+        #region Comment
+        public void MakeComment(Comment comment)
+        {
+            if (comment.Order != null)
+            {
+                this.unitOfWork.CommentRepository.Insert(comment);
+            }
+        }
+
+        public IList<Comment> GetCommentsFromOrder(int orderId)
+        {
+            var order = this.unitOfWork.OrderRepository.SelectById(orderId, o => o.Comments, o => o.Customer);
+            return order.Comments;
         }
         #endregion
     }
