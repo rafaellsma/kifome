@@ -122,11 +122,19 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
             }
         }
 
-        
-
+        private IConfiguredMealRepository configuredMealRepository;
+        public IConfiguredMealRepository ConfiguredMealRepository
+        {
+            get
+            {
+                if (this.configuredMealRepository == null)
+                {
+                    this.configuredMealRepository = new ConfiguredMealRepository(context);
+                }
+                return this.configuredMealRepository;
+            }
+        }
         #endregion
-
-
 
         #region Dispose Pattern
 

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Pitang.Kifome.Application.Contracts.Services;
 using Pitang.Kifome.Application.Entities;
+using Pitang.Kifome.Application.Entities.Meal;
 using Pitang.Kifome.Domain.Contracts.Services;
 using Pitang.Kifome.Domain.Entities;
 using System;
@@ -26,25 +27,46 @@ namespace Pitang.Kifome.Application.Services.Implementation
         #region Meal
         public void RegisterMeal(MealInputDTO meal)
         {
+            IList<Garnish> garnishies = new List<Garnish>();
+            if (meal.GarnishiesId != null)
+            {
+                foreach (var g in meal.GarnishiesId)
+                {
+                    garnishies.Add(userService.GetGarnishById(g)); 
+                }
+            }
+            
             sellerService.RegisterMeal(new Meal
             {
                 Name = meal.Name,
                 Description = meal.Description,
                 Price = meal.Price,
                 MenuId = meal.MenuId,
-                Days = meal.Days
+                Days = meal.Days,
+                Garnishies = garnishies
             });
         }
 
-        public void UpdateMeal(MealInputDTO meal)
+        public void UpdateMeal(MealUpdateInputeDTO meal)
         {
+            IList<Garnish> garnishies = new List<Garnish>();
+            if (meal.GarnishiesId != null)
+            {
+                foreach (var g in meal.GarnishiesId)
+                {
+                    garnishies.Add(userService.GetGarnishById(g));
+                }
+            }
+
             this.sellerService.UpdateMeal(new Meal
             {
+                Id = meal.Id,
                 Name = meal.Name,
                 Description = meal.Description,
                 Price = meal.Price,
                 Days = meal.Days,
-                MenuId = meal.MenuId
+                MenuId = meal.MenuId,
+                Garnishies = garnishies
             });
         }
 
@@ -55,29 +77,23 @@ namespace Pitang.Kifome.Application.Services.Implementation
 
         public IList<MealOutputDTO> GetMeals()
         {
-            var meals = this.sellerService.GetMeals();
+            var meals = sellerService.GetMeals();
             IList<MealOutputDTO> mealsDTO = new List<MealOutputDTO>();
             foreach (var m in meals)
             {
-                IList<GarnishOutputDTO> garnishDTO = new List<GarnishOutputDTO>();
-                //Casting Entity Garnish into GarnishOutputDTO
+                IList<string> garnishiesNames = new List<string>();
                 if (m.Garnishies != null)
                 {
                     foreach (var g in m.Garnishies)
                     {
-                        GarnishOutputDTO garnish = new GarnishOutputDTO()
-                        {
-                            Name = g.Name,
-                            Description = g.Description
-                        };
-                        garnishDTO.Add(garnish);
+                        garnishiesNames.Add(g.Name);
                     }
                 }
-                //Casting Entity Meal into MealOutputDTO
                 MealOutputDTO meal = new MealOutputDTO
                 {
+                    Id = m.Id,
                     Name = m.Name,
-                    Garnishies = garnishDTO, //Entity GarnishOutputDTO 
+                    GarnishiesName = garnishiesNames,
                     Price = m.Price,
                     Description = m.Description,
                     Days = m.Days
@@ -95,35 +111,28 @@ namespace Pitang.Kifome.Application.Services.Implementation
         public MealOutputDTO GetMealById(int Id)
         {
             var meal = this.sellerService.GetMealById(Id);
-            IList<GarnishOutputDTO> garnishDTO = new List<GarnishOutputDTO>();
-            //Casting Entity Garnish into GarnishOutputDTO
-            if(meal.Garnishies != null)
+            IList<string> garnishiesNames = new List<string>();
+            if (meal.Garnishies != null)
             {
                 foreach (var g in meal.Garnishies)
                 {
-                    GarnishOutputDTO garnish = new GarnishOutputDTO()
-                    {
-                        Name = g.Name,
-                        Description = g.Description
-                    };
-                    garnishDTO.Add(garnish);
+                    garnishiesNames.Add(g.Name);
                 }
             }
             MealOutputDTO mealDTO = new MealOutputDTO()
             {
+                Id = meal.Id,
                 Name = meal.Name,
                 Description = meal.Description,
                 Price = meal.Price,
                 Days = meal.Days,
-                Garnishies = garnishDTO
+                GarnishiesName = garnishiesNames
             };
             return mealDTO;
         }
         #endregion
 
         #region Garnish
-        
-
         public void RegisterGarnish(GarnishInputDTO garnish)
         {
             sellerService.RegisterGarnish(mapper.Map<Garnish>(garnish));

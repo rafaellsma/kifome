@@ -44,7 +44,6 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
             {
                 result = result.Include(include);
             }
-
             return result.SingleOrDefault();
         }
 
@@ -72,5 +71,6 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
             Context.Entry(entity).State = EntityState.Modified;
             this.Context.SaveChanges();
         }
+
     }
 }

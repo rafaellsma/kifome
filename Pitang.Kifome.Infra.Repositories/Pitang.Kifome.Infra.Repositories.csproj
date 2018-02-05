@@ -67,6 +67,7 @@
     <Compile Include="Repository\CommentRepository.cs" />
     <Compile Include="Context\Context.cs" />
     <Compile Include="Repository\ConfiguredMealRepository.cs" />
+    <Compile Include="Repository\SelectedGarnish.cs" />
     <Compile Include="Repository\WithdrawalRepository.cs" />
     <Compile Include="Repository\EfRepository.cs" />
     <Compile Include="Repository\GarnishRepository.cs" />

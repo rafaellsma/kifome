@@ -1,4 +1,5 @@
 ﻿using Pitang.Kifome.Application.Entities;
+using Pitang.Kifome.Application.Entities.Meal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace Pitang.Kifome.Application.Contracts.Services
         IList<MealOutputDTO> GetMeals();
         MealOutputDTO GetMealById(int Id);
         IList<MealOutputDTO> GetMealByFilters(MealFiltersDTO mealFilters);
-        void UpdateMeal(MealInputDTO meal);
+        void UpdateMeal(MealUpdateInputeDTO meal);
         void DeleteMeal(int Id);
         #endregion
         #region Menu
