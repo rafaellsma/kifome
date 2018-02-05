@@ -1,9 +1,6 @@
-﻿using Pitang.Kifome.Crosscuting.IoC;
+﻿using Microsoft.Owin.Security.OAuth;
 using Pitang.Kifome.Distribution.WebApi.Filters;
 using Pitang.Kifome.Distribution.WebApi.IoC;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Dispatcher;
 
