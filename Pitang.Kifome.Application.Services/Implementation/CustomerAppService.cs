@@ -71,9 +71,9 @@ namespace Pitang.Kifome.Application.Services.Implementation
                 },
                 Customer = new UserOutputDTO
                 {
-                    Id = order.Seller.Id,
-                    Name = order.Seller.Name,
-                    Email = order.Seller.Email
+                    Id = order.Customer.Id,
+                    Name = order.Customer.Name,
+                    Email = order.Customer.Email
                 },
                 ConfiguredMeals = configuredMeal,
                 Status = (OrderStatusEnumDTO)order.Status,
@@ -139,9 +139,9 @@ namespace Pitang.Kifome.Application.Services.Implementation
                     },
                     Customer = new UserOutputDTO
                     {
-                        Id = order.Seller.Id,
-                        Name = order.Seller.Name,
-                        Email = order.Seller.Email
+                        Id = order.Customer.Id,
+                        Name = order.Customer.Name,
+                        Email = order.Customer.Email
                     },
                     ConfiguredMeals = configuredMeal,
                     Status = (OrderStatusEnumDTO)order.Status,
