@@ -66,10 +66,6 @@
       <Project>{77611166-6611-4470-a8e8-95ceff3665cd}</Project>
       <Name>Pitang.Kifome.Application.Contracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pitang.Kifome.Application.Entities\Pitang.Kifome.Application.Entities.csproj">
-      <Project>{4e545930-3ee5-47ac-8bb7-34d0902d07fb}</Project>
-      <Name>Pitang.Kifome.Application.Entities</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Pitang.Kifome.Application.Services\Pitang.Kifome.Application.Services.csproj">
       <Project>{4d47a016-ae59-4551-b286-d7c62231c563}</Project>
       <Name>Pitang.Kifome.Application.Services</Name>

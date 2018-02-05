@@ -54,7 +54,6 @@
     <Compile Include="Comment\CommentInputDTO.cs" />
     <Compile Include="Comment\CommentInputFromBodyDTO.cs" />
     <Compile Include="Comment\CommentOutputDTO.cs" />
-    <Compile Include="ConfiguredMealInputDTO.cs" />
     <Compile Include="ConfiguratedMeal\ConfiguratedMealDTO.cs" />
     <Compile Include="ConfiguratedMeal\ConfiguratedMealOutputDTO.cs" />
     <Compile Include="ConfiguratedMeal\ConfiguredMealInputDTO.cs" />

@@ -19,7 +19,7 @@ namespace Pitang.Kifome.Application.Services.Implementation
         private readonly ISellerService sellerService;
         private readonly ICustomerService customerService;
 
-        public UserAppService(IUserService userServiceInstance, ISellerService sellerService, IMapper mapper, ICustomerService costumerService)
+        public UserAppService(IUserService userServiceInstance, ISellerService sellerService, IMapper mapper, ICustomerService customerService)
         {
             this.userService = userServiceInstance;
             this.mapper = mapper;
