@@ -12,7 +12,8 @@ namespace Pitang.Kifome.Domain.Contracts.Services
         User Authenticate(string email, string password);
         void CreateUser(User user);
         void MakeComment(Comment comment);
-        List<Order> OrdersFromUser(int userId);
+        IList<Comment> GetCommentsFromOrder(int orderId);
+        IList<Order> OrdersFromUser(int userId);
         List<User> GetUsers();
         void UpdateUser(User user);
         User GetUserById(int Id);

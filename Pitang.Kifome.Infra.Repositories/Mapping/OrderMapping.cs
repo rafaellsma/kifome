@@ -18,8 +18,8 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
             this.Property(o => o.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             this.Property(o => o.Status).HasColumnName("status").IsRequired();
-            this.HasRequired(o => o.Seller);
-            this.HasRequired(o => o.Customer);
+            this.HasRequired(o => o.Seller).WithMany(u => u.ReceivedOrders);
+            this.HasRequired(o => o.Customer).WithMany(u => u.MadeOrders);
             this.HasRequired(o => o.Withdrawal);
         }
     }

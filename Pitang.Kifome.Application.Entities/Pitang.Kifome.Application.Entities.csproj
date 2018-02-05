@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comment\CommentInputDTO.cs" />
+    <Compile Include="Comment\CommentInputFromBodyDTO.cs" />
+    <Compile Include="Comment\CommentOutputDTO.cs" />
     <Compile Include="ConfiguredMealInputDTO.cs" />
     <Compile Include="Garnish\GarnishInputDTO.cs" />
     <Compile Include="Garnish\GarnishOutputDTO.cs" />

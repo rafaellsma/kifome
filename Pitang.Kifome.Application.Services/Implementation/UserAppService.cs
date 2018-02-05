@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Pitang.Kifome.Application.Contracts.Services;
 using Pitang.Kifome.Application.Entities;
+using Pitang.Kifome.Application.Entities.Comment;
 using Pitang.Kifome.Domain.Contracts.Services;
 using Pitang.Kifome.Domain.Entities;
 
@@ -116,6 +117,26 @@ namespace Pitang.Kifome.Application.Services.Implementation
             var garnish = userService.GetGarnishById(id);
             return mapper.Map<GarnishOutputDTO>(garnish);
         }
+        #endregion
+
+        #region Comment
+
+        public void MakeComment(CommentInputDTO commentInputDTO)
+        {
+            var user = userService.GetUserById(commentInputDTO.UserId);
+            var order = userService.OrdersFromUser(user.Id).FirstOrDefault(o => o.Id == commentInputDTO.OrderId);
+
+            var comment = mapper.Map<Comment>(commentInputDTO);
+            comment.User = user;
+            comment.Order = order;
+            userService.MakeComment(comment);
+        }
+
+        public IList<CommentOutputDTO> ShowAllCommentsFromOrder(int orderId)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }

@@ -14,7 +14,7 @@ namespace Pitang.Kifome.Domain.Contracts.Repositories
     {
         void Insert(T entity);
         void Update(T entity);
-        T SelectById(TId id);
+        T SelectById(TId id, params Expression<Func<T, object>>[] includes);
         List<T> SelectAll(params Expression<Func<T, object>>[] includes);
         void Delete(T entity);
     }
