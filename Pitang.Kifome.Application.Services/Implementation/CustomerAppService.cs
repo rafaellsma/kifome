@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AutoMapper;
 using Pitang.Kifome.Application.Contracts.Services;
 using Pitang.Kifome.Application.Entities;
+using Pitang.Kifome.Application.Entities.ConfiguratedMeal;
+using Pitang.Kifome.Application.Entities.User;
 using Pitang.Kifome.Domain.Contracts.Services;
 using Pitang.Kifome.Domain.Entities;
 
@@ -15,14 +15,17 @@ namespace Pitang.Kifome.Application.Services.Implementation
         private readonly ICustomerService customerService;
         private readonly ISellerService sellerService;
         private readonly IUserService userService;
+        private readonly IMapper mapper;
 
-        public CustomerAppService(ICustomerService customerServiceInstance, ISellerService sellerServiceInstance, IUserService userServiceInstance)
+        public CustomerAppService(ICustomerService customerServiceInstance, ISellerService sellerServiceInstance, IUserService userServiceInstance, IMapper mapper)
         {
             this.customerService = customerServiceInstance;
             this.sellerService = sellerServiceInstance;
             this.userService = userServiceInstance;
+            this.mapper = mapper;
         }
 
+        #region Order
         public void DeleteOrder(int orderId)
         {
             this.customerService.CancelOrder(orderId);
@@ -31,36 +34,34 @@ namespace Pitang.Kifome.Application.Services.Implementation
         public OrderOutputDTO GetOrderById(int orderId)
         {
             Order order = this.customerService.GetOrderById(orderId);
-            IList<ConfiguredMealInputDTO> configuredMeal = new List<ConfiguredMealInputDTO>();
-            ConfiguredMealInputDTO configMeal = null;
+            IList<ConfiguratedMealDTO> configuredMeal = new List<ConfiguratedMealDTO>();
             if (order.ConfiguredMeals != null)
             {
-                IList<GarnishOutputDTO> garnishies = new List<GarnishOutputDTO>();
-                GarnishOutputDTO garnish = null;
+                IList<string> garnishiesNames = new List<string>();
                 foreach (var cm in order.ConfiguredMeals)
                 {
-                    configMeal = new ConfiguredMealInputDTO();
-                    foreach (var g in cm.Meal.Garnishies)
+                    ConfiguratedMealDTO configMeal = new ConfiguratedMealDTO();
+                    if (order.ConfiguredMeals != null)
                     {
-                        garnish = new GarnishOutputDTO()
+                        if (cm.SelectedGarnishes != null)
                         {
-                            Id = g.Id,
-                            Name = g.Name,
-                            Description = g.Description
+                            foreach (var g in cm.SelectedGarnishes)
+                            {
+                                garnishiesNames.Add(g.Name);
+                            }
+                        }
+
+                        configMeal.Meal = new MealOutputDTO
+                        {
+                            Id = cm.Meal.Id,
+                            Days = cm.Meal.Days,
+                            Description = cm.Meal.Description,
+                            GarnishiesName = garnishiesNames,
+                            Name = cm.Meal.Name,
+                            Price = cm.Meal.Price
                         };
-                        garnishies.Add(garnish);
+                        configuredMeal.Add(configMeal);
                     }
-                    
-                    configMeal.Meal = new MealOutputDTO
-                    {
-                        Id = cm.Meal.Id,
-                        Days = cm.Meal.Days,
-                        Description = cm.Meal.Description,
-                        Garnishies = garnishies,
-                        Name = cm.Meal.Name,
-                        Price = cm.Meal.Price
-                    };
-                    configuredMeal.Add(configMeal);
                 }
             }
             OrderOutputDTO orderDTO = new OrderOutputDTO
@@ -74,9 +75,9 @@ namespace Pitang.Kifome.Application.Services.Implementation
                 },
                 Customer = new UserOutputDTO
                 {
-                    Id = order.Seller.Id,
-                    Name = order.Seller.Name,
-                    Email = order.Seller.Email
+                    Id = order.Customer.Id,
+                    Name = order.Customer.Name,
+                    Email = order.Customer.Email
                 },
                 ConfiguredMeals = configuredMeal,
                 Status = (OrderStatusEnumDTO)order.Status,
@@ -95,6 +96,78 @@ namespace Pitang.Kifome.Application.Services.Implementation
             return orderDTO;
         }
 
+        public IList<OrderOutputDTO> GetOrders()
+        {
+            var orders = this.customerService.GetOrders();
+            IList<OrderOutputDTO> ordersDTO = new List<OrderOutputDTO>();
+            foreach (var order in orders)
+            {
+                IList<ConfiguratedMealDTO> configuredMeal = new List<ConfiguratedMealDTO>();
+                if (order.ConfiguredMeals != null)
+                {
+                    IList<string> garnishiesNames = new List<string>();
+                    foreach (var cm in order.ConfiguredMeals)
+                    {
+                        ConfiguratedMealDTO configMeal = new ConfiguratedMealDTO();
+                        if (order.ConfiguredMeals != null)
+                        {
+                            if (cm.SelectedGarnishes != null)
+                            {
+                                foreach (var g in cm.SelectedGarnishes)
+                                {
+                                    garnishiesNames.Add(g.Name);
+                                }
+                            }
+
+                            configMeal.Meal = new MealOutputDTO
+                            {
+                                Id = cm.Meal.Id,
+                                Days = cm.Meal.Days,
+                                Description = cm.Meal.Description,
+                                GarnishiesName = garnishiesNames,
+                                Name = cm.Meal.Name,
+                                Price = cm.Meal.Price
+                            };
+                            configuredMeal.Add(configMeal);
+                        }
+                    }
+                }
+                OrderOutputDTO orderDTO = new OrderOutputDTO
+                {
+                    Id = order.Id,
+                    Seller = new UserOutputDTO
+                    {
+                        Id = order.Seller.Id,
+                        Name = order.Seller.Name,
+                        Email = order.Seller.Email
+                    },
+                    Customer = new UserOutputDTO
+                    {
+                        Id = order.Customer.Id,
+                        Name = order.Customer.Name,
+                        Email = order.Customer.Email
+                    },
+                    ConfiguredMeals = configuredMeal,
+                    Status = (OrderStatusEnumDTO)order.Status,
+                    Withdrawal = new WithdrawalInputDTO
+                    {
+                        CEP = order.Withdrawal.CEP,
+                        FinalHour = Convert.ToString(order.Withdrawal.FinalHour),
+                        InitialHour = Convert.ToString(order.Withdrawal.InitialHour),
+                        Latitude = order.Withdrawal.Latitude,
+                        Longitude = order.Withdrawal.Longitude,
+                        Number = order.Withdrawal.Number,
+                        SellerId = order.Withdrawal.Seller.Id,
+                        Street = order.Withdrawal.Street
+                    }
+                };
+
+                ordersDTO.Add(orderDTO);
+            }
+
+            return ordersDTO;
+        }
+
         public void MakeOrder(OrderInputDTO order)
         {
             var customer = this.userService.GetUserById(order.CustomerId);
@@ -106,52 +179,28 @@ namespace Pitang.Kifome.Application.Services.Implementation
                 Customer = customer,
                 Seller = seller,
                 Withdrawal = withdrawal,
-                Status = (OrderStatusEnum)order.Status
+                Status = 0
             });
         }
 
-        //public void MakeOrder(OrderInputDTO order)
-        //{
-        //    IList<ConfiguredMeal> configuredMeals = new List<ConfiguredMeal>();
-        //    ConfiguredMeal configMeal = null;
-        //    if (order.ConfiguredMeals != null)
-        //    {
-        //        foreach (var cm in order.ConfiguredMeals)
-        //        {
-        //            configMeal = new ConfiguredMeal();
-        //            configMeal.MealId = cm.Meal.Id;
-        //            configMeal.OrderId = cm.Order.Id;
-        //        }
-        //        configuredMeals.Add(configMeal);
-        //    }
+        public void UpdateOrder(OrderUpdateInputDTO order)
+        {
+            var customer = this.userService.GetUserById(order.CustomerId);
+            var seller = this.userService.GetUserById(order.SellerId);
+            var withdrawal = this.sellerService.GetWithdrawalById(order.WithdrawalId);
 
-        //    this.customerService.MakeOrder(new Order
-        //    {
-        //        Seller = new User {
-        //            Id = order.Seller.Id,
-        //            Name = order.Seller.Name,
-        //            Email =  order.Seller.Email
-        //        },
-        //        Customer = new User
-        //        {
-        //            Id = order.Customer.Id,
-        //            Name = order.Customer.Name,
-        //            Email = order.Customer.Email
-        //        },
-        //        ConfiguredMeals = configuredMeals,
-        //        Status = (OrderStatusEnum)order.Status,
-        //        Withdrawal = new Withdrawal
-        //        {
-        //            InitialHour = Convert.ToDateTime(order.Withdrawal.InitialHour),
-        //            FinalHour = Convert.ToDateTime(order.Withdrawal.FinalHour),
-        //            SellerId = order.Withdrawal.SellerId,
-        //            CEP = order.Withdrawal.CEP,
-        //            Number = order.Withdrawal.Number,
-        //            Street = order.Withdrawal.Street
-        //        }               
-        //    });
-        //}
+            this.customerService.EditOrder(new Order
+            {
+                Id = order.Id,
+                Customer = customer,
+                Seller = seller,
+                Withdrawal = withdrawal,
+                Status = (OrderStatusEnum)order.OrderStatus
+            });
+        }
+        #endregion
 
+        #region Seller
         public UserOutputDTO SearchSellerByLocal(double latitude, double longitude)
         {
             throw new NotImplementedException();
@@ -172,52 +221,59 @@ namespace Pitang.Kifome.Application.Services.Implementation
             throw new NotImplementedException();
         }
 
-        public void UpdateOrder(OrderInputDTO order)
+        public IList<SellerOutputDTO> GetAllSellers()
         {
-            throw new NotImplementedException();
+            IList<User> sellers = new List<User>();
+            sellers = customerService.GetSellers();
+            IList<SellerOutputDTO> sellersDTO = mapper.Map<SellerOutputDTO[]>(sellers);
+            return sellersDTO;
+        }
+        #endregion
+
+        #region ConfiguratedMeal
+        public void MakeConfiguratedMeal(ConfiguredMealInputDTO configuredMeal)
+        {
+            IList<Garnish> garnishies = new List<Garnish>();
+            if (configuredMeal.GarnishesId != null)
+            {
+                foreach (var g in configuredMeal.GarnishesId)
+                {
+                    garnishies.Add(userService.GetGarnishById(g));
+                }
+            }
+
+            Meal meal = sellerService.GetMealById(configuredMeal.MealId);
+            Order order = customerService.GetOrderById(configuredMeal.OrderId);
+
+            customerService.MakeConfiguratedMeal(new ConfiguredMeal
+            {
+                Meal = meal,
+                Order = order,
+                SelectedGarnishes = garnishies
+            });
         }
 
-        //public void UpdateOrder(OrderInputDTO order)
-        //{
-        //    IList<ConfiguredMeal> configuredMeals = new List<ConfiguredMeal>();
-        //    ConfiguredMeal configMeal = null;
-        //    if (order.ConfiguredMeals != null)
-        //    {
-        //        foreach (var cm in order.ConfiguredMeals)
-        //        {
-        //            configMeal = new ConfiguredMeal();
-        //            configMeal.MealId = cm.Meal.Id;
-        //            configMeal.OrderId = cm.Order.Id;
-        //        }
-        //        configuredMeals.Add(configMeal);
-        //    }
+        public IList<ConfiguratedMealOutputDTO> GetConfiguratedMealsByOrderId(int orderId)
+        {
+            IList<ConfiguratedMealOutputDTO> configuratedMealOutputDtos = new List<ConfiguratedMealOutputDTO>();
+            IList<ConfiguredMeal> configuredMeals = customerService.GetConfiguredMealByOrderId(orderId);
+            foreach (var cm in configuredMeals )
+            {
+                ConfiguratedMealOutputDTO cmDTO = new ConfiguratedMealOutputDTO
+                {
+                    OrderId = cm.OrderId,
+                    MealName = sellerService.GetMealById(cm.MealId).Name,
+                    GarnishesNames = new List<string>()
+                };
+                foreach (var sg in cm.SelectedGarnishes)
+                {
+                    cmDTO.GarnishesNames.Add(sg.Name);
+                }
+                configuratedMealOutputDtos.Add(cmDTO);
+            }
 
-        //    this.customerService.EditOrder(new Order
-        //    {
-        //        Seller = new User
-        //        {
-        //            Id = order.Seller.Id,
-        //            Name = order.Seller.Name,
-        //            Email = order.Seller.Email
-        //        },
-        //        Customer = new User
-        //        {
-        //            Id = order.Customer.Id,
-        //            Name = order.Customer.Name,
-        //            Email = order.Customer.Email
-        //        },
-        //        ConfiguredMeals = configuredMeals,
-        //        Status = (OrderStatusEnum)order.Status,
-        //        Withdrawal = new Withdrawal
-        //        {
-        //            InitialHour = Convert.ToDateTime(order.Withdrawal.InitialHour),
-        //            FinalHour = Convert.ToDateTime(order.Withdrawal.FinalHour),
-        //            SellerId = order.Withdrawal.SellerId,
-        //            CEP = order.Withdrawal.CEP,
-        //            Number = order.Withdrawal.Number,
-        //            Street = order.Withdrawal.Street
-        //        }
-        //    });
-        //}
+            return configuratedMealOutputDtos;
+        }
+        #endregion
     }
 }

@@ -11,5 +11,7 @@ namespace Pitang.Kifome.Domain.Entities
         public string Description { get; set; }
         public IList<Meal> Meals { get; set; }
         public IList<ConfiguredMeal> ConfiguredMeals { get; set; }
+        public User Seller { get; set; }
+        public int SellerId { get; set; }
     }
 }

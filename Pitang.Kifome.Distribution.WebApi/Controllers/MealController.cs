@@ -1,5 +1,6 @@
 ﻿using Pitang.Kifome.Application.Contracts.Services;
 using Pitang.Kifome.Application.Entities;
+using Pitang.Kifome.Application.Entities.Meal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,7 +50,7 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
 
         [AcceptVerbs("Put")]
         [Route("meal")]
-        public void UpdateMeal(MealInputDTO meal)
+        public void UpdateMeal(MealUpdateInputeDTO meal)
         {
             this.sellerAppService.UpdateMeal(meal);
         }

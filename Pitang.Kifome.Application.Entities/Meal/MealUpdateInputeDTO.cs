@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pitang.Kifome.Application.Entities
+namespace Pitang.Kifome.Application.Entities.Meal
 {
-    public class MealInputDTO
+    public class MealUpdateInputeDTO
     {
+        [Required]
         public int Id { get; set; }
         [Required]
         public String Name { get; set; }
@@ -17,11 +18,10 @@ namespace Pitang.Kifome.Application.Entities
         [Required]
         public double Price { get; set; }
         [Required]
-        public int MenuId { get; set; }
-        //Optional
-        //public IList<GarnishInputDTO> Garnishies { get; set; }
+        public IList<int> GarnishiesId { get; set; }
         [Required]
         public DayOfWeek Days { get; set; }
-
+        [Required]
+        public int MenuId { get; set; }
     }
 }

@@ -7,7 +7,7 @@ using Pitang.Kifome.Domain.Entities;
 
 namespace Pitang.Kifome.Infra.Repositories.Repository
 {
-    public class OrderRepository : EfRepository<Order, int>,IOrderRepository
+    public class OrderRepository : EfRepository<Order, int>, IOrderRepository
     {
         public OrderRepository(DbContext context) : base(context)
         {
@@ -28,12 +28,5 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
                          select order;
             return result.ToList();
         }
-
-        //public Order SelectOrderById()
-        //{
-        //    var result = from order in this.Table
-        //                 join s in  on order.Seller.Id equals s.Id
-        //                 join 
-        //}
     }
 }
