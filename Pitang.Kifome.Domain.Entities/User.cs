@@ -15,5 +15,6 @@ namespace Pitang.Kifome.Domain.Entities
         public IList<Order> ReceivedOrders { get; set; }
         public IList<Order> MadeOrders { get; set; }
         public virtual Menu Menu { get; set; }
+        public virtual IList<Garnish> Garnishes { get; set; }
     }
 }
