@@ -30,7 +30,14 @@ namespace Pitang.Kifome.Domain.Services.Implementation
 
         public void CreateUser(User user)
         {
-            this.unitOfWork.UserRepository.Insert(user);
+            var registeredUser = this.unitOfWork.UserRepository.SelectByEmail(user.Email);
+            if (registeredUser == null)
+            {
+                this.unitOfWork.UserRepository.Insert(user);
+            } else
+            {
+                throw new Exception("Já existe um usuário com o mesmo email");
+            }
         }
 
         public void DeleteUser(int Id)
