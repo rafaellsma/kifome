@@ -74,6 +74,7 @@
     <Compile Include="Menu\MenuUpdateInputDTO.cs" />
     <Compile Include="Order\OrderUpdateInputDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User\SellerOutputDTO.cs" />
     <Compile Include="User\UserInputDTO.cs" />
     <Compile Include="User\UserOutputDTO.cs" />
     <Compile Include="User\UserUpdateInputDTO.cs" />

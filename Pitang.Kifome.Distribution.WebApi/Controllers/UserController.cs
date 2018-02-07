@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using Pitang.Kifome.Application.Contracts.Services;
 using Pitang.Kifome.Application.Entities;
+using Pitang.Kifome.Application.Entities.User;
 
 namespace Pitang.Kifome.Distribution.WebApi.Controllers
 {
@@ -15,11 +16,13 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
     {
         public readonly IUserAppService userAppService;
         public readonly ISellerAppService sellerAppService;
+        public readonly ICustomerAppService customerAppService;
 
-        public UserController(IUserAppService userAppService, ISellerAppService sellerAppService)
+        public UserController(IUserAppService userAppService, ISellerAppService sellerAppService, ICustomerAppService customerAppService)
         {
             this.userAppService = userAppService;
             this.sellerAppService = sellerAppService;
+            this.customerAppService = customerAppService;
         }
 
         [AcceptVerbs("Post")]
@@ -69,6 +72,13 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
         public MenuOutputDTO GetMenuBySellerId(int id)
         {
             return sellerAppService.GetMenuBySellerId(id);
+        }
+
+        [AcceptVerbs("Get")]
+        [Route("sellers")]
+        public IList<SellerOutputDTO> GetSellers()
+        {
+            return customerAppService.GetAllSellers();
         }
     }
 }

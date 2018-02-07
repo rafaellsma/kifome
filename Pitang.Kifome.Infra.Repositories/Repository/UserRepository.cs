@@ -16,6 +16,14 @@ namespace Pitang.Kifome.Infra.Repositories.Repository
         {
         }
 
+        public IList<User> SelectAllSellers()
+        {
+            var result = from user in this.Context.Set<User>()
+                         where user.Menu != null
+                         select user;
+            return result.ToList();
+        }
+
         public User SelectByEmail(string email)
         {
             var result = from user in this.Table

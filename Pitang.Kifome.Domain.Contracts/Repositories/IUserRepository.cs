@@ -11,5 +11,7 @@
     public interface IUserRepository : IRepository<User, int>
     {
          User SelectByEmail(string email);
+
+        IList<User> SelectAllSellers();
     }
  }

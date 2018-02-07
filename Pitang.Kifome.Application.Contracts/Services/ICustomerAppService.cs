@@ -1,6 +1,7 @@
 ﻿using Pitang.Kifome.Application.Entities;
 using System.Collections.Generic;
 using Pitang.Kifome.Application.Entities.ConfiguratedMeal;
+using Pitang.Kifome.Application.Entities.User;
 
 namespace Pitang.Kifome.Application.Contracts.Services
 {
@@ -19,6 +20,7 @@ namespace Pitang.Kifome.Application.Contracts.Services
         UserOutputDTO SearchSellerByName(string name);
         UserOutputDTO SearchSellerByPrice(float price);
         void SellerEvaluation(float rate);
+        IList<SellerOutputDTO> GetAllSellers();
         #endregion
 
         #region ConfiguratedMeal

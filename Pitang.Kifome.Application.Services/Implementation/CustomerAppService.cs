@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using AutoMapper;
 using Pitang.Kifome.Application.Contracts.Services;
 using Pitang.Kifome.Application.Entities;
 using Pitang.Kifome.Application.Entities.ConfiguratedMeal;
+using Pitang.Kifome.Application.Entities.User;
 using Pitang.Kifome.Domain.Contracts.Services;
 using Pitang.Kifome.Domain.Entities;
 
@@ -13,12 +15,14 @@ namespace Pitang.Kifome.Application.Services.Implementation
         private readonly ICustomerService customerService;
         private readonly ISellerService sellerService;
         private readonly IUserService userService;
+        private readonly IMapper mapper;
 
-        public CustomerAppService(ICustomerService customerServiceInstance, ISellerService sellerServiceInstance, IUserService userServiceInstance)
+        public CustomerAppService(ICustomerService customerServiceInstance, ISellerService sellerServiceInstance, IUserService userServiceInstance, IMapper mapper)
         {
             this.customerService = customerServiceInstance;
             this.sellerService = sellerServiceInstance;
             this.userService = userServiceInstance;
+            this.mapper = mapper;
         }
 
         #region Order
@@ -215,6 +219,14 @@ namespace Pitang.Kifome.Application.Services.Implementation
         public void SellerEvaluation(float rate)
         {
             throw new NotImplementedException();
+        }
+
+        public IList<SellerOutputDTO> GetAllSellers()
+        {
+            IList<User> sellers = new List<User>();
+            sellers = customerService.GetSellers();
+            IList<SellerOutputDTO> sellersDTO = mapper.Map<SellerOutputDTO[]>(sellers);
+            return sellersDTO;
         }
         #endregion
 

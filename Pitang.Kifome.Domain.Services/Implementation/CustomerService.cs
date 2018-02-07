@@ -68,6 +68,11 @@ namespace Pitang.Kifome.Domain.Services.Implementation
         {
             throw new NotImplementedException();
         }
+
+        public IList<User> GetSellers()
+        {
+            return this.unitOfWork.UserRepository.SelectAllSellers();
+        }
         #endregion
 
         #region ConfiguratedMeal

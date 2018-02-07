@@ -22,6 +22,8 @@ namespace Pitang.Kifome.Domain.Contracts.Services
         User SearchSellerByName(string name);
         User SearchSellerByLocal(double latitude, double longitude);
         void SellerEvaluation(float rate);
+
+        IList<User> GetSellers();
         #endregion
 
         #region ConfiguratedMeal
