@@ -1,4 +1,5 @@
 ﻿using Pitang.Kifome.Application.Entities;
+using Pitang.Kifome.Application.Entities.Garnish;
 using Pitang.Kifome.Application.Entities.Meal;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace Pitang.Kifome.Application.Contracts.Services
     public interface ISellerAppService
     {
         #region Garnish
-        void RegisterGarnish(GarnishInputDTO garnish);
+        void RegisterGarnish(GarnishWithSellerDTO garnish);
         void UpdateGarnish(GarnishUpdateDTO garnish);
         void DeleteGarnish(int id);
         #endregion

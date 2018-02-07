@@ -47,9 +47,9 @@ namespace Pitang.Kifome.Distribution.WebApi.Providers
             }
 
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-            identity.AddClaim(new Claim("sub", email));
+            identity.AddClaim(new Claim("email", email));
             identity.AddClaim(new Claim("role", "user"));
-
+            identity.AddClaim(new Claim("id", user.Id.ToString()));
             context.Validated(identity);
         }
     }

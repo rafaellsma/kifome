@@ -2,6 +2,7 @@
 using AutoMapper.Configuration;
 using Pitang.Kifome.Application.Entities;
 using Pitang.Kifome.Application.Entities.Comment;
+using Pitang.Kifome.Application.Entities.Garnish;
 using Pitang.Kifome.Application.Entities.User;
 using Pitang.Kifome.Domain.Entities;
 using System;
@@ -19,7 +20,7 @@ namespace Pitang.Kifome.Application.Services.AutoMapper
         {
             MapperConfigurationExpression configurationExpression = new MapperConfigurationExpression();
             configurationExpression.CreateMap<Garnish, GarnishOutputDTO>();
-            configurationExpression.CreateMap<GarnishInputDTO, Garnish>();
+            configurationExpression.CreateMap<GarnishWithSellerDTO, Garnish>();
             configurationExpression.CreateMap<Meal, MealOutputDTO>();
             configurationExpression.CreateMap<Meal, MealDTO>();
             configurationExpression.CreateMap<GarnishUpdateDTO, Garnish>();
