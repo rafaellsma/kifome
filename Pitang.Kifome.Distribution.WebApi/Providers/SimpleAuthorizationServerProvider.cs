@@ -1,4 +1,5 @@
 ﻿using Microsoft.Owin;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using Pitang.Kifome.Application.Contracts.Services;
 using Pitang.Kifome.Application.Entities;
@@ -50,7 +51,26 @@ namespace Pitang.Kifome.Distribution.WebApi.Providers
             identity.AddClaim(new Claim("email", email));
             identity.AddClaim(new Claim("role", "user"));
             identity.AddClaim(new Claim("id", user.Id.ToString()));
-            context.Validated(identity);
+            var props = new AuthenticationProperties(new Dictionary<string, string>
+            {
+                {"id", user.Id.ToString()},
+                {"name", user.Name },
+                {"email", user.Email }
+            });
+
+            var ticket = new AuthenticationTicket(identity, props);
+            context.Validated(ticket);
+        }
+
+        public override Task TokenEndpoint(OAuthTokenEndpointContext context)
+        {
+            foreach (KeyValuePair<string, string> property in context.Properties.Dictionary)
+            {
+                if(!property.Key.StartsWith("."))
+                    context.AdditionalResponseParameters.Add(property.Key, property.Value);
+            }
+
+            return Task.FromResult<object>(null);
         }
     }
 }
