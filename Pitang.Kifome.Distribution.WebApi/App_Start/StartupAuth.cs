@@ -17,7 +17,7 @@ namespace Pitang.Kifome.Distribution.WebApi
             ConfigureOAuth(app);
 
             WebApiConfig.Register(config);
-            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+           
             app.UseWebApi(config);
         }
 

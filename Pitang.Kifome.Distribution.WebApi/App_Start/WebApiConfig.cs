@@ -2,6 +2,7 @@
 using Pitang.Kifome.Distribution.WebApi.Filters;
 using Pitang.Kifome.Distribution.WebApi.IoC;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Dispatcher;
 
 namespace Pitang.Kifome.Distribution.WebApi
