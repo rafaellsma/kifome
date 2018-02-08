@@ -19,6 +19,7 @@ namespace Pitang.Kifome.Infra.Repositories.Mapping
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             this.Property(g => g.Name).HasColumnName("name").IsRequired();
             this.Property(g => g.Description).HasColumnName("description");
+            this.Property(g => g.SellerId).HasColumnName("seller_id");
             this.HasRequired(g => g.Seller)
                 .WithMany(s => s.Garnishes)
                 .HasForeignKey(g => g.SellerId);

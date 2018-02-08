@@ -21,7 +21,7 @@ namespace Pitang.Kifome.Distribution.WebApi
                 .Install(new RepositoryInstaller())
                 .Install(new ApplicationServiceInstaller())
                 .Install(new ApiInstaller());
-
+            
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }

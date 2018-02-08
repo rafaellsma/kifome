@@ -10,7 +10,6 @@ using System.Web.Http.Cors;
 namespace Pitang.Kifome.Distribution.WebApi.Controllers
 {
     [RoutePrefix("api")]
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ConfiguratedMealController : ApiController
     {
         public readonly ICustomerAppService customerAppService;

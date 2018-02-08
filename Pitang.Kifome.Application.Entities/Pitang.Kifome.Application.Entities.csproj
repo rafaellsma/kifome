@@ -60,6 +60,7 @@
     <Compile Include="Garnish\GarnishInputDTO.cs" />
     <Compile Include="Garnish\GarnishOutputDTO.cs" />
     <Compile Include="Garnish\GarnishUpdateDTO.cs" />
+    <Compile Include="Garnish\GarnishWithSellerDTO.cs" />
     <Compile Include="Meal\MealUpdateInputeDTO.cs" />
     <Compile Include="User\LoginAuthenticationDTO.cs" />
     <Compile Include="Meal\MealDTO.cs" />

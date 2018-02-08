@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Pitang.Kifome.Application.Contracts.Services;
 using Pitang.Kifome.Application.Entities;
+using Pitang.Kifome.Application.Entities.Garnish;
 using Pitang.Kifome.Application.Entities.Meal;
 using Pitang.Kifome.Domain.Contracts.Services;
 using Pitang.Kifome.Domain.Entities;
@@ -133,7 +134,7 @@ namespace Pitang.Kifome.Application.Services.Implementation
         #endregion
 
         #region Garnish
-        public void RegisterGarnish(GarnishInputDTO garnish)
+        public void RegisterGarnish(GarnishWithSellerDTO garnish)
         {
             sellerService.RegisterGarnish(mapper.Map<Garnish>(garnish));
         }

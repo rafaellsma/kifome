@@ -11,7 +11,6 @@ using Pitang.Kifome.Application.Entities.User;
 namespace Pitang.Kifome.Distribution.WebApi.Controllers
 {
     [RoutePrefix("api")]
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class UserController : ApiController
     {
         public readonly IUserAppService userAppService;

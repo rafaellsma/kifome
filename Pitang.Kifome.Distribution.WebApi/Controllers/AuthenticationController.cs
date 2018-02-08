@@ -13,7 +13,6 @@ using System.Web.Http.Cors;
 namespace Pitang.Kifome.Distribution.WebApi.Controllers
 {
     [RoutePrefix("api")]
-    [EnableCors(origins: "*", headers: "*", methods:"*")]
     public class AuthenticationController : ApiController
     {
         public readonly IUserAppService userAppService;
