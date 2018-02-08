@@ -12,7 +12,6 @@ using Pitang.Kifome.Application.Entities.ConfiguratedMeal;
 namespace Pitang.Kifome.Distribution.WebApi.Controllers
 {
     [RoutePrefix("api")]
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class OrderController : ApiController
     {
         private readonly ICustomerAppService customerAppService;

@@ -12,6 +12,8 @@ namespace Pitang.Kifome.Distribution.WebApi
     {
         public static void Configuration(IAppBuilder app)
         {
+            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+
             HttpConfiguration config = new HttpConfiguration();
 
             ConfigureOAuth(app);

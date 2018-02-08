@@ -9,7 +9,6 @@ using System.Web.Http.Cors;
 namespace Pitang.Kifome.Distribution.WebApi.Controllers
 {
     [RoutePrefix("api")]
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class GarnishesController : ApiController
     {
         private readonly ISellerAppService sellerAppService;
@@ -34,6 +33,7 @@ namespace Pitang.Kifome.Distribution.WebApi.Controllers
             });
         }
 
+        [Authorize]
         [HttpGet]
         [Route("garnishes")]
         public IList<GarnishOutputDTO> GetGarnishes()

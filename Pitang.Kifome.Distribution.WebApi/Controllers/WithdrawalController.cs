@@ -10,7 +10,6 @@ using Pitang.Kifome.Application.Entities;
 namespace Pitang.Kifome.Distribution.WebApi.Controllers
 {
     [RoutePrefix("api")]
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class WithdrawalController : ApiController
     {
         public readonly ISellerAppService sellerAppService;

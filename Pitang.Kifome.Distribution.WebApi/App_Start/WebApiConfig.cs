@@ -11,8 +11,6 @@ namespace Pitang.Kifome.Distribution.WebApi
     {
         public static void Register(HttpConfiguration config)
         {
-            config.EnableCors();
-
             config.MapHttpAttributeRoutes();
 
             config.Services.Replace(typeof(IHttpControllerActivator), new ApiControllerActivator());
